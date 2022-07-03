@@ -1,0 +1,542 @@
+\documentclass{article}
+
+
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{xcolor}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+\definecolor{dark_green}{rgb}{0.0,0.5,0.0}
+\definecolor{dark_blue}{rgb}{0.0,0.0,0.5}
+\definecolor{blue}{rgb}{0.0,0.0,1.0}
+
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+\newcommand{\dg}[1]{\textcolor{dark_green}{#1}}
+\newcommand{\db}[1]{\textcolor{dark_blue}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+
+\begin{document}
+
+
+
+
+
+
+
+\section*{Quadratic equations} 
+
+A quadratic equation has the form:
+\[ax^2 + bx + c = 0\]
+where \(a\), \(b\), and \(c\) are fixed constants where \(a \neq 0\). \(ax^2 + bx + c\) is referred to as a ``degree 2 polynomial", or a ``quadratic polynomial". When solving quadratic equations, there will be multiple solutions. To assist with denoting multiple solutions, the following notation will be used:
+
+\begin{itemize}
+\item The notation \(x = \pm v\) means that \(x = v\) OR \(x = -v\). There are two solutions for \(x\), which are \(v\) and \(-v\).
+\item The notation \(x = v_1, v_2\) means that \(x = v_1\) OR \(x = v_2\). There are two solutions for \(x\), which are \(v_1\) and \(v_2\). 
+\item Generalizing, the notation \(x = v_1, v_2, v_3\) means that \(x = v_1\) OR \(x = v_2\) OR \(x = v_3\). There are three solutions for \(x\), which are \(v_1\),\(v_2\), and \(v_3\). 
+\item etc.
+\end{itemize}
+
+
+
+\subsection*{Solving simple equations:}
+
+Equations are easy to solve when \(x\) appears only once in the equation. For example, consider the equation:
+\[\frac{1}{5\sqrt{x+2} - 7} = \frac{1}{8}\]
+The expression \(\frac{1}{5\sqrt{x+2} - 7}\) is derived from \(x\) by the following sequence of single variable functions:
+\begin{itemize}
+\item The function \(f_1(a) = a + 2\) is applied to \(x\) give \(x + 2\). The inverse of this function is \(f_1^{-1}(b) = b - 2\).  
+\item The function \(f_2(a) = \sqrt{a}\) is applied to \(x + 2\) to give \(\sqrt{x + 2}\). The inverse of this function is \(f_2^{-1}(b) = b^2\), with \(b\) restricted to \([0, +\infty)\).  
+\item The function \(f_3(a) = 5a\) is applied to \(\sqrt{x + 2}\) to give \(5\sqrt{x + 2}\). The inverse of this function is \(f_3^{-1}(b) = \frac{b}{5}\). 
+\item The function \(f_4(a) = a - 7\) is applied to \(5\sqrt{x + 2}\) to give \(5\sqrt{x + 2} - 7\). The inverse of this function is \(f_4^{-1}(b) = b + 7\). 
+\item The function \(f_5(a) = \frac{1}{a}\) is applied to \(5\sqrt{x + 2} - 7\) to give \(\frac{1}{5\sqrt{x + 2} - 7}\). The inverse of this function is \(f_5^{-1}(b) = \frac{1}{b}\).
+\end{itemize}
+The equation \(\frac{1}{5\sqrt{x+2} - 7} = \frac{1}{8}\) is simply
+\[f_5(f_4(f_3(f_2(f_1(x))))) = \frac{1}{8}\]
+and finding \(x\) simply involves ``undoing" each of the functions that have been applied to \(x\). Starting with 
+\[\frac{1}{5\sqrt{x+2} - 7} = \frac{1}{8}\]
+applying \(f_5^{-1}(b) = \frac{1}{b}\) to both sides gives
+\[5\sqrt{x+2} - 7 = 8\]
+applying \(f_4^{-1}(b) = b + 7\) to both sides gives
+\[5\sqrt{x+2} = 15\]
+applying \(f_3^{-1}(b) = \frac{b}{5}\) to both sides gives
+\[\sqrt{x+2} = 3\]
+applying \(f_2^{-1}(b) = b^2\) to both sides gives
+\[x + 2 = 9\]
+applying \(f_1^{-1}(b) = b - 2\) to both sides gives
+\[x = 7\]
+hence the equation has been solved for \(x = 7\).
+
+\vspace{5mm}
+
+\textbf{Another example:}
+
+With equations such as 
+\[2x + 5 = 9x - 16\]
+\(x\) appears more than once in the equation, but the equation can be manipulated by subtracting \(9x\) from both sides to give the equation:
+\[-7x + 5 = -16\]
+where \(x\) appears only once. This equation can now be solved as follows:
+\[-7x + 5 = -16 \iff -7x = -21 \iff x = 3\]
+
+
+
+
+\subsection*{Quadratic equations: special cases}
+
+With the quadratic equation 
+\[ax^2 + bx + c = 0\]
+\(x\) appears twice. Solving the quadratic equation is not a straightforwards process.
+
+\vspace{5mm}
+
+\subsubsection*{case \(b = 0\)}
+
+When \(b = 0\), the equation becomes
+\[ax^2 + c = 0\]
+\(x\) appears only once, so 
+\[ax^2 + c = 0 \iff ax^2 = -c \iff x^2 = -c/a \iff x = \pm\sqrt{-c/a}\]
+(when inverting the function \(f(u) = u^2\), there are two possible outcomes \(f^{-1}(v) = \pm\sqrt{v}\)) \\
+Therefore:
+\[x = \pm\sqrt{-c/a}\]
+It is also important to note that if \(-c/a < 0\), then no solutions exist.
+
+\textbf{Example 1}
+
+Consider the equation:
+\[2x^2 - 18 = 0\]
+\begin{align*}
+2x^2 - 18 = 0 
+\iff & 2x^2 = 18 
+\iff x^2 = 9 
+\iff x = \pm 3
+\end{align*}
+\[x = \pm 3\]
+
+\textbf{Example 2}
+
+Consider the equation:
+\[3x^2 = 0\]
+\begin{align*}
+3x^2 = 0 
+\iff & x^2 = 0 
+\iff x = 0 
+\end{align*}
+\[x = 0\]
+
+\textbf{Example 3}
+
+Consider the equation:
+\[7x^2 + 28 = 0\]
+\begin{align*}
+7x^2 + 28 = 0 
+\iff & 7x^2 = -28 
+\iff x^2 = -4
+\end{align*}
+Since \(x^2 < 0\), there are {\bf no solutions}.
+
+\textbf{Example 4}
+
+Consider the equation:
+\[-2x^2 + 32 = 0\]
+\begin{align*}
+-2x^2 + 32 = 0 
+\iff & -2x^2 = -32 
+\iff x^2 = 16
+\iff x = \pm 4
+\end{align*}
+\[x = \pm 4\]
+
+
+
+\subsubsection*{case \(c = 0\)}
+
+When \(c = 0\), the equation becomes
+\[ax^2 + bx = 0\]
+\(x\) appears twice, however \(x\) can be factored from the two terms to get
+\[x(ax + b) = 0\]
+It now seems like both sides can be divided by \(x\) to get a linear equation wherein \(x\) appears only once. However, one must also consider the case where \(x = 0\). \(x = 0\) is a solution, and when \(x \neq 0\), both sides can be divided by \(x\) to get:
+\[ax + b = 0 \iff ax = -b \iff x = -b/a\]
+Therefore the solutions are:
+\[x = 0, -b/a\]
+
+\textbf{Example 1}
+
+Consider the equation:
+\[5x^2 - 10x = 0\]
+\begin{align*}
+5x^2 - 10x = 0 
+\iff & x(5x - 10) = 0 
+\iff x = 0 \vee 5x - 10 = 0 
+\end{align*}
+(recall that \(\vee\) = ``OR") \\
+The second alternative yields:
+\[5x - 10 = 0 \iff 5x = 10 \iff x = 2\]
+Therefore:
+\[x = 0, 2\]
+
+\textbf{Example 2}
+
+Consider the equation:
+\[-2x^2 - 6x = 0\]
+\begin{align*}
+-2x^2 - 6x = 0 
+\iff & x(-2x - 6) = 0  
+\iff x = 0 \vee -2x - 6 = 0
+\end{align*}
+The second alternative yields:
+\[-2x - 6 = 0 \iff -2x = 6 \iff x = -3\]
+Therefore:
+\[x = 0, -3\]
+
+\textbf{Example 3}
+
+Consider the equation:
+\[6x^2 = 0\]
+\begin{align*}
+6x^2 = 0 
+\iff x(6x) = 0
+\iff x = 0 \vee 6x = 0
+\end{align*}
+The second alternative yields:
+\[6x = 0 \iff x = 0\]
+Therefore:
+\[x = 0\]
+
+
+
+\subsection*{Quadratic equations: the general case}
+
+Now will be described how to solve the quadratic equation \(ax^2 + bx + c = 0\) in the general case where it may not always be the case that \(b = 0\) or \(c = 0\).
+
+\subsubsection*{When factorization is obvious}
+
+It is also important to note that if a quadratic equation \(ax^2 + bx + c = 0\) can be factored via {\bf mathematical intuition} to have the form \((a_1x + b_1)(a_2x + b_2) = 0\), then there are two cases: \(a_1x + b_1 = 0\) or \(a_2x + b_2 = 0\). The first case yields:
+\[a_1x + b_1 = 0 \iff a_1x = -b_1 \iff x = -b_1/a_1\]
+The second case yields: 
+\[a_2x + b_2 = 0 \iff a_2x = -b_2 \iff x = -b_2/a_2\]
+
+The easiest quadratic polynomial to factorize via mathematical intuition has \(a = 1\): \(x^2 + bx + c\). A factorization of this polynomial will have the form \((x + r_1)(x + r_2)\) where constants \(r_1\) and \(r_2\) are what is sought.
+\[x^2 + bx + c = (x + r_1)(x + r_2) \iff x^2 + bx + c = x^2 + (r_1 + r_2)x + r_1r_2\]
+Given coefficients \(b\) and \(c\), quantities \(r_1\) and \(r_2\) must be chosen so that the sum is \(b\) and that the product is \(c\). Below are hints as to how one can find \(r_1\) and \(r_2\) intuitively. 
+\begin{itemize}
+\item If \(c\) is positive and \(b\) is positive, then \(r_1\) and \(r_2\) must both be positive, and they must add to \(b\). 
+\item If \(c\) is positive and \(b\) is negative, then \(r_1\) and \(r_2\) must both be negative, and their absolute values must add to \(|b|\). 
+\item If \(c\) is negative and \(b\) is positive, then \(r_1\) is positive and \(r_2\) is negative, and the difference in their absolute values is \(|b|\) with \(r_1\) having the greater absolute value. 
+\item If \(c\) is negative and \(b\) is negative, then \(r_1\) is positive and \(r_2\) is negative, and the difference in their absolute values is \(|b|\) with \(r_2\) having the greater absolute value. 
+\end{itemize}
+
+\textbf{Example 1}
+Consider the equation:
+\[x^2 + 8x + 7 = 0\]
+\(r_1 = 1\) and \(r_2 = 7\) are two numbers whose product is \(7\) and whose sum is \(8\).
+Therefore:
+\[x^2 + 8x + 7 = 0 \iff (x + 1)(x + 7) = 0 \iff x + 1 = 0 \vee x + 7 = 0\]
+The first alternative gives: 
+\[x + 1 = 0 \iff x = -1\]
+The second alternative gives:
+\[x + 7 = 0 \iff x = -7\]
+Therefore:
+\[x = -1, -7\]
+
+\textbf{Example 2}
+Consider the equation:
+\[x^2 - 8x + 7 = 0\]
+\(r_1 = -1\) and \(r_2 = -7\) are two numbers whose product is \(7\) and whose sum is \(-8\).
+Therefore:
+\[x^2 - 8x + 7 = 0 \iff (x - 1)(x - 7) = 0 \iff x - 1 = 0 \vee x - 7 = 0\]
+The first alternative gives: 
+\[x - 1 = 0 \iff x = 1\]
+The second alternative gives:
+\[x - 7 = 0 \iff x = 7\]
+Therefore:
+\[x = 1, 7\]
+
+\textbf{Example 3}
+Consider the equation:
+\[x^2 + 6x - 7 = 0\]
+\(r_1 = 7\) and \(r_2 = -1\) are two numbers whose product is \(-7\) and whose sum is \(6\).
+Therefore:
+\[x^2 + 6x - 7 = 0 \iff (x + 7)(x - 1) = 0 \iff x + 7 = 0 \vee x - 1 = 0\]
+The first alternative gives: 
+\[x + 7 = 0 \iff x = -7\]
+The second alternative gives:
+\[x - 1 = 0 \iff x = 1\]
+Therefore:
+\[x = -7, 1\]
+
+\textbf{Example 4}
+Consider the equation:
+\[x^2 - 6x - 7 = 0\]
+\(r_1 = 1\) and \(r_2 = -7\) are two numbers whose product is \(-7\) and whose sum is \(-6\).
+Therefore:
+\[x^2 - 6x - 7 = 0 \iff (x + 1)(x - 7) = 0 \iff x + 1 = 0 \vee x - 7 = 0\]
+The first alternative gives: 
+\[x + 1 = 0 \iff x = -1\]
+The second alternative gives:
+\[x - 7 = 0 \iff x = 7\]
+Therefore:
+\[x = -1, 7\]
+
+Most polynomials do not have an obvious factorization. In addition, if the quadratic equation has no solutions, then there is no factorization. Hence a straightforwards general approach is needed. 
+
+
+
+\subsubsection*{Completing the square}
+
+Given a quadratic polynomial \(ax^2 + bx + c\) where \(a\), \(b\), and \(c\) are {\bf known} coefficients, ``completing the square" refers to rewriting the polynomial to have the form \(a(x + p)^2 + q\) where \(p\) and \(q\) are chosen such that 
+\[ax^2 + bx + c = a(x + p)^2 + q\]
+The advantage of the form \(a(x + p)^2 + q\) is that \(x\) {\bf only appears once}. 
+
+Firstly,
+\[ax^2 + bx + c = a(x^2 + \frac{b}{a}x) + c\]
+
+The subexpression \(x^2 + \frac{b}{a}x\) will now be manipulated to match \((x + p)^2\) as much as possible, matching the higher degree terms before the lower degree terms. Expanding \((x + p)^2\) gives \((x + p)^2 = x^2 + 2px + p^2\). When comparing this expression to \(x^2 + \frac{b}{a}x\), we see that the coefficients of \(x^2\) are both \(1\), and the coefficients of \(x\) are \(2p\) and \(\frac{b}{a}\) respectively. The coefficients of \(x\) must equal each other, so \(2p = \frac{b}{a}\) which is equivalent to \(p = \frac{b}{2a}\). Now we know that \(p = \frac{b}{2a}\). Since the coefficients of \(x\) match, the coefficient of \(x\) can be expressed as either \(\frac{b}{a}\) or \(2p\):
+\[x^2 + \frac{b}{a}x = x^2 + 2px\]
+
+Now for \(x^2 + 2px\) to equal \(x^2 + 2px + p^2\), we need to add and subtract \(p^2\) to ``complete the square": 
+\[x^2 + 2px = (x^2 + 2px + p^2) - p^2 = (x + p)^2 - p^2\]
+
+In total, 
+\begin{align*}
+ax^2 + bx + c
+= & a(x^2 + \frac{b}{a}x) + c 
+= a(x^2 + 2px) + c
+= a((x + p)^2 - p^2) + c \\
+= & a(x + p)^2 + (c - ap^2)
+= a(x + p)^2 + q
+\end{align*}
+where \(p = \frac{b}{2a}\) and \(q = c - ap^2\).
+
+\textbf{Examples:}
+\begin{itemize}
+\item \(x^2 + 6x + 10 = (x^2 + 6x) + 10 = ((x^2 + 2(3x) + 3^2) - 9) + 10 = (x + 3)^2 + 1\)
+\item \(x^2 - 8x = (x^2 + 2(-4x) + (-4)^2) - 16 = (x - 4)^2 - 16\)
+\item \(x^2 - 4x - 7 = (x^2 - 4x) - 7 = ((x^2 + 2(-2x) + (-2)^2) - 4) - 7 = (x - 2)^2 - 11\)
+\item \(x^2 + 5x + 7 = (x^2 + 5x) + 7 = ((x^2 + 2(\frac{5}{2}x) + (\frac{5}{2})^2) - \frac{25}{4}) - 7 = (x + \frac{5}{2})^2 - \frac{53}{4}\)
+\item
+\begin{align*}
+2x^2 - 8x + 7
+= & 2(x^2 - 4x) + 7 
+= 2((x^2 + 2(-2x) + (-2)^2) - 4) + 7 \\
+= & 2(x - 2)^2 - 8 + 7
+= 2(x - 2)^2 - 1
+\end{align*}
+\item 
+\begin{align*} 
+3x^2 + 2x - 5 
+= & 3(x^2 + \frac{2}{3}x) - 5 
+= 3((x^2 + 2(\frac{1}{3}x) + (\frac{1}{3})^2) - \frac{1}{9}) - 5 \\
+= & 3(x + \frac{1}{3})^2 - \frac{1}{3} - 5 
+= 3(x + \frac{1}{3})^2 - \frac{16}{3}
+\end{align*}
+\end{itemize}
+
+
+
+\subsubsection*{Completing the square and the quadratic formula}
+
+The most general approach to solving the quadratic equation is to ``complete the square". In the equation \(ax^2 + bx + c = 0\), \(x\) appears twice, however in the equation
+\[a(x + p)^2 + q = 0\]
+where \(p\) and \(q\) are as of yet undetermined constants, \(x\) appears once. Now will be described how to manipulate and rewrite the quadratic polynomial \(ax^2 + bx + c\) to have the form \(a(x + p)^2 + q\) via ``completing the square". The expression \((x + p)^2\) expands to equal \(x^2 + 2px + p^2\). Using this expansion as a ``goal", 
+
+\begin{align*}
+ax^2 + bx + c 
+= & a(x^2 + \frac{b}{a}x) + c 
+= a(x^2 + 2\frac{b}{2a}x) + c 
+= a((x^2 + 2\frac{b}{2a}x + (\frac{b}{2a})^2) - (\frac{b}{2a})^2) + c
+\end{align*}
+By adding and subtracting \((\frac{b}{2a})^2\) the square of the binomial has been ``completed".
+\begin{align*}
+= a(x + \frac{b}{2a})^2 + (c - \frac{b^2}{4a})
+\end{align*}
+The quadratic polynomial now has the form \(a(x + p)^2 + q\) where \(p = \frac{b}{2a}\) and \(q = c - \frac{b^2}{4a}\). The quadratic equation \(ax^2 + bx + c = 0\) has become
+\[a(x + \frac{b}{2a})^2 + (c - \frac{b^2}{4a}) = 0\] 
+
+With \(x\) now appearing once, ``unwrapping" \(x\) gives:
+\begin{align*}
+& a(x + \frac{b}{2a})^2 + (c - \frac{b^2}{4a}) = 0 
+\iff a(x + \frac{b}{2a})^2 = \frac{b^2 - 4ac}{4a} \\
+\iff & (x + \frac{b}{2a})^2 = \frac{b^2 - 4ac}{4a^2} 
+\iff x + \frac{b}{2a} = \frac{\pm\sqrt{b^2 - 4ac}}{2a} 
+\iff x = \frac{-b \pm\sqrt{b^2 - 4ac}}{2a}  
+\end{align*}
+
+The expression 
+\[x = \frac{-b \pm\sqrt{b^2 - 4ac}}{2a}\]
+is referred to as the {\bf quadratic formula} and can be used to solve any quadratic equation with the form \(ax^2 + bx + c = 0\). 
+
+The expression 
+\[\Delta  = b^2 - 4ac\] 
+inside the square root is known as the ``discriminant" and its sign indicates the number of solutions that the quadratic equation has:
+\begin{itemize}
+\item If \(\Delta > 0\), then there are {\bf two solutions}: \(x = \frac{-b \pm \sqrt{\Delta}}{2a}\)
+\item If \(\Delta = 0\), then there is only {\bf one solution}: \(x = -\frac{b}{2a}\) 
+\item If \(\Delta < 0\), then there is {\bf no solutions}.
+\end{itemize}
+
+\textbf{Examples:}
+\begin{itemize}
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[x^2 + 14x + 40 = 0\]}
+The discriminant is: 
+\[\Delta = b^2 - 4ac = 196 - 160 = 36\]
+Since \(\Delta > 0\), there are two solutions:
+\[x = \frac{-b \pm \sqrt{\Delta}}{2a} = \frac{-14 \pm 6}{2} = \blue{-4, -10}\]
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[2x^2 - 20x + 48 = 0\]}
+to simplify the equation, divide both sides by the common factor of \(2\) to get:
+\[x^2 - 10x + 24 = 0\]
+The discriminant is: 
+\[\Delta = b^2 - 4ac = 100 - 96 = 4\]
+Since \(\Delta > 0\), there are two solutions:
+\[x = \frac{-b \pm \sqrt{\Delta}}{2a} = \frac{10 \pm 2}{2} = \blue{6, 4}\]
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[2x^2 - 5x - 3 = 0\]}
+The discriminant is:
+\[\Delta = b^2 - 4ac = 25 + 24 = 49\]
+Since \(\Delta > 0\), there are two solutions:
+\[x = \frac{-b \pm \sqrt{\Delta}}{2a} = \frac{5 \pm 7}{4} = \blue{3, -\frac{1}{2}}\]
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[3x^2 + 12x + 12 = 0\]}
+to simplify the equation, divide both sides by the common factor of \(3\) to get:
+\[x^2 + 4x + 4 = 0\]
+The discriminant is:
+\[\Delta = b^2 - 4ac = 16 - 16 = 0\]
+Since \(\Delta = 0\), there is only one solution:
+\[x = -\frac{b}{2a} = -\frac{4}{2} = \blue{-2}\]
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[9x^2 + 6x + 1 = 0\]}
+The discriminant is:
+\[\Delta = b^2 - 4ac = 36 - 36 = 0\]
+Since \(\Delta = 0\), there is only one solution:
+\[x = -\frac{b}{2a} = -\frac{6}{18} = \blue{-\frac{1}{3}}\]
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[-3x^2 + 30x - 78 = 0\]}
+to simplify the equation, divide both sides by the common factor of \(-3\) to get:
+\[x^2 - 10x + 26 = 0\]
+The discriminant is:
+\[\Delta = b^2 - 4ac = 100 - 104 = -4\]
+Since \(\Delta < 0\), there is \blue{{\bf no solutions}}.
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[-4x^2 + 4x - 5\]}
+The discriminant is:
+\[\Delta = b^2 - 4ac = 16 - 80 = -64\]
+Since \(\Delta < 0\), there is \blue{{\bf no solutions}}.
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[-7x^2 + 21x + 70 = 0\]}
+to simplify the equation, divide both sides by the common factor of \(-7\) to get:
+\[x^2 - 3x - 10 = 0\]
+The discriminant is:
+\[\Delta = b^2 - 4ac = 9 + 40 = 49\] 
+Since \(\Delta > 0\), there are two solutions:
+\[x = \frac{-b \pm \sqrt{\Delta}}{2a} = \frac{3 \pm 7}{2} = \blue{5, -2}\]
+%%%%%%%%%%%%
+\item Consider the equation:
+\dg{\[-6x^2 - x + 1 = 0\]}
+The discriminant is:
+\[\Delta = b^2 - 4ac = 1 + 24 = 25\]
+Since \(\Delta > 0\), there are two solutions:
+\[x = \frac{-b \pm \sqrt{\Delta}}{2a} = \frac{1 \pm 5}{-12} = \blue{-\frac{1}{2}, \frac{1}{3}}\]
+\end{itemize}
+
+
+
+\subsection*{The equations of circles in general form}
+
+
+Using Cartesian Coordinates, the {\bf standard form} for the equation of a circle centered on point \((a,b)\) with radius \(R\) is: 
+\[(x-a)^2 + (y-b)^2 = R^2\] 
+
+Fully expanded, equations with the {\bf general form} of: 
+\[x^2 + y^2 + Ax + By + C = 0\]
+where \(A\), \(B\), and \(C\) are arbitrary coefficients, represent a circle provided that there exists a point that satisfies the above equation. 
+
+Converting from the standard form to the general form gives:
+\begin{align*}
+& (x-a)^2 + (y-b)^2 = R^2 
+\iff (x^2 - 2ax + a^2) + (y^2 - 2by + b^2) = R^2 \\
+\iff & x^2 + y^2 + (-2a)x + (-2b)y + (a^2 + b^2 - R^2) = 0
+\end{align*}
+
+Converting from the general form to the standard form by completing the square gives:
+\begin{align*}
+& x^2 + y^2 + Ax + By + C = 0 
+\iff (x^2 + Ax + (A/2)^2) + (y^2 + By + (B/2)^2) = (A/2)^2 + (B/2)^2 - C \\
+\iff & (x + A/2)^2 + (y + B/2)^2 = (A^2 + B^2 - 4C)/4 
+\iff \left(x - \frac{-A}{2}\right)^2 + \left(y - \frac{-B}{2}\right)^2 = \left(\frac{\sqrt{A^2 + B^2 - 4C}}{2}\right)^2
+\end{align*}
+
+
+\textbf{Examples:}
+\begin{itemize}
+%%%%%%
+\item The circle \((x + 6)^2 + (y - 2)^2 = 4\) is equivalent to:
+\begin{align*}
+& (x + 6)^2 + (y - 2)^2 = 4 
+\iff (x^2 + 12x + 36) + (y^2 - 4y + 4) = 4 \\
+\iff & x^2 + y^2 + 12x - 4y + 36 = 0
+\end{align*}
+%%%%%%
+\item The circle \(x^2 + y^2 + 18x - 12y - 12 = 0\) is equivalent to:
+\begin{align*}
+& x^2 + y^2 + 18x - 12y - 12 = 0 
+\iff (x + 2(9x) + 81) + (y^2 + 2(-6y) + 36) = 12 + 81 + 36 \\
+\iff & (x + 9)^2 + (y - 6)^2 = 129
+\end{align*}
+%%%%%%
+\item The circle \(x^2 + y^2 - 14x + 8y + 5 = 0\) is equivalent to:
+\begin{align*}
+& x^2 + y^2 - 14x + 8y + 5 = 0 
+\iff (x^2 + 2(-7x) + 49) + (y + 2(4y) + 16) = 49 + 16 - 5 \\
+\iff & (x - 7)^2 + (y + 4)^2 = 60
+\end{align*}
+%%%%%%
+\item The circle \(x^2 + y^2 - 2x - 4y + 10 = 0\) is equivalent to:
+\begin{align*}
+& x^2 + y^2 - 2x - 4y + 10 = 0
+\iff (x^2 + 2(-x) + 1) + (y^2 + 2(-2y) + 4) = 1 + 4 - 10 \\
+\iff & (x - 1)^2 + (y - 2)^2 = -5
+\end{align*}
+Since the right hand side is negative, no points satisfy this equation, and no circle actually exists.
+%%%%%%
+\item The circle \(x^2 + y^2 - 6x + 4y + 13 = 0\) is equivalent to:
+\begin{align*}
+& x^2 + y^2 - 6x + 4y + 13 = 0 
+\iff (x^2 + 2(-3x) + 9) + (y^2 + 2(2y) + 4) = 9 + 4 - 13 \\
+\iff & (x - 3)^2 + (y + 2)^2 = 0
+\end{align*}
+Since the right hand side is \(0\), the only point that satisfies this equation is the point \((3,-2)\), so this ``circle" has a radius of \(0\).
+\end{itemize}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

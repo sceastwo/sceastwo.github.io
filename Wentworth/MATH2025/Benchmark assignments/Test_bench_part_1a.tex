@@ -1,0 +1,110 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+
+\title{Lines and Planes}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+Define the points \(P(5,0,4)\); \(Q(1,1,1)\); \(R(7,3,1)\); and \(S(-5,-1,1)\). 
+
+\section*{Question 1:}
+
+\subsection*{part 1a:}
+
+Compute the displacement of \(Q\) relative \(P\): \(\pvec{PQ}\).
+
+\subsection*{part 1b:}
+
+Compute the magnitude \(\abs{\pvec{PQ}}\).
+
+\subsection*{part 1c:}
+
+Compute a unit vector that shares the same direction of \(\pvec{PQ}\).
+
+\subsection*{part 1d:}
+
+Compute parametric and implicit equations of a line \(L_{PQ}\) that contains \(P\) and \(Q\).
+
+
+
+\section*{Question 2:}
+
+\subsection*{part 2a:}
+
+Compute the angle \(\angle RPQ\) using the dot product. 
+
+\subsection*{part 2b:}
+
+Compute the area of triangle \(\Delta PQR\) using the cross product. 
+
+\subsection*{part 2c:}
+
+Compute an implicit equation of a plane \(M_{PQR}\) that contains \(P\), \(Q\) and \(R\).
+
+\subsection*{part 2d:}
+
+Find the shortest distance between \(R\) and the line \(L_{PQ}\) that contains \(P\) and \(Q\).
+
+\subsection*{part 2e:}
+
+Find the intersection between the line \(L_{PQ}\) that contains \(P\) and \(Q\) and the line \(L_{RS}\) that contains \(R\) and \(S\), if this intersection exists.
+
+\subsection*{part 2f:}
+
+Find the volume of the parallelepiped bounded by \(\pvec{PQ}\), \(\pvec{PR}\), and \(\pvec{PS}\). Explain your result.
+
+
+
+\section*{Question 3:}
+
+\subsection*{part 3a:}
+
+Given the line \(L_1: \left\{\begin{array}{rl} x(t) = & 1 + t \\ y(t) = & 2 + 3t \\ z(t) = & 1 + t \end{array}\right.\) and the plane \(M_1: 2x - y + 7z = 9\), find the intersection between \(L_1\) and \(M_1\).
+
+\subsection*{part 3b:}
+
+Given the plane \(M_2: x + y + z = 3\), find the intersection between \(M_1\) and \(M_2\).
+
+\subsection*{part 3c:}
+
+Given the point \(T(3,3,3)\), find the closest distance between \(T\) and \(M_1\). 
+
+\subsection*{part 3d:} 
+
+The plane \(M_3: -6x + 3y - 21z = -33\) is parallel to \(M_1\). Find the separation between \(M_1\) and \(M_3\). 
+
+
+
+\section*{Question 4:}
+
+\subsection*{part a)}
+
+Given vector \(\mathbf{u} = \colvec{2}{5}{-7}\) and vector \(\mathbf{v} = \colvec{x}{y}{1}\), find \(x\) and \(y\) such that \(\mathbf{u} || \mathbf{v}\).
+
+\subsection*{part b)}
+
+Given vector \(\mathbf{u} = \colvec{2}{5}{-3}\) and vector \(\mathbf{v} = \colvec{-1}{1}{z}\), find \(z\) such that \(\mathbf{u} \perp \mathbf{v}\).
+
+
+
+
+
+
+
+\end{document}

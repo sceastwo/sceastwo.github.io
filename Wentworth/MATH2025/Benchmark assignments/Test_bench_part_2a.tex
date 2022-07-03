@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\rowvec}[3]{\left\langle #1, #2, #3 \right\rangle}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\at}[1]{\left. #1 \right|}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+
+
+
+\title{Vector Valued Functions}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 1:}
+
+
+\subsection*{part 1a:}
+
+Given the vector valued function \(\mathbf{r}(t) = \colvec{t^2 - 1/t}{\sqrt{t + 5}}{t^3}\), compute its derivative \(\frac{d\mathbf{r}}{dt}\).
+
+
+
+\subsection*{part 1b:}
+
+Given a vector valued function \(\mathbf{r}_1(t)\) where \(\mathbf{r}_1(2) = \colvec{2}{-7}{1}\) and \(\at{\frac{d\mathbf{r}_1}{dt}}_{t = 2} = \colvec{4}{-3}{5}\); and a vector valued function \(\mathbf{r}_2(t)\) where \(\mathbf{r}_2(2) = \colvec{1}{3}{0}\) and \(\at{\frac{d\mathbf{r}_2}{dt}}_{t = 2} = \colvec{0}{-1}{9}\); use the {\bf product rule} to compute \(\at{\frac{d}{dt}(\mathbf{r}_1(t) \cdot \mathbf{r}_2(t))}_{t = 2}\) and \(\at{\frac{d}{dt}(\mathbf{r}_1(t) \times \mathbf{r}_2(t))}_{t = 2}\). 
+
+
+
+\subsection*{part 1c:}
+
+Given a vector valued function \(\mathbf{r}(t)\) where \(\at{\frac{d\mathbf{r}}{dt}}_{t = 3} = \colvec{5}{0}{-1}\) and \(\at{\frac{d\mathbf{r}}{dt}}_{t = -5} = \colvec{-7}{2}{8}\); and a scalar valued function \(f(t)\) where \(f(3) = -5\) and \(\at{\frac{df}{dt}}_{t = 3} = 4\); use the {\bf chain rule} to compute \(\at{\frac{d}{dt}(\mathbf{r}(f(t)))}_{t = 3}\). 
+
+
+
+\subsection*{part 1d:}
+
+Given the vector valued function \(\mathbf{r}(t) = \colvec{t\sqrt{t^2 + 1}}{1/t}{\sin^2(t)}\), compute the definite integral \(\int_{t = 1}^2 \mathbf{r}(t)dt\). 
+
+
+
+\section*{Question 2:}
+
+Consider the curve \(\mathbf{r}(t) = \colvec{e^{-t}\cos(t)}{e^{-t}\sin(t)}{0}\).
+
+Compute the velocity \(\mathbf{v}(t)\); the acceleration \(\mathbf{a}(t)\); the speed \(u(t)\); the unit length tangent vector \(\mathbf{T}(t)\); the curvature \(\kappa(t)\); and the unit length normal vector \(\mathbf{N}(t)\).
+
+%Consider the eliptical helix \(\mathbf{r}(t) = \colvec{b_x\cos(t)}{b_y\sin(t)}{b_z t}\) where \(b_x\), \(b_y\), and \(b_z\) are {\bf constants}. 
+%
+%Compute the velocity \(\mathbf{v}(t)\); the acceleration \(\mathbf{a}(t)\); the speed \(u(t)\); the unit length tangent vector \(\mathbf{T}(t)\); the curvature \(\kappa(t)\); and the unit length normal vector \(\mathbf{N}(t)\).
+
+
+
+\section*{Question 3:}
+
+For the curve \(\mathbf{r}(t) = \colvec{3t^2}{5t^2}{-4t^2}\), compute the arc-length parameterization.
+
+
+
+\section*{Question 4 (hard):}
+
+For the spiral \(\mathbf{r}(t) = \colvec{(1 + t^2)\cos(\ln(1 + t^2))}{(1 + t^2)\sin(\ln(1 + t^2))}{0}\), compute the arc-length parameterization.
+
+
+\end{document}
+
+

@@ -1,0 +1,258 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\rowvec}[3]{\left\langle #1, #2, #3 \right\rangle}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\at}[1]{\left. #1 \right|}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+
+
+
+\title{Vector Valued Functions}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 1:}
+
+%%%%%%%%%%%%%%% 1A
+\subsection*{part 1a:}
+
+Given the vector valued function \(\mathbf{r}(t) = \colvec{t^2 - 1/t}{\sqrt{t + 5}}{t^3}\), compute its derivative \(\frac{d\mathbf{r}}{dt}\).
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{0.5cm}
+
+\dr{\(\frac{d\mathbf{r}}{dt} = \colvec{2t + 1/t^2}{1/(2\sqrt{t + 5})}{3t^2}\)}
+
+\vspace{0.5cm}
+
+
+
+%%%%%%%%%%%%%%% 1B
+\subsection*{part 1b:}
+
+Given a vector valued function \(\mathbf{r}_1(t)\) where \(\mathbf{r}_1(2) = \colvec{2}{-7}{1}\) and \(\at{\frac{d\mathbf{r}_1}{dt}}_{t = 2} = \colvec{4}{-3}{5}\); and a vector valued function \(\mathbf{r}_2(t)\) where \(\mathbf{r}_2(2) = \colvec{1}{3}{0}\) and \(\at{\frac{d\mathbf{r}_2}{dt}}_{t = 2} = \colvec{0}{-1}{9}\); use the {\bf product rule} to compute \(\at{\frac{d}{dt}(\mathbf{r}_1(t) \cdot \mathbf{r}_2(t))}_{t = 2}\) and \(\at{\frac{d}{dt}(\mathbf{r}_1(t) \times \mathbf{r}_2(t))}_{t = 2}\). 
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{-0.5cm}
+
+\dr{\begin{align*}
+\at{\frac{d}{dt}(\mathbf{r}_1(t) \cdot \mathbf{r}_2(t))}_{t = 2} = & \at{\frac{d\mathbf{r}_1}{dt}}_{t = 2} \cdot \mathbf{r}_2(2) + \mathbf{r}_1(2) \cdot \at{\frac{d\mathbf{r}_2}{dt}}_{t = 2} 
+= \colvec{4}{-3}{5} \cdot \colvec{1}{3}{0} + \colvec{2}{-7}{1} \cdot \colvec{0}{-1}{9} \\
+= & (4 - 9 + 0) + (0 + 7 + 9) 
+= -5 + 16 = 11
+\end{align*}
+and
+\begin{align*}
+\at{\frac{d}{dt}(\mathbf{r}_1(t) \times \mathbf{r}_2(t))}_{t = 2} = & \at{\frac{d\mathbf{r}_1}{dt}}_{t = 2} \times \mathbf{r}_2(2) + \mathbf{r}_1(2) \times \at{\frac{d\mathbf{r}_2}{dt}}_{t = 2} 
+= \colvec{4}{-3}{5} \times \colvec{1}{3}{0} + \colvec{2}{-7}{1} \times \colvec{0}{-1}{9} \\
+= & \colvec{(-3)(0) - (5)(3)}{(5)(1) - (4)(0)}{(4)(3) - (-3)(1)} + \colvec{(-7)(9) - (1)(-1)}{(1)(0) - (2)(9)}{(2)(-1) - (-7)(0)} 
+= \colvec{0 - 15}{5 - 0}{12 + 3} + \colvec{-63 + 1}{0 - 18}{-2 - 0} \\
+= & \colvec{-15}{5}{15} + \colvec{-62}{-18}{-2} 
+= \colvec{-77}{-13}{13}
+\end{align*}}
+
+\vspace{0.5cm}
+
+
+
+%%%%%%%%%%%%%%% 1C
+\subsection*{part 1c:}
+
+Given a vector valued function \(\mathbf{r}(t)\) where \(\at{\frac{d\mathbf{r}}{dt}}_{t = 3} = \colvec{5}{0}{-1}\) and \(\at{\frac{d\mathbf{r}}{dt}}_{t = -5} = \colvec{-7}{2}{8}\); and a scalar valued function \(f(t)\) where \(f(3) = -5\) and \(\at{\frac{df}{dt}}_{t = 3} = 4\); use the {\bf chain rule} to compute \(\at{\frac{d}{dt}(\mathbf{r}(f(t)))}_{t = 3}\). 
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{-0.5cm}
+
+\dr{\begin{align*}
+\at{\frac{d}{dt}(\mathbf{r}(f(t)))}_{t = 3} = & \at{\frac{d\mathbf{r}}{dt}}_{t = f(3)} \cdot \at{\frac{df}{dt}}_{t = 3} 
+= \at{\frac{d\mathbf{r}}{dt}}_{t = -5} \cdot \at{\frac{df}{dt}}_{t = 3} 
+= \colvec{-7}{2}{8} \cdot (4) 
+= \colvec{-28}{8}{32}
+\end{align*}}
+
+
+
+%%%%%%%%%%%%%%% 1D
+\subsection*{part 1d:}
+
+Given the vector valued function \(\mathbf{r}(t) = \colvec{t\sqrt{t^2 + 1}}{1/t}{\sin^2(t)}\), compute the definite integral \(\int_{t = 1}^2 \mathbf{r}(t)dt\). 
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{-0.5cm}
+
+\dr{\begin{align*}
+\int_{t = 1}^2 \mathbf{r}(t)dt = & \int_{t = 1}^2 \colvec{t\sqrt{t^2 + 1}}{1/t}{\sin^2(t)}dt
+= \colvec{\int_{t = 1}^2 t\sqrt{t^2 + 1}dt}{\int_{t = 1}^2 dt/t}{\int_{t = 1}^2 \sin^2(t)dt} 
+= \colvec{(1/2)\int_{t = 1}^2 (2t)\sqrt{t^2 + 1}dt}{\at{\ln(t)}_{t=1}^2}{\int_{t = 1}^2 (1/2)(1 - \cos(2t))dt} \\
+= & \colvec{(1/2)\at{(2/3)(t^2 + 1)^{3/2}}_{t=1}^2}{\ln(2)}{\at{(1/2)(1 - (1/2)\sin(2t))}_{t=1}^2}  
+= \colvec{(1/3)(5^{3/2} - 2^{3/2})}{\ln(2)}{-(1/4)(\sin(4) - \sin(2))}
+\end{align*}}
+
+
+
+
+%%%%%%%%%%%%%%% 2
+\section*{Question 2:}
+
+Consider the curve \(\mathbf{r}(t) = \colvec{e^{-t}\cos(t)}{e^{-t}\sin(t)}{0}\).
+
+Compute the velocity \(\mathbf{v}(t)\); the acceleration \(\mathbf{a}(t)\); the speed \(u(t)\); the unit length tangent vector \(\mathbf{T}(t)\); the curvature \(\kappa(t)\); and the unit length normal vector \(\mathbf{N}(t)\).
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{0.5cm}
+
+\dr{\begin{align*}
+\mathbf{v}(t) = & \frac{d\mathbf{r}}{dt} 
+= \colvec{-e^{-t}\cos(t) - e^{-t}\sin(t)}{-e^{-t}\sin(t) + e^{-t}\cos(t)}{0} 
+= \colvec{e^{-t}(-\cos(t) - \sin(t))}{e^{-t}(\cos(t) - \sin(t))}{0}
+\end{align*}} 
+ 
+\dr{\begin{align*}
+\mathbf{a}(t) = & \frac{d\mathbf{v}}{dt} 
+= \colvec{-e^{-t}(-\cos(t) - \sin(t)) + e^{-t}(\sin(t) - \cos(t))}{-e^{-t}(\cos(t) - \sin(t)) + e^{-t}(-\sin(t) - \cos(t))}{0} 
+= \colvec{2e^{-t}\sin(t)}{-2e^{-t}\cos(t)}{0}
+\end{align*}}
+
+\dr{\begin{align*}
+u(t) = & |\mathbf{v}(t)| 
+= \sqrt{e^{-2t}(\cos^2(t) + 2\cos(t)\sin(t) + \sin^2(t)) + e^{-2t}(\cos^2(t) - 2\cos(t)\sin(t) + \sin^2(t)) + 0} \\
+= & \sqrt{2e^{-2t}} 
+= \sqrt{2} \cdot e^{-t}
+\end{align*}}
+ 
+\dr{\begin{align*}
+\mathbf{T}(t) = & \frac{\mathbf{v}(t)}{u(t)} 
+= \colvec{(-\cos(t) - \sin(t))/\sqrt{2}}{(\cos(t) - \sin(t))/\sqrt{2}}{0}
+\end{align*}}
+
+\dr{\begin{align*}
+\frac{d\mathbf{T}}{dt} = & \colvec{(\sin(t) - \cos(t))/\sqrt{2}}{(-\sin(t) - \cos(t))/\sqrt{2}}{0} 
+= \colvec{(-\cos(t) + \sin(t))/\sqrt{2}}{(-\cos(t) - \sin(t))/\sqrt{2}}{0}
+\end{align*}}
+
+\dr{\begin{align*}
+\abs{\frac{d\mathbf{T}}{dt}} = & \sqrt{(\cos^2(t) - 2\cos(t)\sin(t) + \sin^2(t))/2 + (\cos^2(t) + 2\cos(t)\sin(t) + \sin^2(t))/2 + 0} \\
+= & 1
+\end{align*}}
+
+\dr{\begin{align*}
+\kappa(t) = & \frac{1}{u(t)}\abs{\frac{d\mathbf{T}}{dt}} 
+= \frac{e^t}{\sqrt{2}} 
+\end{align*}}
+
+\dr{\begin{align*}
+\mathbf{N}(t) = & \frac{d\mathbf{T}/dt}{\abs{d\mathbf{T}/dt}} 
+= \colvec{(-\cos(t) + \sin(t))/\sqrt{2}}{(-\cos(t) - \sin(t))/\sqrt{2}}{0}
+\end{align*}}
+
+%Consider the eliptical helix \(\mathbf{r}(t) = \colvec{b_x\cos(t)}{b_y\sin(t)}{b_z t}\) where \(b_x\), \(b_y\), and \(b_z\) are {\bf constants}. 
+%
+%Compute the velocity \(\mathbf{v}(t)\); the acceleration \(\mathbf{a}(t)\); the speed \(u(t)\); the unit length tangent vector \(\mathbf{T}(t)\); the curvature \(\kappa(t)\); and the unit length normal vector \(\mathbf{N}(t)\).
+%
+%\vspace{0.5cm}
+%
+%\dr{\bf Solution:}
+%
+%\vspace{0.5cm}
+%
+%\dr{\(\mathbf{v}(t) = \frac{d\mathbf{r}}{dt} = \colvec{-b_x\sin(t)}{b_y\cos(t)}{b_z}\) and \(\mathbf{a}(t) = \frac{d\mathbf{v}}{dt} = \colvec{-b_x\cos(t)}{-b_y\sin(t)}{0}\)}
+%
+%\dr{\(u(t) = |\mathbf{v}(t)| = \sqrt{b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2}\) and \(\mathbf{T}(t) = \frac{\mathbf{v}(t)}{u(t)} = \frac{1}{\sqrt{b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2}}\colvec{-b_x\sin(t)}{b_y\cos(t)}{b_z}\)}
+%
+%\dr{\begin{align*}
+%\frac{d\mathbf{T}}{dt} = & \frac{-(2b_x^2\cos(t)\sin(t) - 2b_y^2\cos(t)\sin(t))}{2(b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2)^{3/2}}\colvec{-b_x\sin(t)}{b_y\cos(t)}{b_z} 
+%+ \frac{1}{\sqrt{b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2}}\colvec{-b_x\cos(t)}{-b_y\sin(t)}{0} \\
+%= & \frac{(b_y^2 - b_x^2)\cos(t)\sin(t)}{(b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2)^{3/2}}\colvec{-b_x\sin(t)}{b_y\cos(t)}{b_z} 
+%+ \frac{b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2}{(b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2)^{3/2}}\colvec{-b_x\cos(t)}{-b_y\sin(t)}{0} \\
+%= & \frac{1}{(b_x^2\sin^2(t) + b_y^2\cos^2(t) + b_z^2)^{3/2}}\colvec{()\cos(t)}{()\sin(t)}{b_z(b_y^2 - b_x^2)\cos(t)\sin(t)}
+%\end{align*}}
+
+
+%%%%%%%%%%%%%%% 3
+\section*{Question 3:}
+
+For the curve \(\mathbf{r}(t) = \colvec{3t^2}{5t^2}{-4t^2}\), compute the arc-length parameterization.
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{0.5cm}
+
+\dr{\(\mathbf{v}(t) = \frac{d\mathbf{r}}{dt} = \colvec{6t}{10t}{-8t}\)}
+
+\dr{\(u(t) = \abs{\mathbf{v}(t)} = \sqrt{36t^2 + 100t^2 + 64t^2} = \sqrt{200} \cdot t = 2\sqrt{50} \cdot t\) so the arc-length between \(0\) and \(t\) is \(s(t) = \int_{t_1 = 0}^t u(t_1)dt_1 = \int_{t_1 = 0}^t 2\sqrt{50} \cdot t_1dt_1 = \at{\sqrt{50} \cdot t_1^2}_{t_1=0}^t = \sqrt{50} \cdot t^2\)}
+
+\dr{\(s = \sqrt{50} \cdot t^2\) so replacing \(t^2\) with \(s/\sqrt{50}\) gives the arc-length parameterization: \(\mathbf{r}(s) = \colvec{(3/\sqrt{50})s}{(5/\sqrt{50})s}{-(4/\sqrt{50})s}\)}
+
+
+%%%%%%%%%%%%%%% 4
+\section*{Question 4 (hard):}
+
+For the spiral \(\mathbf{r}(t) = \colvec{(1 + t^2)\cos(\ln(1 + t^2))}{(1 + t^2)\sin(\ln(1 + t^2))}{0}\), compute the arc-length parameterization.
+
+\vspace{0.5cm}
+
+\dr{\bf Solution:}
+
+\vspace{0.5cm}
+
+\dr{\begin{align*}
+\mathbf{v}(t) = & \frac{d\mathbf{r}}{dt} = \colvec
+{2t\cos(\ln(1+t^2)) + (1+t^2)(-\sin(\ln(1+t^2)))(1/(1+t^2))(2t)}
+{2t\sin(\ln(1+t^2)) + (1+t^2)(+\cos(\ln(1+t^2)))(1/(1+t^2))(2t)}
+{0} \\
+= & \colvec
+{2t\cos(\ln(1+t^2)) - 2t\sin(\ln(1+t^2))}
+{2t\sin(\ln(1+t^2)) + 2t\cos(\ln(1+t^2))}
+{0} 
+= \colvec
+{2t(\cos(\ln(1+t^2)) - \sin(\ln(1+t^2)))}
+{2t(\sin(\ln(1+t^2)) + \cos(\ln(1+t^2)))}
+{0}
+\end{align*}}
+
+\dr{\begin{align*}
+u(t) = & \bigg(4t^2(\cos^2(\ln(1+t^2)) - 2\cos(\ln(1+t^2))\sin(\ln(1+t^2)) + \sin^2(\ln(1+t^2))) \\
+& \quad 4t^2(\sin^2(\ln(1+t^2)) + 2\sin(\ln(1+t^2))\cos(\ln(1+t^2)) + \cos^2(\ln(1+t^2))) + 0\bigg)^{1/2} \\
+= & \sqrt{4t^2 + 4t^2} = (2\sqrt{2})t
+\end{align*} so the arc-length between \(0\) and \(t\) is \(s(t) = \int_{t_1 = 0}^t u(t_1)dt_1 = \int_{t_1 = 0}^t (2\sqrt{2})t_1dt_1 = 2\sqrt{2}\left(\frac{1}{2}t^2 - \frac{1}{2}0^2\right) = \sqrt{2} \cdot t^2\)}
+
+\dr{\(s = \sqrt{2} \cdot t^2\) so replacing \(t^2\) with \(s/\sqrt{2}\) gives the arc-length parameterization: \\ \(\mathbf{r}(s) = \colvec{(1 + s/\sqrt{2})\cos(\ln(1 + s/\sqrt{2}))}{(1 + s/\sqrt{2})\sin(\ln(1 + s/\sqrt{2}))}{0}\)}
+
+
+\end{document}
+
+

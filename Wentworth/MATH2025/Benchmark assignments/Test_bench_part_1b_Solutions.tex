@@ -1,0 +1,168 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\rowvec}[3]{\left\langle #1, #2, #3 \right\rangle}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\at}[1]{\left. #1 \right|}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+
+\title{Qudratic Surfaces and Tangents}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+%%%% QUESTION 1 
+\section*{Question 1:}
+
+Given a plane \(P\) with equation \(2x - 5y + 7z = 9\), and a line with the parametric form \(L: \left\{\begin{array}{rl} x(t) = & 1 + 4t \\ y(t) = & 2 + kt \\ z(t) = & 1 + 6t \end{array}\right.\), find a value of \(k\) such that \(L\) is parallel to \(P\).
+
+%%%% SOLUTION 1 
+\dr{A direction that is parallel to \(P\) must be perpendicular to the normal vector of \(P\): \(\mathbf{n} = \colvec{2}{-5}{7}\).} 
+
+\dr{The direction vector of \(L\) is: \(\mathbf{v} = \colvec{4}{k}{6}\).}
+
+\dr{\begin{align*}
+\mathbf{n} \perp \mathbf{v} \iff & \mathbf{n} \cdot \mathbf{v} = 0 
+\iff \colvec{2}{-5}{7} \cdot \colvec{4}{k}{6} = 0 
+\iff 8 - 5k + 42 = 0 
+\iff k = 10
+\end{align*}}
+
+\dr{Therefore: \(k = 10\)}
+
+
+
+%%%% QUESTION 2 
+\section*{Question 2:}
+
+Identify the quadratic surface, and find the point on which it is centered:
+\[-x^2 - 4y^2 - 4z^2 - 2x + 24z = 33\]
+
+%%%% SOLUTION 2 
+\dr{\begin{align*}
+& -x^2 - 4y^2 - 4z^2 - 2x + 24z = 33 
+ \iff -(x^2 + 2x) - 4y^2 - 4(z^2 - 6z) = 33 \\
+& \iff -((x+1)^2 - 1) - 4y^2 - 4((z-3)^2 - 9) = 33 
+ \iff -(x+1)^2 - 4y^2 - 4(z-3)^2 + 1 + 36 = 33 \\
+& \iff -(x+1)^2 - 4y^2 - 4(z-3)^2 = -4 
+ \iff \left(\frac{x-(-1)}{2}\right)^2 + y^2 + (z-3)^2 = 1
+\end{align*}}
+
+\dr{This surface is achieved by starting from the unit sphere \(x^2 + y^2 + z^2 = 1\), and first applying the respective stretches of \(2\), \(1\), and \(1\) to the \(x\), \(y\), and \(z\) directions, and then applying the respective translations of \(-1\), \(0\), and \(3\) to the \(x\), \(y\), and \(z\) directions.}
+
+\dr{This surface is an \textbf{ellipsoid} centered on the point \((-1, 0, 3)\).} 
+
+\pagebreak
+
+
+
+%%%% QUESTION 3 
+\section*{Question 3:}
+
+Identify the quadratic surface, and find the point on which it is centered:
+\[-9x^2 + 9y^2 - z^2 + 72x + 2z = 136\]
+
+%%%% SOLUTION 3 
+\dr{\begin{align*}
+& -9x^2 + 9y^2 - z^2 + 72x + 2z = 136
+ \iff -9(x^2 - 8x) + 9y^2 - (z^2 - 2z) = 136 \\
+& \iff -9((x-4)^2 - 16) + 9y^2 - ((z-1)^2 - 1) = 136 
+ \iff -9(x-4)^2 + 9y^2 - (z-1)^2 + 144 + 1 = 136 \\
+& \iff -9(x-4)^2 + 9y^2 - (z-1)^2 = -9 
+ \iff (x-4)^2 - y^2 + \left(\frac{z-1}{3}\right)^2 = 1 
+\end{align*}}
+
+\dr{This surface is achieved by starting from the one-sheet hyperboloid that is oriented along the \(y\)-axis \(x^2 - y^2 + z^2 = 1\), and first applying the respective stretches of \(1\), \(1\), and \(3\) to the \(x\), \(y\), and \(z\) directions, and then applying the respective translations of \(4\), \(0\), and \(1\) to the \(x\), \(y\), and \(z\) directions.}
+
+\dr{This surface is a \textbf{one-sheet hyperboloid} that is oriented along the \(y\)-axis and centered on the point \((4, 0, 1)\).}
+
+
+
+%%%% QUESTION 4 
+\section*{Question 4:}
+
+Identify the quadratic surface, and find the point on which it is centered:
+\[-y^2 - 4z^2 + 4x + 2y - 24z = 41\]
+
+%%%% SOLUTION 4 
+\dr{\begin{align*}
+& -y^2 - 4z^2 + 4x + 2y - 24z = 41
+ \iff -(y^2 - 2y) - 4(z^2 + 6z) + 4x = 41 \\
+& \iff -((y-1)^2 - 1) - 4((z+3)^2 - 9) + 4x = 41 
+ \iff -(y-1)^2 - 4(z+3)^2 + 4x + 1 + 36 = 41 \\
+& \iff -(y-1)^2 - 4(z+3)^2 + 4x - 4 = 0 
+ \iff x - 1 = \left(\frac{y-1}{2}\right)^2 + (z - (-3))^2
+\end{align*}}
+
+\dr{This surface is achieved by starting from the paraboloid that is oriented along the +ve \(x\)-axis \(x = y^2 + z^2\), and first applying the respective stretches of \(1\), \(2\), and \(1\) to the \(x\), \(y\), and \(z\) directions, and then applying the respective translations of \(1\), \(1\), and \(-3\) to the \(x\), \(y\), and \(z\) directions.}
+
+\dr{This surface is a \textbf{paraboloid} that is oriented along the +ve \(x\)-axis and centered on the point \((1, 1, -3)\).}
+
+
+
+%%%% QUESTION 5 
+\section*{Question 5:}
+
+The two curves \(C_1\) and \(C_2\) defined by:
+\[C_1: y = x^3 - 9x^2 + 24x - 15\]
+and 
+\[C_2: y = x^3 - 6x^2 + 6x + 9\]
+intersect at the point \(P(2,5)\). 
+
+\subsection*{part 5a:}
+
+Derive parametric equations for the tangent lines to \(C_1\) and \(C_2\) at the intersection point \(P\).  
+
+%%%% SOLUTION 5a 
+\dr{For curve \(C_1\), the derivative is \(\frac{dy}{dx} = 3x^2 - 18x + 24\) so \(\at{\frac{dy}{dx}}_{x=2} = 12 - 36 + 24 = 0\).}
+
+\dr{The tangent to curve \(C_1\) is \(T_1: \left\{\begin{array}{rl} x(t) = & 2 + t \\ y(t) = & 5 \end{array}\right.\)}
+
+\dr{For curve \(C_2\), the derivative is \(\frac{dy}{dx} = 3x^2 - 12x + 6\) so \(\at{\frac{dy}{dx}}_{x=2} = 12 - 24 + 6 = -6\).}
+
+\dr{The tangent to curve \(C_2\) is \(T_2: \left\{\begin{array}{rl} x(t) = & 2 + t \\ y(t) = & 5 - 6t \end{array}\right.\)}
+
+
+\subsection*{part 5b:}
+
+Derive the angle between the tangent lines from the previous section.
+
+%%%% SOLUTION 5b
+
+\dr{The direction vectors of \(T_1\) and \(T_2\) are respectively \(\mathbf{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}\) and \(\mathbf{v}_2 = \begin{bmatrix} 1 \\ -6 \end{bmatrix}\).} 
+
+\dr{The angle between \(T_1\) are \(T_2\) is: 
+\begin{align*}
+\theta = & \arccos\left(\frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\abs{\mathbf{v}_1} \abs{\mathbf{v}_2}}\right) 
+= \arccos\left(\frac{1}{1 \cdot \sqrt{37}}\right) 
+= \arccos\left(\frac{1}{\sqrt{37}}\right)
+\end{align*}}
+
+
+ 
+
+\end{document}
+
+
+
+
+
+
+
+
+

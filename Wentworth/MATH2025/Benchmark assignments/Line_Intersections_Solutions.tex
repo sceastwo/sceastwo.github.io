@@ -1,0 +1,199 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+
+\title{Line Intersections}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+Given vectors \(\mathbf{u}\) and \(\mathbf{v}\),
+{%\Large
+\[\textbf{proj}_{\mathbf{u}}(\mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\abs{\mathbf{u}}^2}\mathbf{u}\]
+\[\abs{\textbf{proj}_{\mathbf{u}}(\mathbf{v})} = \frac{\abs{\mathbf{u} \cdot \mathbf{v}}}{\abs{\mathbf{u}}}\]
+\[\textbf{perp}_{\mathbf{u}}(\mathbf{v}) = \mathbf{v} - \textbf{proj}_{\mathbf{u}}(\mathbf{v})\]
+\[\abs{\textbf{perp}_{\mathbf{u}}(\mathbf{v})} = \frac{\abs{\mathbf{u} \times \mathbf{v}}}{\abs{\mathbf{u}}}\]
+}
+\(\mathbf{u}||\mathbf{v}\) denotes that \(\mathbf{u}\) and \(\mathbf{v}\) are \textbf{parallel}. \\
+\(\mathbf{u}\perp\mathbf{v}\) denotes that \(\mathbf{u}\) and \(\mathbf{v}\) are \textbf{perpendicular/orthogonal}.
+
+
+\section*{Classifying the interaction between two lines}
+
+Given two straight lines \(L_1\) and \(L_2\), there are 4 possible relationships between these lines:
+\begin{itemize}
+\item \(L_1\) and \(L_2\) are \textbf{equivalent}. 
+\item \(L_1\) and \(L_2\) are \textbf{parallel but not equal}. 
+\item \(L_1\) and \(L_2\) \textbf{intersect} at a single point. 
+\item \(L_1\) and \(L_2\) are \textbf{skew}.
+\end{itemize}
+
+The relationship between \(L_1\) and \(L_2\) can be determined via the following algorithm:
+\(L_1\) will be described by the parametric line: 
+\[\mathbf{r}(t) = \mathbf{r}_{0,1} + t\mathbf{v}_1\] 
+and \(L_2\) will be described by the parametric line: 
+\[\mathbf{r}(t) = \mathbf{r}_{0,2} + t\mathbf{v}_2\]
+
+\pagebreak
+
+\begin{framed}
+\begin{algorithmic}
+\IF{\(\mathbf{v}_1 || \mathbf{v}_2\)}
+	\STATE Let \(d = \abs{\textbf{perp}_{\mathbf{v}_1}(\mathbf{r}_{0,2}-\mathbf{r}_{0,1})} = \frac{\abs{\mathbf{v}_1 \times (\mathbf{r}_{0,2}-\mathbf{r}_{0,1})}}{\abs{\mathbf{v}_1}}\)
+	\IF{\(d = 0\)}
+		\STATE \(L_1\) and \(L_2\) are \textbf{equivalent}
+	\ELSE
+		\STATE \(L_1\) and \(L_2\) are \textbf{parallel but not equal}, and have a separation of \(d\). 
+	\ENDIF
+\ELSE
+	\STATE Let \(\mathbf{n} = \mathbf{v}_1 \times \mathbf{v}_2\)
+	\STATE Let \(d = \abs{\textbf{proj}_{\mathbf{n}}(\mathbf{r}_{0,2}-\mathbf{r}_{0,1})} = \frac{\abs{\mathbf{n} \cdot (\mathbf{r}_{0,2}-\mathbf{r}_{0,1})}}{\abs{\mathbf{n}}}\)
+	\IF{\(d = 0\)}
+		\STATE \(L_1\) and \(L_2\) \textbf{intersect} at a single point
+	\ELSE
+		\STATE \(L_1\) and \(L_2\) are \textbf{skew}, and have a closest distance of \(d\). 
+	\ENDIF
+\ENDIF
+\end{algorithmic}
+\end{framed}
+
+For the following pairs of lines, determine if these lines are \textbf{equivalent}; are \textbf{parallel but not equal}; \textbf{intersect} at a single point; or are \textbf{skew}. For parallel lines, give the separation, and for skew lines, give the closest distance. \textbf{Show all of your work.}
+
+
+%%%%%%%%%%% PAIR 1
+\begin{description}
+\item[Line pair 1:] ~ \\
+\(L_1\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & 4 - t \\ y(t) = & -4 + 2t \\ z(t) = & -2 + 5t \end{array}\right.\) and
+\(L_2\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & -1 - 2t \\ y(t) = & 6 + 4t \\ z(t) = & 23 + 10t \end{array}\right.\)
+%\(L_1\) contains all points that satisfy the equations \(\frac{x-4}{-1} = \frac{y+4}{2} = \frac{z+2}{5}\) \\
+%\(L_2\) contains all points that satisfy the equations \(\frac{x+1}{-2} = \frac{y-6}{4} = \frac{z-23}{10}\) 
+\end{description}
+
+\dr{\(\mathbf{r}_{0,1} = \colvec{4}{-4}{-2}\); \(\mathbf{v}_1 = \colvec{-1}{2}{5}\); and \(\mathbf{r}_{0,2} = \colvec{-1}{6}{23}\); \(\mathbf{v}_2 = \colvec{-2}{4}{10}\)}
+
+\dr{\(\mathbf{v}_2 = 2\mathbf{v}_1\) so \(\mathbf{v}_1 || \mathbf{v}_2\), and hence \(L_1\) and \(L_2\) are parallel.}
+
+\dr{\begin{align*}
+d = & \abs{\textbf{perp}_{\mathbf{v}_1}(\mathbf{r}_{0,2} - \mathbf{r}_{0,1})} 
+= \frac{\abs{\mathbf{v}_1 \times (\mathbf{r}_{0,2} - \mathbf{r}_{0,1})}}{\abs{\mathbf{v}_1}} 
+= \frac{1}{\sqrt{1 + 4 + 25}}\abs{\colvec{-1}{2}{5} \times \colvec{-5}{10}{25}} \\
+= & \frac{1}{\sqrt{30}}\abs{\colvec{(2)(25) - (5)(10)}{(5)(-5) - (-1)(25)}{(-1)(10) - (2)(-5)}} 
+= \frac{1}{\sqrt{30}}\abs{\colvec{50 - 50}{-25 + 25}{-10 + 10}}  
+= \frac{1}{\sqrt{30}}\abs{\colvec{0}{0}{0}} 
+= 0 
+\end{align*}}
+
+\dr{The perpendicular distance between \(L_1\) and \(L_2\) is \(d = 0\), so \(L_1\) and \(L_2\) are \textbf{equivalent}.}
+
+
+%%%%%%%%%%% PAIR 2
+\begin{description}
+\item[Line pair 2:] ~ \\
+\(L_1\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & -5 + t \\ y(t) = & -1 + 2t \\ z(t) = & 2 + t \end{array}\right.\) and
+\(L_2\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & -8 + 2t \\ y(t) = & -1 + t \\ z(t) = & -1 + 2t \end{array}\right.\)
+%\(L_1\) contains all points that satisfy the equations \(x+5 = \frac{y+1}{2} = z-2\) \\
+%\(L_2\) contains all points that satisfy the equations \(\frac{x+8}{2} = y+1 = \frac{z+1}{2}\) 
+\end{description}
+
+\dr{\(\mathbf{r}_{0,1} = \colvec{-5}{-1}{2}\); \(\mathbf{v}_1 = \colvec{1}{2}{1}\); and \(\mathbf{r}_{0,2} = \colvec{-8}{-1}{-1}\); \(\mathbf{v}_2 = \colvec{2}{1}{2}\)}
+
+\dr{\(\mathbf{v}_1 \not{\!||}\; \mathbf{v}_2\), and hence \(L_1\) and \(L_2\) are not parallel.}
+
+\dr{\begin{align*}
+\mathbf{n} = & \mathbf{v}_1 \times \mathbf{v}_2 
+= \colvec{1}{2}{1} \times \colvec{2}{1}{2} 
+= \colvec{(2)(2) - (1)(1)}{(1)(2) - (1)(2)}{(1)(1) - (2)(2)} 
+= \colvec{4 - 1}{2 - 2}{1 - 4} 
+= \colvec{3}{0}{-3}
+\end{align*}}
+
+\dr{\begin{align*}
+d = & \abs{\textbf{proj}_{\mathbf{n}}(\mathbf{r}_{0,2} - \mathbf{r}_{0,1})} 
+= \frac{\abs{\mathbf{n} \cdot (\mathbf{r}_{0,2} - \mathbf{r}_{0,1})}}{\abs{\mathbf{n}}} 
+= \frac{1}{\sqrt{9 + 0 + 9}}\abs{\colvec{3}{0}{-3} \cdot \colvec{-3}{0}{-3}} \\
+= & \frac{\abs{-9 + 0 + 9}}{\sqrt{18}}
+= 0
+\end{align*}
+}
+
+\dr{The minimum distance between \(L_1\) and \(L_2\) is \(d = 0\), so \(L_1\) and \(L_2\) \textbf{intersect} at a single point.}
+
+
+%%%%%%%%%%% PAIR 3
+\begin{description}
+\item[Line pair 3:] ~ \\
+\(L_1\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & -3 + 7t \\ y(t) = & 1 + 2t \\ z(t) = & 2 + 5t \end{array}\right.\) and
+\(L_2\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & 4 - 21t \\ y(t) = & 2 - 6t \\ z(t) = & 7 - 15t \end{array}\right.\)
+%\(L_1\) contains all points that satisfy the equations \(\frac{x+3}{7} = \frac{y-1}{2} = \frac{z-2}{5}\) \\
+%\(L_2\) contains all points that satisfy the equations \(\frac{x-4}{-21} = \frac{y-2}{-6} = \frac{z-7}{-15}\)
+\end{description}
+
+\dr{\(\mathbf{r}_{0,1} = \colvec{-3}{1}{2}\); \(\mathbf{v}_1 = \colvec{7}{2}{5}\); and \(\mathbf{r}_{0,2} = \colvec{4}{2}{7}\); \(\mathbf{v}_2 = \colvec{-21}{-6}{-15}\)}
+
+\dr{\(\mathbf{v}_2 = -3\mathbf{v}_1\) so \(\mathbf{v}_1 || \mathbf{v}_2\), and hence \(L_1\) and \(L_2\) are parallel.}
+
+\dr{\begin{align*}
+d = & \abs{\textbf{perp}_{\mathbf{v}_1}(\mathbf{r}_{0,2} - \mathbf{r}_{0,1})} 
+= \frac{\abs{\mathbf{v}_1 \times (\mathbf{r}_{0,2} - \mathbf{r}_{0,1})}}{\abs{\mathbf{v}_1}} 
+= \frac{1}{\sqrt{49 + 4 + 25}}\abs{\colvec{7}{2}{5} \times \colvec{7}{1}{5}} \\
+= & \frac{1}{\sqrt{78}}\abs{\colvec{(2)(5) - (5)(1)}{(5)(7) - (7)(5)}{(7)(1) - (2)(7)}} 
+= \frac{1}{\sqrt{78}}\abs{\colvec{10 - 5}{35 - 35}{7 - 14}}  
+= \frac{1}{\sqrt{78}}\abs{\colvec{5}{0}{-7}} 
+= \frac{\sqrt{25 + 0 + 49}}{\sqrt{78}} 
+= \frac{\sqrt{74}}{\sqrt{78}}
+\end{align*}}
+
+\dr{The perpendicular distance between \(L_1\) and \(L_2\) is \(d = \frac{\sqrt{74}}{\sqrt{78}} > 0\), so \(L_1\) and \(L_2\) are \textbf{parallel but not equal}.}
+
+
+%%%%%%%%%%% PAIR 4
+\begin{description}
+\item[Line pair 4:] ~ \\
+\(L_1\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & -1 + t \\ y(t) = & 2t \\ z(t) = & 1 + 3t \end{array}\right.\) and
+\(L_2\) is parameterized by \(\left\{\begin{array}{rl} x(t) = & -1 \\ y(t) = & 1 + 2t \\ z(t) = & 1 + 3t \end{array}\right.\)
+\end{description}
+
+\dr{\(\mathbf{r}_{0,1} = \colvec{-1}{0}{1}\); \(\mathbf{v}_1 = \colvec{1}{2}{3}\); and \(\mathbf{r}_{0,2} = \colvec{-1}{1}{1}\); \(\mathbf{v}_2 = \colvec{0}{2}{3}\)}
+
+\dr{\(\mathbf{v}_1 \not{\!||}\; \mathbf{v}_2\), and hence \(L_1\) and \(L_2\) are not parallel.}
+
+\dr{\begin{align*}
+\mathbf{n} = & \mathbf{v}_1 \times \mathbf{v}_2 
+= \colvec{1}{2}{3} \times \colvec{0}{2}{3} 
+= \colvec{(2)(3) - (3)(2)}{(3)(0) - (1)(3)}{(1)(2) - (2)(0)} 
+= \colvec{6 - 6}{0 - 3}{2 - 0} 
+= \colvec{0}{-3}{2}
+\end{align*}}
+
+\dr{\begin{align*}
+d = & \abs{\textbf{proj}_{\mathbf{n}}(\mathbf{r}_{0,2} - \mathbf{r}_{0,1})} 
+= \frac{\abs{\mathbf{n} \cdot (\mathbf{r}_{0,2} - \mathbf{r}_{0,1})}}{\abs{\mathbf{n}}} 
+= \frac{1}{\sqrt{0 + 9 + 4}}\abs{\colvec{0}{-3}{2} \cdot \colvec{0}{1}{0}} \\
+= & \frac{\abs{0 - 3 + 0}}{\sqrt{13}} 
+= \frac{3}{\sqrt{13}}
+\end{align*}}
+
+\dr{The minimum distance between \(L_1\) and \(L_2\) is \(d = \frac{3}{\sqrt{13}} > 0\), so \(L_1\) and \(L_2\) are \textbf{skew}.}
+
+
+\end{document}
+
+
+

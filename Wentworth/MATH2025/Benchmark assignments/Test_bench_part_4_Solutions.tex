@@ -1,0 +1,564 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\atan}{\text{atan}}
+\newcommand{\rowxyvec}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\rowvec}[3]{\left\langle #1, #2, #3 \right\rangle}
+\newcommand{\colxyvec}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\at}[1]{\left. #1 \right|}
+\newcommand{\diff}[2]{\frac{d #1}{d #2}}
+\newcommand{\partdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+
+
+\title{Intro to Vector Calculus}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%% QUESTION 1
+\section*{Question 1:}
+
+Compute the following scalar line integrals:
+
+\begin{itemize}
+%1,1
+\item \(\int_C (x + y)ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} t \\ 1 - t \end{bmatrix} \;\text{and}\; t \in [0,1]\)
+%1,2
+\item \(\int_C (x - y)ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} 4t \\ 3t \end{bmatrix} \;\text{and}\; t \in [0,2]\)
+%1,3
+\item \(\int_C (x^2 + y^2 + z^2)ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} \sin(t) \\ \cos(t) \\ 8t \end{bmatrix} \;\text{and}\; t \in [0,\pi/2]\)
+%1,4
+\item \(\int_C \sqrt{1 + 4y} \cdot ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} t \\ t^2 \end{bmatrix} \;\text{and}\; t \in [0,2]\)
+%1,5
+\item \(\int_C xy^4 \cdot ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} 2\sin t \\ 2\cos t \end{bmatrix} \;\text{and}\; t \in [0,\pi]\)
+%1,6
+\item \(\int_C y^2 \cdot ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} 3 + 2\cos t \\ 4 + 2\sin t \end{bmatrix} \;\text{and}\; t \in [0,2\pi]\)
+%1,7
+\item \(\int_C \frac{ds}{x^2 + y^2 + z^2}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} \cos t \\ \sin t \\ t \end{bmatrix} \;\text{and}\; t \in [0,2\pi]\)
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%% SOLUTION 1
+
+\dr{\textbf{Solution:}}
+
+%%%%%%%%%%%%% 1,1
+\begin{framed}
+\dr{For \(\int_C (x + y)ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \end{bmatrix} = \begin{bmatrix} t \\ 1 - t \end{bmatrix} \;\text{and}\; t \in [0,1]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} 1 \\ -1 \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = \sqrt{2}\)}
+
+\dr{\begin{align*}
+\int_C (x + y)ds = & \int_{t = 0}^1 (x_C(t) + y_C(t))\abs{\frac{d\mathbf{r}_C}{dt}}dt \\
+= & \int_{t = 0}^1 (t + (1-t))\cdot \sqrt{2} \cdot dt 
+= \int_{t = 0}^1 \sqrt{2} \cdot dt 
+= \at{\sqrt{2}\cdot t}_{t = 0}^1 
+= \sqrt{2}
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 1,2
+\begin{framed}
+\dr{For \(\int_C (x - y)ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \end{bmatrix} = \begin{bmatrix} 4t \\ 3t \end{bmatrix} \;\text{and}\; t \in [0,2]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} 4 \\ 3 \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = 5\)}
+
+\dr{\begin{align*}
+\int_C (x - y)ds = & \int_{t = 0}^2 (x_C(t) - y_C(t))\abs{\frac{d\mathbf{r}_C}{dt}}dt \\ 
+= & \int_{t = 0}^2 (4t - 3t) \cdot 5dt 
+= \int_{t = 0}^2 5t dt 
+= \at{\frac{5}{2}t^2}_{t=0}^2 
+= 10
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 1,3
+\begin{framed}
+\dr{For \(\int_C (x^2 + y^2 + z^2)ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \\ z_C(t) \end{bmatrix} =  \begin{bmatrix} \sin(t) \\ \cos(t) \\ 8t \end{bmatrix} \;\text{and}\; t \in [0,\pi/2]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} \cos(t) \\ -\sin(t) \\ 8 \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = \sqrt{\cos^2t + \sin^2t + 64} = \sqrt{65}\)}
+
+\dr{\begin{align*}
+\int_C (x^2 + y^2 + z^2)ds = & \int_{t=0}^{\pi/2} (x_C(t)^2 + y_C(t)^2 + z_C(t)^2)\abs{\frac{d\mathbf{r}_C}{dt}}dt \\
+= & \int_{t = 0}^{\pi/2} (\sin^2t + \cos^2t + 64t^2) \cdot \sqrt{65} \cdot dt \\
+= & \sqrt{65}\int_{t = 0}^{\pi/2} (1 + 64t^2) dt 
+= \sqrt{65}\at{(t + \frac{64}{3}t^3)}_{t = 0}^{\pi/2} \\
+= & \sqrt{65}((\frac{\pi}{2} + \frac{8}{3}\pi^3) - 0) 
+= \sqrt{65}(\frac{\pi}{2} + \frac{8}{3}\pi^3)
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 1,4
+\begin{framed}
+\dr{For \(\int_C \sqrt{1 + 4y} \cdot ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \end{bmatrix} = \begin{bmatrix} t \\ t^2 \end{bmatrix} \;\text{and}\; t \in [0,2]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} 1 \\ 2t \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = \sqrt{1 + 4t^2}\)}
+
+\dr{\begin{align*}
+\int_C \sqrt{1 + 4y} \cdot ds = & \int_{t = 0}^2 \sqrt{1 + 4y_C(t)} \abs{\frac{d\mathbf{r}_C}{dt}}dt \\
+= & \int_{t = 0}^2 \sqrt{1 + 4t^2} \cdot \sqrt{1 + 4t^2} \cdot dt 
+= \int_{t = 0}^2 (1 + 4t^2) dt 
+= \at{(t + \frac{4}{3}t^3)}_{t = 0}^2 \\
+= & (2 + \frac{32}{3}) - 0 = \frac{38}{3}
+\end{align*}}
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 1,5
+\begin{framed}
+\dr{For \(\int_C xy^4 \cdot ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \end{bmatrix} = \begin{bmatrix} 2\sin t \\ 2\cos t \end{bmatrix} \;\text{and}\; t \in [0,\pi]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} 2\cos t \\ -2\sin t \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = \sqrt{4\cos^2t + 4\sin^2t} = 2\)}
+
+\dr{\begin{align*}
+\int_C xy^4 \cdot ds = & \int_{t=0}^\pi x_C(t)y_C(t)^4 \cdot \abs{\frac{d\mathbf{r}_C}{dt}}dt \\
+= & \int_{t = 0}^\pi (2\sin t)(2\cos t)^4 \cdot 2dt 
+= 64\int_{t = 0}^\pi \cos^4 t \sin t dt \\
+= & 64(\at{-\frac{1}{5}\cos^5 t}_{t = 0}^\pi) 
+= 64((-\frac{1}{5}(-1)^5) - (-\frac{1}{5}(1)^5)) \\
+= & 64(\frac{1}{5} + \frac{1}{5}) = \frac{128}{5}
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 1,6
+\begin{framed}
+\dr{For \(\int_C y^2 \cdot ds\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \end{bmatrix} = \begin{bmatrix} 3 + 2\cos t \\ 4 + 2\sin t \end{bmatrix} \;\text{and}\; t \in [0,2\pi]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} -2\sin t \\ 2\cos t \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = 2\)}
+
+\dr{\begin{align*}
+\int_C y^2 \cdot ds = & \int_{t=0}^{2\pi} y_C(t)^2 \cdot \abs{\frac{d\mathbf{r}_C}{dt}}dt \\
+= & \int_{t = 0}^{2\pi} (4 + 2\sin t)^2 \cdot 2dt 
+= \int_{t = 0}^{2\pi} (32 + 32\sin t + 8\sin^2 t)dt \\
+= & \int_{t = 0}^{2\pi} (32 + 32\sin t + 8\frac{1 - \cos(2t)}{2})dt \\
+= & \int_{t = 0}^{2\pi} (36 + 32\sin t - 4\cos(2t))dt 
+= \at{(36t - 32\cos t - 2\sin(2t))}_{t = 0}^{2\pi} \\
+= & (72\pi - 32 - 0) - (0 - 32 - 0) = 72\pi
+\end{align*}}
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 1,7
+\begin{framed}
+\dr{For \(\int_C \frac{ds}{x^2 + y^2 + z^2}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \begin{bmatrix} x_C(t) \\ y_C(t) \\ z_C(t) \end{bmatrix} = \begin{bmatrix} \cos t \\ \sin t \\ t \end{bmatrix} \;\text{and}\; t \in [0,2\pi]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \begin{bmatrix} -\sin t \\ \cos t \\ 1 \end{bmatrix} \;\text{and}\; \abs{\frac{d\mathbf{r}_C}{dt}} = \sqrt{2}\)}
+
+\dr{\begin{align*}
+\int_C \frac{ds}{x^2 + y^2 + z^2} = & \int_{t=0}^{2\pi} \frac{1}{x_C(t)^2 + y_C(t)^2 + z_C(t)^2}\abs{\frac{d\mathbf{r}_C}{dt}}dt \\
+= & \int_{t=0}^{2\pi} \frac{\sqrt{2} \cdot dt}{\cos^2 t + \sin^2 t + t^2} 
+= \int_{t=0}^{2\pi} \frac{\sqrt{2} \cdot dt}{1 + t^2} 
+= \sqrt{2}\at{\atan(t)}_{t = 0}^{2\pi} \\
+= & \sqrt{2} \cdot \atan(2\pi)
+\end{align*}}
+\end{framed}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%% QUESTION 2
+\section*{Question 2:}
+
+Compute the following vector line integrals:
+
+\begin{itemize}
+%2,1 
+\item \(\int_C \colxyvec{x^2 + y}{x^2 - y} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{t}{t^2} \;\text{and}\; t \in [0,1]\) 
+%2,2 
+\item \(\int_C \colxyvec{-y/(x^2 + y^2)}{x/(x^2 + y^2)} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{R\cos(t)}{R\sin(t)} \;\text{and}\; t \in [0, 2\pi]\) 
+%2,3 
+\item \(\int_C \colxyvec{1/(x+y)}{1/(x+y)} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{\cos(t)}{\sin(t)} \;\text{and}\; t \in [0,\pi/2]\)
+%2,4 
+\item \(\int_C \colvec{zy}{x}{z^2x} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colvec{t}{2t}{3t} \;\text{and}\; t \in [0,1]\)
+%2,5
+\item \(\int_C \colvec{x}{y}{-5z} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colvec{2\cos(t)}{2\sin(t)}{t} \;\text{and}\; t \in [0,2\pi]\)
+%2,6
+\item \(\int_C \colxyvec{-(5y + 4)/2}{\sqrt{2x} - 3} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{t^2 / 2}{-2t} \;\text{and}\; t \in [0,3]\)
+%2,7
+\item \(\int_C \colxyvec{y^2}{xy - x^2} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}(t) = \colxyvec{t}{3t} \;\text{and}\; t \in [0,1]\)
+%2,8
+\item \(\int_C \colxyvec{y^2}{xy - x^2} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}(t) = \colxyvec{t^2/9}{t} \;\text{and}\; t \in [0,3]\)
+\end{itemize}
+
+\pagebreak
+
+\dr{\textbf{Solution:}}
+
+%%%%%%%%%%%%% 2,1
+\begin{framed} 
+\dr{For \(\int_C \colxyvec{x^2 + y}{x^2 - y} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}(t) = \colxyvec{x_C(t)}{y_C(t)} = \colxyvec{t}{t^2} \;\text{and}\; t \in [0,1]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colxyvec{1}{2t}\)}
+
+\dr{\begin{align*}
+\int_C \colxyvec{x^2 + y}{x^2 - y} \cdot d\mathbf{r} = & \int_{t = 0}^1 \colxyvec{x_C(t)^2 + y_C(t)}{x_C(t)^2 - y_C(t)} \cdot \frac{d\mathbf{r}_C}{dt}dt \\
+= & \int_{t = 0}^1 \colxyvec{t^2 + t^2}{t^2 - t^2} \cdot \colxyvec{1}{2t}dt 
+= \int_{t = 0}^1 \colxyvec{2t^2}{0} \cdot \colxyvec{1}{2t}dt 
+= \int_{t = 0}^1 2t^2 dt 
+= \at{\frac{2}{3}t^3}_{t=0}^1  
+= \frac{2}{3}
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 2,2
+\begin{framed} 
+\dr{For \(\int_C \colxyvec{-y/(x^2 + y^2)}{x/(x^2 + y^2)} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{x_C(t)}{y_C(t)} = \colxyvec{R\cos(t)}{R\sin(t)} \;\text{and}\; t \in [0, 2\pi]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colxyvec{-R\sin(t)}{R\cos(t)}\)}
+
+\dr{\begin{align*}
+\int_C \colxyvec{-y/(x^2 + y^2)}{x/(x^2 + y^2)} \cdot d\mathbf{r} = & \int_{t = 0}^{2\pi} \colxyvec{-y_C(t)/(x_C(t)^2 + y_C(t)^2)}{x_C(t)/(x_C(t)^2 + y_C(t)^2)} \cdot \frac{d\mathbf{r}_C}{dt}dt \\
+= & \int_{t = 0}^{2\pi} \colxyvec{-R\sin(t)/(R^2\cos^2(t) + R^2\sin^2(t))}{R\cos(t)/(R^2\cos^2(t) + R^2\sin^2(t))} \cdot \colxyvec{-R\sin(t)}{R\cos(t)}dt \\
+= & \int_{t = 0}^{2\pi} \colxyvec{-(1/R)\sin(t)}{(1/R)\cos(t)} \cdot \colxyvec{-R\sin(t)}{R\cos(t)}dt \\
+= & \int_{t = 0}^{2\pi} (\sin^2(t) + \cos^2(t))dt 
+= \int_{t = 0}^{2\pi} 1 \cdot dt 
+= \at{t}_{t=0}^{2\pi} 
+= 2\pi
+\end{align*}}
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 2,3
+\begin{framed}
+\dr{For \(\int_C \colxyvec{1/(x+y)}{1/(x+y)} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{x_C(t)}{y_C(t)} = \colxyvec{\cos(t)}{\sin(t)} \;\text{and}\; t \in [0,\pi/2]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colxyvec{-\sin(t)}{\cos(t)}\)}
+
+\dr{\begin{align*}
+\int_C \colxyvec{1/(x+y)}{1/(x+y)} \cdot d\mathbf{r} = & \int_{t = 0}^{\pi/2} \colxyvec{1/(x_C(t)+y_C(t))}{1/(x_C(t)+y_C(t))} \cdot \frac{d\mathbf{r}_C}{dt}dt \\
+= & \int_{t = 0}^{\pi/2} \colxyvec{1/(\cos(t)+\sin(t))}{1/(\cos(t)+\sin(t))} \cdot \colxyvec{-\sin(t)}{\cos(t)}dt \\ 
+= & \int_{t = 0}^{\pi/2} \frac{-\sin(t) + \cos(t)}{\cos(t) + \sin(t)}dt 
+= \at{\ln\abs{\cos(t) + \sin(t)}}_{t = 0}^{\pi/2} \\
+= & \ln\abs{0 + 1} - \ln\abs{1 + 0} = 0 - 0 = 0
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 2,4
+\begin{framed}
+\dr{For \(\int_C \colvec{zy}{x}{z^2x} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colvec{x_C(t)}{y_C(t)}{z_C(t)} = \colvec{t}{2t}{3t} \;\text{and}\; t \in [0,1]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colvec{1}{2}{3}\)}
+
+\dr{\begin{align*}
+\int_C \colvec{zy}{x}{z^2x} \cdot d\mathbf{r} = & \int_{t = 0}^1 \colvec{z_C(t) y_C(t)}{x_C(t)}{z_C(t)^2 x_C(t)} \cdot \frac{d\mathbf{r}_C}{dt}dt 
+= \int_{t = 0}^1 \colvec{(3t)(2t)}{t}{(3t)^2(t)} \cdot \colvec{1}{2}{3}dt \\
+= & \int_{t = 0}^1 \colvec{6t^2}{t}{9t^3} \cdot \colvec{1}{2}{3}dt 
+= \int_{t = 0}^1 (27t^3 + 6t^2 + 2t)dt \\
+= & \at{(\frac{27}{4}t^4 + 2t^3 + t^2)}_{t = 0}^1 
+= (\frac{27}{4} + 3) - 0 
+= \frac{39}{4}
+\end{align*}}
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 2,5
+\begin{framed}
+\dr{For \(\int_C \colvec{x}{y}{-5z} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colvec{x_C(t)}{y_C(t)}{z_C(t)} = \colvec{2\cos(t)}{2\sin(t)}{t} \;\text{and}\; t \in [0,2\pi]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colvec{-2\sin(t)}{2\cos(t)}{1}\)}
+
+\dr{\begin{align*}
+\int_C \colvec{x}{y}{-5z} \cdot d\mathbf{r} = & \int_{t=0}^{2\pi} \colvec{x_C(t)}{y_C(t)}{-5z_C(t)} \cdot \frac{d\mathbf{r}_C}{dt}dt    
+= \int_{t=0}^{2\pi} \colvec{2\cos(t)}{2\sin(t)}{-5t} \cdot \colvec{-2\sin(t)}{2\cos(t)}{1}dt \\   
+= & \int_{t=0}^{2\pi} -5t dt 
+= \at{-\frac{5}{2}t^2}_{t=0}^{2\pi}  
+= -10\pi^2
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 2,6
+\begin{framed}
+\dr{For \(\int_C \colxyvec{-(5y + 4)/2}{\sqrt{2x} - 3} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{x_C(t)}{y_C(t)} = \colxyvec{t^2 / 2}{-2t} \;\text{and}\; t \in [0,3]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colxyvec{t}{-2}\)}
+
+\dr{\begin{align*}
+\int_C \colxyvec{-(5y + 4)/2}{\sqrt{2x} - 3} \cdot d\mathbf{r} = & \int_{t=0}^3 \colxyvec{-(5y_C(t) + 4)/2}{\sqrt{2x_C(t)} - 3} \cdot \frac{d\mathbf{r}_C}{dt}dt 
+= \int_{t=0}^3 \colxyvec{-(-10t + 4)/2}{\sqrt{t^2} - 3} \cdot \colxyvec{t}{-2}dt \\
+= & \int_{t=0}^3 \colxyvec{5t - 2}{t - 3} \cdot \colxyvec{t}{-2}dt 
+= \int_{t=0}^3 (5t^2 - 4t + 6)dt \\  
+= & \at{(\frac{5}{3}t^3 - 2t^2 + 6t)}_{t=0}^3 
+= (45 - 18 + 18) - 0 = 45
+\end{align*}}
+\end{framed}
+
+%%%%%%%%%%%%% 2,7
+\begin{framed}
+\dr{For \(\int_C \colxyvec{y^2}{xy - x^2} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{x_C(t)}{y_C(t)} = \colxyvec{t}{3t} \;\text{and}\; t \in [0,1]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colxyvec{1}{3}\)}
+
+\dr{\begin{align*}
+\int_C \colxyvec{y^2}{xy - x^2} \cdot d\mathbf{r} = & \int_{t=0}^1 \colxyvec{y_C(t)^2}{x_C(t)y_C(t) - x_C(t)^2} \cdot \frac{d\mathbf{r}_C}{dt}dt \\
+= & \int_{t = 0}^1 \colxyvec{(3t)^2}{(t)(3t) - (t)^2} \cdot \colxyvec{1}{3}dt 
+= \int_{t = 0}^1 \colxyvec{9t^2}{2t^2} \cdot \colxyvec{1}{3}dt 
+= \int_{t = 0}^1 15t^2 dt \\
+= & \at{5t^3}_{t=0}^1 
+= 5
+\end{align*}}
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 2,8
+\begin{framed}
+\dr{For \(\int_C \colxyvec{y^2}{xy - x^2} \cdot d\mathbf{r}\) where \(C\) has the parameterization \(C: \mathbf{r}_C(t) = \colxyvec{t^2/9}{t} \;\text{and}\; t \in [0,3]\),}
+
+\dr{The parameterization yields \(\frac{d\mathbf{r}_C}{dt} = \colxyvec{(2/9)t}{1}\)}
+
+\dr{\begin{align*}
+\int_C \colxyvec{y^2}{xy - x^2} \cdot d\mathbf{r} = & \int_{t = 0}^3 \colxyvec{y_C(t)^2}{x_C(t)y_C(t) - x_C(t)^2} \cdot \frac{d\mathbf{r}_C(t)}{dt}dt \\
+= & \int_{t = 0}^3 \colxyvec{t^2}{(t^2/9)(t) - (t^2/9)^2} \cdot \colxyvec{(2/9)t}{1}dt \\
+= & \int_{t = 0}^3 ((2/9)t^3 + ((1/9)t^3 - (1/81)t^4))dt \\
+= & \int_{t = 0}^3 ((1/3)t^3 - (1/81)t^4)dt \\
+= & \at{((1/12)t^4 - (1/(5 \cdot 81))t^5)}_{t = 0}^3 \\
+= & (27/4 - 3/5) - 0 
+= \frac{135 - 12}{20} = \frac{123}{20}
+\end{align*}}
+\end{framed}
+
+
+
+
+%%%%%%%%%%%%%%%%%% QUESTION 3
+\section*{Question 3:}
+
+For each of the following vector fields \(\mathbf{F}(\mathbf{r})\), determine if the field is conservative, and if so, find a scalar field \(f(\mathbf{r})\) such that \(\mathbf{F}(\mathbf{r}) = \nabla f(\mathbf{r})\). 
+
+ \begin{itemize}
+%3,1
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{2xy^3}{3y^2x^2}\) 
+%3,2
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{-y + e^x\sin(y)}{(x + 2)e^x\cos(y)}\) 
+%3,3
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{e^{2x}\sin(y)}{e^{2x}\cos(y)}\) 
+%3,4
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{6x + 5y}{5x + 4y}\) 
+%3,5
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{2x\cos(y) - y\cos(x)}{-x^2\sin(y) - \sin(x)}\) 
+%3,6 
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{3x^2 - 4xy}{2x^2 - 4}\)
+%3,7 
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{3x^2 + 4xy}{2x^2 - 4}\)
+%3,8
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{e^{y^2 - y} + e^x}{x(2y - 1)e^{y^2 - y}}\)
+%3,9
+\item \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{-(x^4 + y^2)^{-2} \cdot 4x^3}{-(x^4 + y^2)^{-2} \cdot 2y}\)
+\end{itemize}
+
+\pagebreak
+
+\dr{\textbf{Solution:}}
+
+%%%%%%%%%%%%% 3,1
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{2xy^3}{3y^2x^2}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & 6xy^2 - 6xy^2 = 0
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is conservative.}
+
+\dr{Staring with \(f(0,0) = C\),
+\begin{align*}
+f(x,y) = & C + \int_{x_1 = 0}^x F_x(x_1,0)dx_1 + \int_{y_1 = 0}^y F_y(x,y_1)dy_1 \\
+= & C + \int_{x_1 = 0}^x 0dx_1 + \int_{y_1 = 0}^y 3y_1^2x^2dy_1 \\
+= & C + \at{x^2y_1^3}_{y_1 = 0}^y 
+= C + x^2y^3
+\end{align*}}
+
+\end{framed}
+
+%%%%%%%%%%%%% 3,2
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{-y + e^x\sin(y)}{(x + 2)e^x\cos(y)}\),}
+
+\dr{The circulation density is:
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & (e^x\cos(y) + (x + 2)e^x\cos(y)) - (-1 + e^x\cos(y)) \\
+= & 1 + (1 + (x+2) - 1)e^x\cos(y) = 1 + (x+2)e^x\cos(y)
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is {\bf not} conservative.}
+
+\end{framed}
+
+%%%%%%%%%%%%% 3,3
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{e^{2x}\sin(y)}{e^{2x}\cos(y)}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & 2e^{2x}\cos(y) - e^{2x}\cos(y) = e^{2x}\cos(y)
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is {\bf not} conservative.}
+
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 3,4
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{6x + 5y}{5x + 4y}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & 5 - 5 = 0
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is conservative.}
+
+\dr{Starting with \(f(0,0) = C\),
+\begin{align*}
+f(x,y) = & C + \int_{x_1 = 0}^x F_x(x_1,0)dx_1 + \int_{y_1 = 0}^y F_y(x,y_1)dy_1 \\
+= & C + \int_{x_1 = 0}^x 6x_1dx_1 + \int_{y_1 = 0}^y (5x + 4y_1)dy_1 \\
+= & C + \at{3x_1^2}_{x_1 = 0}^x + \at{(5xy_1 + 2y_1^2)}_{y_1 = 0}^y \\
+= & C + 3x^2 + 5xy + 2y^2
+\end{align*}}
+
+\end{framed}
+
+%%%%%%%%%%%%% 3,5
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{2x\cos(y) - y\cos(x)}{-x^2\sin(y) - \sin(x)}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & (-2x\sin(y) - \cos(x)) - (-2x\sin(y) - \cos(x)) = 0
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is conservative.}
+
+\dr{Staring with \(f(0,0) = C\),
+\begin{align*}
+f(x,y) = & C + \int_{x_1 = 0}^x F_x(x_1,0)dx_1 + \int_{y_1 = 0}^y F_y(x,y_1)dy_1 \\
+= & C + \int_{x_1 = 0}^x 2x_1dx_1 + \int_{y_1 = 0}^y (-x^2\sin(y_1) - \sin(x))dy_1 \\
+= & C + \at{x_1^2}_{x_1 = 0}^x + \at{(x^2\cos(y_1) - y_1\sin(x))}_{y_1 = 0}^y \\
+= & C + x^2 + ((x^2\cos(y) - y\sin(x)) - x^2) \\
+= & C + x^2\cos(y) - y\sin(x)
+\end{align*}}
+
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 3,6
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{3x^2 - 4xy}{2x^2 - 4}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & 4x - (-4x) = 8x
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is {\bf not} conservative.}
+
+\end{framed}
+
+%%%%%%%%%%%%% 3,7
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{3x^2 + 4xy}{2x^2 - 4}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & 4x - 4x = 0
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is conservative.}
+
+\dr{Starting with \(f(0,0) = C\),
+\begin{align*}
+f(x,y) = & C + \int_{x_1 = 0}^x F_x(x_1,0)dx_1 + \int_{y_1 = 0}^y F_y(x,y_1)dy_1 \\
+= & C + \int_{x_1 = 0}^x (3x_1^2)dx_1 + \int_{y_1 = 0}^y (2x^2 - 4)dy_1 \\
+= & C + \at{x_1^3}_{x_1 = 0}^x + \at{(2x^2 - 4)y_1}_{y_1 = 0}^y \\
+= & C + (x^3 - 0) + ((2x^2 - 4)y - 0) \\
+= & C + x^3 + 2x^2y - 4y
+\end{align*}}
+
+\end{framed}
+
+\pagebreak
+
+%%%%%%%%%%%%% 3,8
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{e^{y^2 - y} + e^x}{x(2y - 1)e^{y^2 - y}}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & (2y - 1)e^{y^2 - y} - (2y - 1)e^{y^2 - y} = 0
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is conservative.}
+
+\dr{Starting with \(f(0,0) = C\),
+\begin{align*}
+f(x,y) = & C + \int_{x_1 = 0}^x F_x(x_1,0)dx_1 + \int_{y_1 = 0}^y F_y(x,y_1)dy_1 \\
+= & C + \int_{x_1 = 0}^x (1 + e^{x_1})dx_1 + \int_{y_1 = 0}^y x(2y_1 - 1)e^{y_1^2 - y_1}dy_1 \\
+= & C + \at{(x_1 + e^{x_1})}_{x_1 = 0}^x + \at{xe^{y_1^2 - y_1}}_{y_1 = 0}^y \\
+= & C + ((x + e^x) - 1) + (xe^{y^2 - y} - x) \\
+= & (C - 1) + e^x + xe^{y^2 - y}
+\end{align*}}
+
+\end{framed}
+
+%%%%%%%%%%%%% 3,9
+\begin{framed}
+\dr{For \(\mathbf{F}(x,y) = \colxyvec{F_x(x,y)}{F_y(x,y)} = \colxyvec{-(x^4 + y^2)^{-2} \cdot 4x^3}{-(x^4 + y^2)^{-2} \cdot 2y}\),}
+
+\dr{The circulation density is: 
+\begin{align*}
+\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y} = & \frac{\partial}{\partial x}(-(x^4 + y^2)^{-2} \cdot 2y) - \frac{\partial}{\partial y}(-(x^4 + y^2)^{-2} \cdot 4x^3) \\
+= & 2(x^4 + y^2)^{-3} \cdot 4x^3 \cdot 2y - 2(x^4 + y^2)^{-3} \cdot 2y \cdot 4x^3 = 0
+\end{align*}}
+
+\dr{Therefore \(\mathbf{F}(x,y)\) is conservative.}
+
+\dr{There is a singularity at the origin, so we will instead start with \(f(1,0) = C\)
+\begin{align*}
+f(x,y) = & C + \int_{x_1 = 1}^x F_x(x_1,0)dx_1 + \int_{y_1 = 0}^y F_y(x,y_1)dy_1 \\
+= & C + \int_{x_1 = 1}^x -4x_1^{-5} dx_1 + \int_{y_1 = 0}^y -(x^4 + y_1^2)^{-2} \cdot 2y_1 dy_1 \\
+= & C + \at{x_1^{-4}}_{x_1 = 1}^x + \at{(x^4 + y_1^2)^{-1}}_{y_1 = 0}^y \\
+= & C + (x^{-4} - 1) + ((x^4 + y^2)^{-1} - x^{-4}) \\
+= & (C - 1) + (x^4 + y^2)^{-1}
+\end{align*}}
+
+\end{framed}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

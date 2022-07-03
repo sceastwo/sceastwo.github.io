@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\atan}{\text{atan}}
+\newcommand{\rowvec}[3]{\left\langle #1, #2, #3 \right\rangle}
+\newcommand{\colvec}[3]{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+\newcommand{\at}[1]{\left. #1 \right|}
+\newcommand{\diff}[2]{\frac{d #1}{d #2}}
+\newcommand{\partdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\mvec}[1]{\overrightarrow{\mathbf{#1}}}
+\newcommand{\pvec}[1]{\overrightarrow{#1}}
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+
+
+\title{Cartesian and Polar Double Integrals}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+
+
+%%%%%%%%%%%%%%%%%% QUESTION 1
+\section*{Question 1:}
+
+\subsection*{part 1a:}
+
+For the following double integrals, convert the function that is being integrated over (the integrand) from a function of Cartesian coordinates to a function of Polar coordinates:
+
+\begin{itemize}
+\item \(\iint_{\sigma} (x + y)dA\)
+\item \(\iint_{\sigma} xy dA\)
+\item \(\iint_{\sigma} \frac{y}{x}dA\)
+\item \(\iint_{\sigma} \frac{dA}{(x^2 + y^2)^{3/2}}\)
+\item \(\iint_{\sigma} \frac{x^2 - y^2}{2xy} dA\)
+\end{itemize}
+
+
+\subsection*{part 1b:}
+
+For the following double integrals, convert the function that is being integrated over (the integrand) from a function of Polar coordinates to a function of Cartesian coordinates:
+
+\begin{itemize}
+\item \(\iint_{\sigma} r\cos\theta dA\)
+\item \(\iint_{\sigma} r^2\sin\theta dA\)
+\item \(\iint_{\sigma} r^{-3}dA\)
+\item \(\iint_{\sigma} \frac{\cos\theta - 3\sin\theta}{2\cos\theta + \sin\theta}dA\)
+\item \(\iint_{\sigma} r\tan\theta dA\)
+\item \(\iint_{\sigma} \cos(2\theta) dA\)
+\item \(\iint_{\sigma} \sin(2\theta) dA\)
+\item \(\iint_{\sigma} \tan(2\theta) dA\)
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%% QUESTION 2
+\section*{Question 2:}
+
+\subsection*{part 2a:}
+
+For the following regions characterized using Cartesian coordinates, express these regions using Polar coordinates:
+
+\begin{itemize}
+\item \(\sigma = \{(x,y) | -2 \leq x \leq 2 \;\text{and}\; 0 \leq y \leq \sqrt{4 - x^2}\}\)
+\item \(\sigma = \{(x,y) | 0 \leq x \leq 2 \;\text{and}\; -\sqrt{4 - x^2} \leq y \leq \sqrt{4 - x^2}\}\)
+\item \(\sigma = \{(x,y) | 0 \leq x \leq 1 \;\text{and}\; -\frac{x}{\sqrt{3}} \leq y \leq x\}\)
+\item \(\sigma = \{(x,y) | -2 \leq x \leq 2 \;\text{and}\; 0 \leq y \leq 4 - x^2\}\)
+\item \(\sigma = \{(x,y) | 0 \leq y \leq 3 \;\text{and}\; -5 + (5/3)y \leq x \leq 0\}\)
+\item \(\sigma = \{(x,y) | -1 \leq x \leq 1 \;\text{and}\; 1 - \sqrt{1 - x^2} \leq y \leq 1 + \sqrt{1 - x^2}\}\)
+\item \(\sigma = \{(x,y) | 1 - \sqrt{2} \leq x \leq 1 + \sqrt{2} \;\text{and}\; 1 - \sqrt{-x^2 + 2x + 1} \leq y \leq 1 + \sqrt{-x^2 + 2x + 1}\}\)
+\item \(\sigma = \{(x,y) | -6 \leq x \leq 0 \;\text{and}\; 2x^2 + 12x \leq y \leq 0\}\)
+\end{itemize}
+
+
+\subsection*{part 2b:} 
+
+For the following regions characterized using Polar coordinates, express these regions using Cartesian coordinates:
+
+\begin{itemize}
+\item \(\sigma = \left\{(r,\theta) \middle| -\frac{\pi}{2} \leq \theta \leq \frac{\pi}{4} \;\text{and}\; 0 \leq r \leq \frac{3}{2\cos\theta - \sin\theta}\right\}\)
+\item \(\sigma = \left\{(r,\theta) \middle| 0 \leq \theta \leq \frac{\pi}{4} \;\text{and}\; 0 \leq r \leq 2\sin\theta\right\}\)
+\item \(\sigma = \left\{(r,\theta) \middle| -\atan(2) \leq \theta \leq \frac{\pi}{4} \;\text{and}\; 0 \leq r \leq \frac{2\cos\theta + \sin\theta}{\cos^2\theta}\right\}\) 
+\item \(\sigma = \left\{(r,\theta) \middle| -\frac{\pi}{2} \leq \theta \leq \atan(\frac{3}{2}) \;\text{and}\; 0 \leq r \leq \frac{\sin\theta + \sqrt{1 + 3\cos^2\theta}}{2\cos^2\theta}\right\}\)
+\item \(\sigma = \left\{(r,\theta) \middle| -\frac{\pi}{6} \leq \theta \leq \frac{\pi}{6} \;\text{and}\; 2\cos\theta - \sqrt{4\cos^2\theta - 3} \leq r \leq 2\cos\theta + \sqrt{4\cos^2\theta - 3}\right\}\)
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%% QUESTION 3
+\section*{Question 3:}
+
+For the following iterated integrals, reverse the order of integration:
+
+\begin{itemize}
+\item \(\int_{x = 0}^2 \int_{y = x^2}^{2x} f(x,y)dydx\)
+\item \(\int_{y = 0}^3 \int_{x = -\sqrt{9 - y^2}}^{\sqrt{9 - y^2}} f(x,y)dxdy\)
+\item \(\int_{x = -5}^1 \int_{y = -4}^{-x^2 - 4x + 1} f(x,y)dydx\)
+\end{itemize}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,517 @@
+\documentclass{article}
+
+
+
+
+\usepackage{fullpage}
+\usepackage{nopageno}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+
+\definecolor{dark_red}{rgb}{0.5,0.0,0.0}
+\definecolor{dark_green}{rgb}{0.0,0.5,0.0}
+\definecolor{dark_blue}{rgb}{0.0,0.0,0.5}
+\definecolor{blue}{rgb}{0.0,0.0,1.0}
+
+\newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
+\newcommand{\dg}[1]{\textcolor{dark_green}{#1}}
+\newcommand{\db}[1]{\textcolor{dark_blue}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+
+
+\begin{document}
+
+
+\section*{Determining Nonsingularity}
+
+Given and arbitrary quadratic polynomial
+\[ax^2 + bx + c\]
+the ``discriminant", defined by
+\[\Delta = b^2 - 4ac\] 
+identifies the number of roots that the polynomial has:
+\begin{itemize}
+\item If \(\Delta > 0\), then there are exactly \(2\) real valued roots.
+\item If \(\Delta = 0\), then there is exactly \(1\) root.
+\item If \(\Delta < 0\), then there are exactly \(2\) complex valued roots.
+\end{itemize}
+
+Similar to the discriminant for quadratic polynomials, the {\bf determinant} of an \(n \times n\) matrix \(A\) is a quantity that is nonzero if and only if \(A\) is nonsingular (i.e. invertible).  
+
+Determinants are only defined for square matrices, and are nonzero if and only if the matrix is invertible. Given an arbitrary \(n \times n\) matrix \(A = \begin{bmatrix} a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\ a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & \cdots & a_{n,n} \end{bmatrix}\), the determinant of \(A\) is denoted by the following notation:
+\[\text{det}(A) \quad\quad\quad \text{or} \quad\quad\quad |A| \quad\quad\quad \text{or} \quad\quad\quad \begin{vmatrix} a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\ a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & \cdots & a_{n,n} \end{vmatrix}\]
+
+
+\subsection*{$1 \times 1$ matrices}
+
+Given an simple \(1 \times 1\) matrix \(A = \begin{bmatrix} a_{1,1} \end{bmatrix}\), it is clear that \(A\) is invertible if and only if \(a_{1,1} \neq 0\). Therefore the determinant is defined as:
+
+\[\text{det}\left(\begin{bmatrix} a_{1,1} \end{bmatrix}\right) = a_{1,1}\]
+
+
+
+\subsection*{$2 \times 2$ matrices}
+
+For a \(2 \times 2\) matrix \(A = \begin{bmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \end{bmatrix}\), the determinant is: 
+
+\[\text{det}(A) = \begin{vmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \end{vmatrix} = a_{1,1}a_{2,2} - a_{2,1}a_{1,2}\]
+
+
+
+
+\section*{$n \times n$ matrices}
+
+\subsection*{The cofactor expansion}
+
+Let \(A = \begin{bmatrix} a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\ a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & \cdots & a_{n,n} \end{bmatrix}\) denote an arbitrary \(n \times n\) matrix.
+
+The {\bf minor} \(M_{i,j}\) at entry \((i,j)\) is the determinant of \(A\) with the \(i^{\text{th}}\) row and the \(j^{\text{th}}\) column removed. The {\bf cofactor} \(C_{i,j}\) is \(C_{i,j} = (-1)^{i + j}M_{i,j}\). The sign introduced by the cofactor alternates between \(+\) and \(-\) during transitions between adjacent cells, starting with \(+\) at entry \((1,1)\):
+
+\[\begin{bmatrix}
++
+\end{bmatrix} \quad\quad \begin{bmatrix}
++ & - \\ - & + 
+\end{bmatrix} \quad\quad \begin{bmatrix}
++ & - & + \\ - & + & - \\ + & - & + 
+\end{bmatrix} \quad\quad \begin{bmatrix}
++ & - & + & - \\ - & + & - & + \\ + & - & + & - \\ - & + & - & +  
+\end{bmatrix} \quad\quad \begin{bmatrix}
++ & - & + & - & + \\ - & + & - & + & - \\ + & - & + & - & + \\ - & + & - & + & - \\ + & - & + & - & +  
+\end{bmatrix}\]
+
+The cofactor expansion along row \(i\) is:
+\[\text{det}(A) = a_{i,1}C_{i,1} + a_{i,2}C_{i,2} + ... + a_{i,n}C_{i,n} = (-1)^{i + 1}a_{i,1}M_{i,1} + (-1)^{i + 2}a_{i,2}M_{i,2} + ... + (-1)^{i + n}a_{i,n}M_{i,n}\]
+
+The cofactor expansion along column \(j\) is: 
+\[\text{det}(A) = a_{1,j}C_{1,j} + a_{2,j}C_{2,j} + ... + a_{n,j}C_{n,j} = (-1)^{j + 1}a_{1,j}M_{1,j} + (-1)^{j + 2}a_{2,j}M_{2,j} + ... + (-1)^{j + n}a_{n,j}M_{n,j}\]
+
+No matter which cofactor expansion is used, the final value of the determinant will always be the same. 
+
+For example, given the \(3 \times 3\) matrix: 
+\[A = \begin{bmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{bmatrix}\]
+There are \(6\) possible cofactor expansions that will all return the same result:
+
+The cofactor expansion along row \(1\) gives:
+\[\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{vmatrix} = a_{1,1}\begin{vmatrix}
+a_{2,2} & a_{2,3} \\ 
+a_{3,2} & a_{3,3} 
+\end{vmatrix} - a_{1,2}\begin{vmatrix}
+a_{2,1} & a_{2,3} \\ 
+a_{3,1} & a_{3,3} 
+\end{vmatrix} + a_{1,3}\begin{vmatrix}
+a_{2,1} & a_{2,2} \\ 
+a_{3,1} & a_{3,2}  
+\end{vmatrix}\]
+
+The cofactor expansion along row \(2\) gives:
+\[\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{vmatrix} = -a_{2,1}\begin{vmatrix}
+a_{1,2} & a_{1,3} \\ 
+a_{3,2} & a_{3,3} 
+\end{vmatrix} + a_{2,2}\begin{vmatrix}
+a_{1,1} & a_{1,3} \\ 
+a_{3,1} & a_{3,3} 
+\end{vmatrix} - a_{2,3}\begin{vmatrix}
+a_{1,1} & a_{1,2} \\ 
+a_{3,1} & a_{3,2}  
+\end{vmatrix}\]
+
+The cofactor expansion along row \(3\) gives:
+\[\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{vmatrix} = a_{3,1}\begin{vmatrix}
+a_{1,2} & a_{1,3} \\ 
+a_{2,2} & a_{2,3} 
+\end{vmatrix} - a_{3,2}\begin{vmatrix}
+a_{1,1} & a_{1,3} \\ 
+a_{2,1} & a_{2,3} 
+\end{vmatrix} + a_{3,3}\begin{vmatrix}
+a_{1,1} & a_{1,2} \\ 
+a_{2,1} & a_{2,2}  
+\end{vmatrix}\]
+
+The cofactor expansion along column \(1\) gives:
+\[\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{vmatrix} = a_{1,1}\begin{vmatrix}
+a_{2,2} & a_{2,3} \\ 
+a_{3,2} & a_{3,3} 
+\end{vmatrix} - a_{2,1}\begin{vmatrix}
+a_{1,2} & a_{1,3} \\ 
+a_{3,2} & a_{3,3} 
+\end{vmatrix} + a_{3,1}\begin{vmatrix}
+a_{1,2} & a_{1,3} \\ 
+a_{2,2} & a_{2,3}  
+\end{vmatrix}\]
+
+The cofactor expansion along column \(2\) gives:
+\[\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{vmatrix} = -a_{1,2}\begin{vmatrix}
+a_{2,1} & a_{2,3} \\ 
+a_{3,1} & a_{3,3} 
+\end{vmatrix} + a_{2,2}\begin{vmatrix}
+a_{1,1} & a_{1,3} \\ 
+a_{3,1} & a_{3,3} 
+\end{vmatrix} - a_{3,2}\begin{vmatrix}
+a_{1,1} & a_{1,3} \\ 
+a_{2,1} & a_{2,3}  
+\end{vmatrix}\]
+
+The cofactor expansion along column \(3\) gives:
+\[\begin{vmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} \\ 
+a_{2,1} & a_{2,2} & a_{2,3} \\ 
+a_{3,1} & a_{3,2} & a_{3,3} 
+\end{vmatrix} = a_{1,3}\begin{vmatrix}
+a_{2,1} & a_{2,2} \\ 
+a_{3,1} & a_{3,2} 
+\end{vmatrix} - a_{2,3}\begin{vmatrix}
+a_{1,1} & a_{1,2} \\ 
+a_{3,1} & a_{3,2} 
+\end{vmatrix} + a_{3,3}\begin{vmatrix}
+a_{1,1} & a_{1,2} \\ 
+a_{2,1} & a_{2,2}  
+\end{vmatrix}\]
+
+
+
+When choosing the row or column to apply the cofactor expansion along, choosing a row or column with the largest number of \(0\)'s is optimal.
+
+\textbf{Examples:}*
+\begin{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item Evaluate the determinant:
+\[\begin{vmatrix}
+-3 & 0 & 7 \\ 
+2 & 5 & 1 \\ 
+-1 & 0 & 5
+\end{vmatrix}\]
+Out of all of the rows and columns, column 2 has the most \(0\)'s. The cofactor expansion along column \(2\) gives:
+\begin{align*}
+\begin{vmatrix}
+-3 & 0 & 7 \\ 
+2 & 5 & 1 \\ 
+-1 & 0 & 5
+\end{vmatrix} = & -0\begin{vmatrix} 2 & 1 \\ -1 & 5 \end{vmatrix} + 5\begin{vmatrix} -3 & 7 \\ -1 & 5 \end{vmatrix} - 0\begin{vmatrix} -3 & 7 \\ 2 & 1 \end{vmatrix} \\ 
+= & 5((-3)(5) - (-1)(7)) 
+= 5(-15 + 7) 
+= 5(-8) = -40
+\end{align*}
+Now consider that instead of expanding along column 2, the determinant is expanded along row 2. This is a suboptimal choice since row 2 has no \(0\)'s.  
+\begin{align*}
+\begin{vmatrix}
+-3 & 0 & 7 \\ 
+2 & 5 & 1 \\ 
+-1 & 0 & 5
+\end{vmatrix} = & 
+-2\begin{vmatrix}
+0 & 7 \\ 
+0 & 5
+\end{vmatrix} + 5\begin{vmatrix}
+-3 & 7 \\ 
+-1 & 5
+\end{vmatrix} - 1\begin{vmatrix}
+-3 & 0 \\ 
+-1 & 0 
+\end{vmatrix} \\
+= & -2((0)(5) - (0)(7)) + 5((-3)(5) - (-1)(7)) - 1((-3)(0) - (-1)(0)) \\
+= & -2(0 - 0) + 5(-15 + 7) - 1(0 - 0) 
+= 5(-8) = -40
+\end{align*}
+The calculations are more complex, but the result is the same.
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item Evaluate the determinant: 
+\[\begin{vmatrix}
+3 & 3 & 1 \\ 
+1 & 0 & -4 \\ 
+1 & -3 & 5
+\end{vmatrix}\]
+Row 2 (or column 2) has the most \(0\)'s. Expanding along row 2 gives:
+\begin{align*}
+\begin{vmatrix}
+3 & 3 & 1 \\ 
+1 & 0 & -4 \\ 
+1 & -3 & 5
+\end{vmatrix} = & -1\begin{vmatrix}
+3 & 1 \\ 
+-3 & 5
+\end{vmatrix} + 0\begin{vmatrix}
+3 & 1 \\ 
+1 & 5
+\end{vmatrix} - (-4)\begin{vmatrix}
+3 & 3 \\ 
+1 & -3 
+\end{vmatrix} \\ 
+= & -1((3)(5) - (-3)(1)) - (-4)((3)(-3) - (1)(3)) \\
+= & -(15 + 3) + 4(-9 - 3) 
+= -18 + 4(-12) 
+= -18 - 48 = -66
+\end{align*} 
+Now consider that instead of expanding along row 2, the determinant is expanded along column 1. This is a suboptimal choice since column 1 has no \(0\)'s.  
+\begin{align*}
+\begin{vmatrix}
+3 & 3 & 1 \\ 
+1 & 0 & -4 \\ 
+1 & -3 & 5
+\end{vmatrix} = & 3\begin{vmatrix}
+0 & -4 \\ 
+-3 & 5
+\end{vmatrix} - 1\begin{vmatrix}
+3 & 1 \\ 
+-3 & 5
+\end{vmatrix} + 1\begin{vmatrix}
+3 & 1 \\ 
+0 & -4  
+\end{vmatrix} \\ 
+= & 3((0)(5) - (-3)(-4)) - 1((3)(5) - (-3)(1)) + 1((3)(-4) - (0)(1)) \\
+= & 3(0 - 12) - (15 + 3) + (-12 - 0) 
+= -36 - 18 - 12 
+= -66 
+\end{align*}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item Evaluate the determinant: 
+\[\begin{vmatrix}
+3 &  3 &  0 &  5 \\ 
+2 &  2 &  0 & -2 \\ 
+4 &  1 & -3 &  0 \\ 
+2 & 10 & 3 &  2
+\end{vmatrix}\]
+Column 3 has the most \(0\)'s. Expanding along column 3 gives:
+\begin{align*}
+\begin{vmatrix}
+3 &  3 &  0 &  5 \\ 
+2 &  2 &  0 & -2 \\ 
+4 &  1 & -3 &  0 \\ 
+2 & 10 & 3 &  2
+\end{vmatrix} = & 0\begin{vmatrix}
+2 &   2 & -2 \\ 
+4 &   1 &  0 \\ 
+2 & 10 &  2
+\end{vmatrix} - 0\begin{vmatrix}
+3 &   3 & 5 \\ 
+4 &   1 & 0 \\ 
+2 & 10 & 2
+\end{vmatrix} + (-3)\begin{vmatrix}
+3 &   3 &  5 \\ 
+2 &   2 & -2 \\ 
+2 & 10 &  2
+\end{vmatrix} - 3\begin{vmatrix}
+3 & 3 &  5 \\ 
+2 & 2 & -2 \\ 
+4 & 1 &  0 \\ 
+\end{vmatrix} \\ 
+= & -3\begin{vmatrix}
+3 &   3 &  5 \\ 
+2 &   2 & -2 \\ 
+2 & 10 &  2
+\end{vmatrix} - 3\begin{vmatrix}
+3 & 3 &  5 \\ 
+2 & 2 & -2 \\ 
+4 & 1 &  0 \\ 
+\end{vmatrix}
+\end{align*}
+Each of the \(3 \times 3\) determinants will be expanded along column 1:
+\begin{align*}
+& -3\begin{vmatrix}
+3 &   3 &  5 \\ 
+2 &   2 & -2 \\ 
+2 & 10 &  2
+\end{vmatrix} - 3\begin{vmatrix}
+3 & 3 &  5 \\ 
+2 & 2 & -2 \\ 
+4 & 1 &  0 \\ 
+\end{vmatrix} 
+\\
+= & -3\left(3\begin{vmatrix}
+2 & -2 \\ 
+10 & 2
+\end{vmatrix} - 2\begin{vmatrix}
+3 & 5 \\ 
+10 & 2
+\end{vmatrix} + 2\begin{vmatrix}
+3 &  5 \\ 
+2 & -2 \\ 
+\end{vmatrix}\right) 
+- 3\left(3\begin{vmatrix}
+2 & -2 \\ 
+1 &  0 \\ 
+\end{vmatrix} - 2\begin{vmatrix}
+3 & 5 \\ 
+1 & 0 \\ 
+\end{vmatrix} + 4\begin{vmatrix}
+3 &  5 \\ 
+2 & -2 \\ 
+\end{vmatrix}\right) 
+\\
+= & -3(3(24) - 2(-44) + 2(-16)) - 3(3(2) - 2(-5) + 4(-16)) \\
+= & -3(72 + 88 - 32) - 3(6 + 10 - 64) \\
+= & -3(160 - 32) - 3(16 - 64) 
+= -3(128) - 3(-48) \\
+= & -384 + 144 
+= -240
+\end{align*} 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%\item Evaluate the determinant: 
+%\[\begin{vmatrix}
+%4 & 0 & 0 &  1 & 0 \\ 
+%3 & 3 & 3 & -1 & 0 \\ 
+%1 & 2 & 4 &  2 & 3 \\ 
+%9 & 4 & 6 &  2 & 3 \\
+%2 & 2 & 4 &  2 & 3 
+%\end{vmatrix}\]
+%Row 1 has the most \(0\)'s. Expanding along row 1 gives:
+%\[\begin{vmatrix}
+%4 & 0 & 0 &  1 & 0 \\ 
+%3 & 3 & 3 & -1 & 0 \\ 
+%1 & 2 & 4 &  2 & 3 \\ 
+%9 & 4 & 6 &  2 & 3 \\
+%2 & 2 & 4 &  2 & 3 
+%\end{vmatrix} = 4\begin{vmatrix}
+%3 & 3 & -1 & 0 \\ 
+%2 & 4 &  2 & 3 \\ 
+%4 & 6 &  2 & 3 \\
+%2 & 4 &  2 & 3 
+%\end{vmatrix} - 1\begin{vmatrix}
+%3 & 3 & 3 & 0 \\ 
+%1 & 2 & 4 & 3 \\ 
+%9 & 4 & 6 & 3 \\
+%2 & 2 & 4 & 3 
+%\end{vmatrix}\] 
+%Each of the \(4 \times 4\) determinants will be expanded along column 4. Evaluating the first determinant gives:
+%\begin{align*}
+%& \begin{vmatrix}
+%3 & 3 & -1 & 0 \\ 
+%2 & 4 &  2 & 3 \\ 
+%4 & 6 &  2 & 3 \\
+%2 & 4 &  2 & 3 
+%\end{vmatrix} = -0\begin{vmatrix}
+%2 & 4 &  2 \\ 
+%4 & 6 &  2 \\
+%2 & 4 &  2  
+%\end{vmatrix} + 3\begin{vmatrix}
+%3 & 3 & -1 \\ 
+%4 & 6 &  2 \\
+%2 & 4 &  2  
+%\end{vmatrix} - 3\begin{vmatrix}
+%3 & 3 & -1 \\ 
+%2 & 4 &  2 \\ 
+%2 & 4 &  2 
+%\end{vmatrix} + 3\begin{vmatrix}
+%3 & 3 & -1 \\ 
+%2 & 4 &  2 \\ 
+%4 & 6 &  2 
+%\end{vmatrix}
+%\end{align*} 
+%Evaluating the second determinant gives:
+%\begin{align*}
+%& \begin{vmatrix}
+%3 & 3 & 3 & 0 \\ 
+%1 & 2 & 4 & 3 \\ 
+%9 & 4 & 6 & 3 \\
+%2 & 2 & 4 & 3 
+%\end{vmatrix} = -0\begin{vmatrix}
+%1 & 2 & 4 \\ 
+%9 & 4 & 6 \\
+%2 & 2 & 4 
+%\end{vmatrix} + 3\begin{vmatrix}
+%3 & 3 & 3 \\ 
+%9 & 4 & 6 \\
+%2 & 2 & 4   
+%\end{vmatrix} - 3\begin{vmatrix}
+%3 & 3 & 3 \\ 
+%1 & 2 & 4 \\ 
+%2 & 2 & 4  
+%\end{vmatrix} + 3\begin{vmatrix}
+%3 & 3 & 3 \\ 
+%1 & 2 & 4 \\ 
+%9 & 4 & 6  
+%\end{vmatrix}   
+%\end{align*}
+\end{itemize}
+*Examples from the problem set of chapter 2.1 of the textbook: \\
+Anton, Howard; Rorres, Chris, \emph{Elementary Linear Algebra 11th edition, Applications Version}, Wiley, 2014.
+
+
+
+\section*{Triangular matrices}
+
+The determinant of triangular matrices is simply the product of the diagonal entries. 
+
+
+Consider the upper triangular \(n \times n\) matrix:
+\[A = \begin{bmatrix} a_{1,1} & a_{1,2} & a_{1,3} & \cdots & a_{1,n} \\ 0 & a_{2,2} & a_{2,3} & \cdots & a_{2,n} \\ 0 & 0 & a_{3,3} & \cdots & a_{3,n} \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & a_{n,n} \end{bmatrix}\]
+
+By repeatedly computing the cofactor expansion along column \(1\), or along row \(n\), it is easy to see that: 
+\begin{align*}
+\text{det}(A) = & \begin{vmatrix} a_{1,1} & a_{1,2} & a_{1,3} & \cdots & a_{1,n} \\ 0 & a_{2,2} & a_{2,3} & \cdots & a_{2,n} \\ 0 & 0 & a_{3,3} & \cdots & a_{3,n} \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & a_{n,n} \end{vmatrix} 
+= a_{1,1}\begin{vmatrix} a_{2,2} & a_{2,3} & \cdots & a_{2,n} \\ 0 & a_{3,3} & \cdots & a_{3,n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & a_{n,n} \end{vmatrix} 
+= a_{1,1}a_{2,2}\begin{vmatrix} a_{3,3} & \cdots & a_{3,n} \\ \vdots & \ddots & \vdots \\ 0 & \cdots & a_{n,n} \end{vmatrix} \\
+= & a_{1,1}a_{2,2}a_{3,3} \cdots a_{n,n}
+\end{align*}
+
+
+Now consider the lower triangular \(n \times n\) matrix:
+\[A = \begin{bmatrix} a_{1,1} & 0 & 0 & \cdots & 0 \\ a_{2,1} & a_{2,2} & 0 & \cdots & 0 \\ a_{3,1} & a_{3,2} & a_{3,3} & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & a_{n,3} & \cdots & a_{n,n} \end{bmatrix}\]
+
+By repeatedly computing the cofactor expansion along row \(1\), or along column \(n\), it is easy to see that: 
+\begin{align*}
+\text{det}(A) = & \begin{vmatrix} a_{1,1} & 0 & 0 & \cdots & 0 \\ a_{2,1} & a_{2,2} & 0 & \cdots & 0 \\ a_{3,1} & a_{3,2} & a_{3,3} & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & a_{n,3} & \cdots & a_{n,n} \end{vmatrix} 
+= a_{1,1}\begin{vmatrix} a_{2,2} & 0 & \cdots & 0 \\ a_{3,2} & a_{3,3} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,2} & a_{n,3} & \cdots & a_{n,n} \end{vmatrix} 
+= a_{1,1}a_{2,2}\begin{vmatrix} a_{3,3} & \cdots & 0 \\ \vdots & \ddots & \vdots \\ a_{n,3} & \cdots & a_{n,n} \end{vmatrix} \\
+= & a_{1,1}a_{2,2}a_{3,3} \cdots a_{n,n}
+\end{align*}
+
+
+
+\section*{Interpreting the determinant}
+
+
+
+
+\section*{Elementary row (and column) operations and determinants}
+
+The determinant of an \(n \times n\) matrix \(A\) also 
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

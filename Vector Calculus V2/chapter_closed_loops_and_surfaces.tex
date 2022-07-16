@@ -28,7 +28,7 @@ This multi-path \(\mathbf{J}\) can be created by drawing oriented paths in a ``d
 
 
 
-\section{Closed loops}
+\section{Closed loops}\label{sec:closed_loops}
 
 Consider a multi-surface \(\mathbf{F}\). The boundary of surfaces have no endpoints, and are ``closed loops":
 \[\nabla \bullet (\nabla \times \mathbf{F}) = 0\]    
@@ -39,7 +39,7 @@ If multi-path \(\mathbf{J}\) has no endpoints, then \(\mathbf{J}\) will be refer
 
 While the boundary of any multi-surface is a multi-loop, it is also the case that given an arbitrary multi-loop \(\mathbf{J}\), that there exists some multi-surface whose boundary is \(\mathbf{J}\):
 
-\begin{thm}
+\begin{thm}\label{thm:filling_closed_loops}
 If multi-path \(\mathbf{J}\) is such that \(\nabla \bullet \mathbf{J} = 0\) then there exists a multi-surface \(\mathbf{F}\) such that \(\nabla \times \mathbf{F} = \mathbf{J}\)
 \end{thm}
 
@@ -58,7 +58,7 @@ Below are examples of filling in more exotic loops with surfaces. On the left, t
 
 
 
-\section{Closed surfaces}
+\section{Closed surfaces}\label{sec:closed_surfaces}
 
 Consider a multi-volume \(U\). The surfaces of volumes have no boundaries, and are ``closed surfaces/bubbles":
 \[\nabla \times (\nabla U) = 0\]    
@@ -69,7 +69,7 @@ If multi-surface \(\mathbf{F}\) has no boundary, then \(\mathbf{F}\) will be ref
 
 While the surface of any multi-volume is a multi-bubble, it is also the case that given an arbitrary multi-bubble \(\mathbf{F}\), that there exists {\bf a unique} multi-volume whose surface is \(\mathbf{F}\):
 
-\begin{thm}
+\begin{thm}\label{thm:filling_closed_surfaces}
 If multi-surface \(\mathbf{F}\) is such that \(\nabla \times \mathbf{F} = 0\)
 then there exists a {\bf unique} multi-volume \(U\) such that \(\nabla U = \mathbf{F}\)
 \end{thm}

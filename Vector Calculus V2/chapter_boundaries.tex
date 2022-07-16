@@ -45,7 +45,7 @@ The equivalence of two multi-structures can alternately be determined by moving 
 
 Two multi-points can be determined to be equal by ``scanning" for differences between the two multi-points using a small volume ``scanning window". Let \(\rho\) denote an arbitrary multi-point. If \(U\) is a tiny single volume, then \(\int (\rho \cdot U)\) is the number of points (weighted accordingly) from \(\rho\) that are found within the tiny ``scanning window" \(U\). By moving the scanning window \(U\) around as well as adjusting the size, and then computing \(\int (\rho \cdot U)\), the constituent points from \(\rho\) can effectively be ``felt" for, and differences between the multi-points identified.  
 
-\begin{thm}
+\begin{thm}\label{thm:scanning_points}
 If \(\rho_1\) and \(\rho_2\) are equivalent multi-points: \(\rho_1 = \rho_2\), then for any choice of multi-volume \(U\), 
 \[\int (\rho_1 \cdot U) = \int (\rho_2 \cdot U)\]
 Conversely, if \(\rho_1\) and \(\rho_2\) are multi-points, but it is instead known that for any choice of multi-volume \(U\) that 
@@ -72,7 +72,7 @@ In the image on the right, the difference between \(\rho_1\) and \(\rho_2\) is t
 
 Two multi-paths can be determined to be equal by ``scanning" for differences between the two multi-paths using a small surface ``scanning window". Let \(\mathbf{J}\) denote an arbitrary multi-path. If \(\mathbf{F}\) is a tiny single surface, then \(\int (\mathbf{J} \bullet \mathbf{F})\) is the number of intersection points (weighted accordingly) resulting from \(\mathbf{J}\) intersecting the tiny ``scanning window" \(\mathbf{F}\). By moving the scanning window \(\mathbf{F}\) around as well as adjusting the size, and then computing \(\int (\mathbf{J} \bullet \mathbf{F})\), the constituent paths from \(\mathbf{J}\) can effectively be ``felt" for, and differences between the multi-paths identified.  
 
-\begin{thm}
+\begin{thm}\label{thm:scanning_paths}
 If \(\mathbf{J}_1\) and \(\mathbf{J}_2\) are equivalent multi-paths: \(\mathbf{J}_1 = \mathbf{J}_2\), then for any choice of multi-surface \(\mathbf{F}\), 
 \[\int (\mathbf{J}_1 \bullet \mathbf{F}) = \int (\mathbf{J}_2 \bullet \mathbf{F})\]
 Conversely, if \(\mathbf{J}_1\) and \(\mathbf{J}_2\) are multi-paths, but it is instead known that for any choice of multi-surface \(\mathbf{F}\) that 
@@ -101,7 +101,7 @@ In the image on the right, the difference between \(\mathbf{J}_1\) and \(\mathbf
 
 Two multi-surfaces can be determined to be equal by ``scanning" for differences between the two multi-surfaces using a small path ``scanning window". Let \(\mathbf{F}\) denote an arbitrary multi-surface. If \(\mathbf{J}\) is a tiny single path, then \(\int (\mathbf{F} \bullet \mathbf{J})\) is the number of intersection points (weighted accordingly) resulting from \(\mathbf{F}\) intersecting the tiny ``scanning window" \(\mathbf{J}\). By moving the scanning window \(\mathbf{J}\) around as well as adjusting the length, and then computing \(\int (\mathbf{F} \bullet \mathbf{J})\), the constituent surfaces from \(\mathbf{F}\) can effectively be ``felt" for, and differences between the multi-surfaces identified.  
 
-\begin{thm}
+\begin{thm}\label{thm:scanning_surfaces}
 If \(\mathbf{F}_1\) and \(\mathbf{F}_2\) are equivalent multi-surfaces: \(\mathbf{F}_1 = \mathbf{F}_2\), then for any choice of multi-path \(\mathbf{J}\), 
 \[\int (\mathbf{F}_1 \bullet \mathbf{J}) = \int (\mathbf{F}_2 \bullet \mathbf{J})\]
 Conversely, if \(\mathbf{F}_1\) and \(\mathbf{F}_2\) are multi-surfaces, but it is instead known that for any choice of multi-path \(\mathbf{J}\) that 
@@ -130,7 +130,7 @@ In the image on the right, the difference between \(\mathbf{F}_1\) and \(\mathbf
 
 Two multi-volumes can be determined to be equal by ``scanning" for differences between the two multi-volumes using ``point probes". Let \(U\) denote an arbitrary multi-volume. If \(\rho\) is a single point, then \(\int (U \cdot \rho)\) is the number of volumes (weighted accordingly) from \(U\) that contain the probe \(\rho\). By moving the probe \(\rho\) around, and then computing \(\int (U \cdot \rho)\), the constituent volumes from \(U\) can effectively be ``felt" for, and differences between the multi-volumes identified.  
 
-\begin{thm}
+\begin{thm}\label{thm:scanning_volumes}
 If \(U_1\) and \(U_2\) are equivalent multi-volumes: \(U_1 = U_2\), then for any choice of multi-point \(\rho\), 
 \[\int (U_1 \cdot \rho) = \int (U_2 \cdot \rho)\]
 Conversely, if \(U_1\) and \(U_2\) are multi-volumes, but it is instead known that for any choice of multi-point \(\rho\) that 

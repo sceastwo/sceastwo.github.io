@@ -175,7 +175,7 @@ Given multi-surfaces \(\mathbf{F}\) and \(\mathbf{G}\),
 Let \(\mathbf{f}\) and \(\mathbf{g}\) be infinitesimally small surfaces with weights of \(w_{\perp}\). Let the dual paths \(\epsilon(\mathbf{f})\) and \(\epsilon(\mathbf{g})\) have weights of \(w_{\parallel}\). There are two scenarios. In the first scenario, \(\mathbf{f}\) and \(\mathbf{g}\) are at different positions. In the second scenario, \(\mathbf{f}\) and \(\mathbf{g}\) are at the same position. These scenarios are depicted on the right.
 
 \begin{itemize}
-\item In case 1, \(\epsilon(\mathbf{f}) \bullet \mathbf{g} = 0\) and \(\mathbf{f} \cdot \epsilon(\mathbf{g}) = 0\) so \(\epsilon(\mathbf{f}) \bullet \mathbf{g} = \mathbf{f} \cdot \epsilon(\mathbf{g})\). 
+\item In case 1, \(\epsilon(\mathbf{f}) \bullet \mathbf{g} = 0\) and \(\mathbf{f} \bullet \epsilon(\mathbf{g}) = 0\) so \(\epsilon(\mathbf{f}) \bullet \mathbf{g} = \mathbf{f} \bullet \epsilon(\mathbf{g})\). 
 \item In case 2, the intersection point \(\epsilon(\mathbf{f}) \bullet \mathbf{g}\) has a weight of \(w_{\parallel} w_{\perp}\). The intersection point \(\mathbf{f} \bullet \epsilon(\mathbf{g})\) also has a weight of \(w_{\parallel} w_{\perp}\), and has the same position. Therefore \(\epsilon(\mathbf{f}) \bullet \mathbf{g} = \mathbf{f} \bullet \epsilon(\mathbf{g})\).  
 \end{itemize}
 } & \parbox{0.5\textwidth}{
@@ -278,6 +278,42 @@ This expression computes the total volume of \(U\).
 {\bf In summary, if an operation cannot be performed, compute the dual of one (or both) of the operands until the operation is possible.}
 
 
+
+\section{Quantifying duality}
+
+Now that the concept of duality has been established, the relationship between the functions that quantify dual multi-structures is now to be addressed. 
+
+Firstly, consider a multi-volume \(U\) quantified by the function \(U(\mathbf{q})\), and the dual multi-point \(\rho = \iota(U)\). The function \(\rho(\mathbf{q})\) that quantifies \(\rho\) is exactly the same as the function that quantifies \(U\): 
+
+For all positions \(\mathbf{q}\),
+\[\rho(\mathbf{q}) = U(\mathbf{q})\]
+
+{\bf The relationship between multi-surfaces and their dual multi-paths is far less trivial however.} Let \(\mathbf{D}\) be a multi-path, and \(\mathbf{E}\) be the dual multi-surface: \(\mathbf{D} = \epsilon(\mathbf{E})\). If \(\mathbf{D}(\mathbf{q}) = \begin{bmatrix} D_1(\mathbf{q}) \\ D_2(\mathbf{q}) \\ D_3(\mathbf{q}) \end{bmatrix}\) is the vector valued function that quantifies \(\mathbf{D}\) and \(\mathbf{E}(\mathbf{q}) = \begin{bmatrix} E_1(\mathbf{q}) \\ E_2(\mathbf{q}) \\ E_3(\mathbf{q}) \end{bmatrix}\) is the vector valued function that quantifies \(\mathbf{E}\), then for all positions \(\mathbf{q}\), 
+
+\[\left\{\begin{array}{c} 
+D_1(\mathbf{q}) = \epsilon_{1,1}(\mathbf{q})E_1(\mathbf{q}) + \epsilon_{1,2}(\mathbf{q})E_2(\mathbf{q}) + \epsilon_{1,3}(\mathbf{q})E_3(\mathbf{q}) = \sum_j \epsilon_{1,j}(\mathbf{q})E_j(\mathbf{q}) \\ 
+D_2(\mathbf{q}) = \epsilon_{2,1}(\mathbf{q})E_1(\mathbf{q}) + \epsilon_{2,2}(\mathbf{q})E_2(\mathbf{q}) + \epsilon_{2,3}(\mathbf{q})E_3(\mathbf{q}) = \sum_j \epsilon_{2,j}(\mathbf{q})E_j(\mathbf{q}) \\ 
+D_3(\mathbf{q}) = \epsilon_{3,1}(\mathbf{q})E_1(\mathbf{q}) + \epsilon_{3,2}(\mathbf{q})E_2(\mathbf{q}) + \epsilon_{3,3}(\mathbf{q})E_3(\mathbf{q}) = \sum_j \epsilon_{3,j}(\mathbf{q})E_j(\mathbf{q}) 
+\end{array}\right.\]
+
+Where all of the \(\epsilon_{i,j}(\mathbf{q})\) are coefficients that quantify the relationship \(\mathbf{D} = \epsilon(\mathbf{E})\).
+
+This relationship can be abbreviated using ``matrix form": 
+\[\begin{bmatrix} D_1(\mathbf{q}) \\ D_2(\mathbf{q}) \\ D_3(\mathbf{q}) \end{bmatrix} 
+= \begin{bmatrix}
+\epsilon_{1,1}(\mathbf{q}) & \epsilon_{1,2}(\mathbf{q}) & \epsilon_{1,3}(\mathbf{q}) \\ 
+\epsilon_{2,1}(\mathbf{q}) & \epsilon_{2,2}(\mathbf{q}) & \epsilon_{2,3}(\mathbf{q}) \\ 
+\epsilon_{3,1}(\mathbf{q}) & \epsilon_{3,2}(\mathbf{q}) & \epsilon_{3,3}(\mathbf{q}) 
+\end{bmatrix}
+\begin{bmatrix} E_1(\mathbf{q}) \\ E_2(\mathbf{q}) \\ E_3(\mathbf{q}) \end{bmatrix}\]  
+
+In order for the relationship \(\epsilon(\mathbf{F}) \bullet \mathbf{G} = \mathbf{F} \bullet \epsilon(\mathbf{G})\) to hold, the matrix must be ``symmetric":
+\[\epsilon_{1,2}(\mathbf{q}) = \epsilon_{2,1}(\mathbf{q}) \quad\quad\text{and}\quad\quad 
+\epsilon_{1,3}(\mathbf{q}) = \epsilon_{3,1}(\mathbf{q}) \quad\quad\text{and}\quad\quad 
+\epsilon_{2,3}(\mathbf{q}) = \epsilon_{3,2}(\mathbf{q})\] 
+
+
+
 \section{Energy}
 
 \subsection{Path energy}
@@ -337,13 +373,14 @@ The energy is \(0\), and this only occurs if \(\mathbf{D} = 0\) and \(\mathbf{E}
 
 A consequence of this fact is that if two path-surface pairs have the same end-points and counterclockwise boundaries, then they are equivalent: 
 
-\begin{cor}\label{cor:loop_bubble_duality}
+\textbf{Corollary:}
+
 Let \(\mathbf{D}_1\) and \(\mathbf{E}_1\) be a multi-path and a multi-surface pair that are dual to each other: \(\mathbf{D}_1 = \epsilon(\mathbf{E}_1)\)
 
 Let \(\mathbf{D}_2\) and \(\mathbf{E}_2\) also be a multi-path and a multi-surface pair that are dual to each other: \(\mathbf{D}_2 = \epsilon(\mathbf{E}_2)\)
 
 If \(\nabla \bullet \mathbf{D}_1 = \nabla \bullet \mathbf{D}_2\) and \(\nabla \times \mathbf{E}_1 = \nabla \times \mathbf{E}_2\), then \(\mathbf{D}_1 = \mathbf{D}_2\) and \(\mathbf{E}_1 = \mathbf{E}_2\).   
-\end{cor}
+
 \textbf{Proof:}
 
 Let \(\mathbf{D}_{\text{loop}} = \mathbf{D}_1 - \mathbf{D}_2\). \(\mathbf{D}_{\text{loop}}\) is a multi-loop:
@@ -363,8 +400,8 @@ From theorem \ref{thm:loop_bubble_duality}, \(\mathbf{D}_{\text{loop}} = 0\) and
 
 Given a balanced multi-point \(\rho\), it is known via theorem \ref{thm:dot-to-dot} from section \ref{sec:balanced_multi-points} that there must exist a multi-path \(\mathbf{D}\) such that \(\nabla \bullet \mathbf{D} = \rho\). However, the choice of \(\mathbf{D}\) is {\bf not unique}. A unique choice of multi-path \(\mathbf{D}\) is the choice that minimizes the energy \(\frac{1}{2}\int (\mathbf{D} \bullet \mathbf{D})\). It will now be demonstrated that the energy minimizing choice is both unique and is dual to a multi-bubble:
 
-\begin{thm}
-Given a balanced multi-point \(\rho\), the multi-path \(\mathbf{D}\) that satisfies \(\nabla \bullet \mathbf{D} = \rho\) and minimizes the energy \(\frac{1}{2}\int (\mathbf{D} \bullet \mathbf{D})\) is both {\bf unique} and is dual to a multi-bubble: i.e. \(\nabla \times \mathbf{D} = 0\). 
+\begin{thm}\label{thm:low_energy_path}
+Given a balanced multi-point \(\rho\), the multi-path \(\mathbf{D}\) that satisfies \(\nabla \bullet \mathbf{D} = \rho\) and minimizes the energy \(\frac{1}{2}\int (\mathbf{D} \bullet \epsilon^{-1}(\mathbf{D}))\) is both {\bf unique} and is dual to a multi-bubble: i.e. \(\nabla \times \epsilon^{-1}(\mathbf{D}) = 0\). 
 \end{thm}
 \textbf{Proof:}
 
@@ -408,14 +445,41 @@ Treat \(\mathbf{F}\) as a ``scanning window" from theorem \ref{thm:scanning_path
 
 It lastly needs to be demonstrated that the optimal choice of \(\mathbf{D}\) is unique. Let \(\mathbf{D}_1\) and \(\mathbf{D}_2\) denote two optimal choices of \(\mathbf{D}\). This means that \(\nabla \bullet \mathbf{D}_1 = \nabla \bullet \mathbf{D}_2 = \rho\) and \(\nabla \times \epsilon^{-1}(\mathbf{D}_1) = \nabla \times \epsilon^{-1}(\mathbf{D}_2) = 0\). From the corollary of theorem \ref{thm:loop_bubble_duality}, \(\mathbf{D}_1 = \mathbf{D}_2\). \(\Box\) 
 
+\textbf{Corollary:}
+
+Given the balanced multi-points \(\rho_1\) and \(\rho_2\), if \(\mathbf{D}_1\) and \(\mathbf{D}_2\) are the minimum energy multi-paths that satisfy \(\nabla \bullet \mathbf{D}_1 = \rho_1\) and \(\nabla \bullet \mathbf{D}_2 = \rho_2\), then \(\mathbf{D}_{1+2} = \mathbf{D}_1 + \mathbf{D}_2\) is the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{1+2} = \rho_1 + \rho_2\). Moreover, given any real number \(c\), \(\mathbf{D}_{c1} = c \cdot \mathbf{D}_1\) is the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{c1} = c \cdot \rho_1\).
+
+\textbf{Proof:}
+
+Firstly, 
+\[\nabla \bullet \mathbf{D}_{1+2} = \nabla \bullet \mathbf{D}_1 + \nabla \bullet \mathbf{D}_2 = \rho_1 + \rho_2\]
+and 
+\[\nabla \bullet \mathbf{D}_{c1} = c \cdot (\nabla \bullet \mathbf{D}_1) = c \cdot \rho_1\]
+so \(\mathbf{D}_{1+2}\) and \(\mathbf{D}_{c1}\) satisfy their respective equations.
+
+From theorem \ref{thm:low_energy_path}, \(\mathbf{D}_1\) and \(\mathbf{D}_2\) are multi-bubbles, and \(\mathbf{D}_{1+2}\) and \(\mathbf{D}_{c1}\) must be multi-bubbles to be minimum energy multi-paths. 
+\[\nabla \times \mathbf{D}_{1+2} = \nabla \times (\mathbf{D}_1 + \mathbf{D}_2) = \nabla \times \mathbf{D}_1 + \nabla \times \mathbf{D}_2 = 0 + 0 = 0\]
+and 
+\[\nabla \times \mathbf{D}_{c1} = \nabla \times (c \cdot \mathbf{D}_1) = c \cdot (\nabla \times \mathbf{D}_1) = c \cdot 0 = 0\]
+Therefore \(\mathbf{D}_{1+2}\) and \(\mathbf{D}_{c1}\) are multi-bubbles and are hence minimum energy multi-paths. \(\Box\)
+
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+On the right is shown a minimum energy multi-path that connects a multi-point that consists of a single point with a weight of \(+1\) and a single point with a weight of \(-1\). The low energy multi-path is depicted in blue, while the dual multi-bubble is depicted in the background using green. While some paths seem to be missing in this image, primarily near the center, this is due to the fact that this image is a 2D cross section of a 3D scenario.
+} & \parbox{0.5\textwidth}{
+\includegraphics[width = 0.5\textwidth]{Duality/primary_multi-path_with_simple_balanced_multi-point_3}
+}
+\end{tabular}
+
+
 
 
 \subsection{Low energy multi-surface}
 
 Given a multi-loop \(\mathbf{J}\), it is known via theorem \ref{thm:filling_closed_loops} from section \ref{sec:closed_loops} that there must exist a multi-surface \(\mathbf{E}\) such that \(\nabla \times \mathbf{E} = \mathbf{J}\). However, the choice of \(\mathbf{E}\) is {\bf not unique}. A unique choice of multi-surface \(\mathbf{E}\) is the choice that minimizes the energy \(\frac{1}{2}\int (\mathbf{E} \bullet \mathbf{E})\). It will now be demonstrated that the energy minimizing choice is both unique and is dual to a multi-loop:
 
-\begin{thm}
-Given a multi-loop \(\mathbf{J}\), the multi-surface \(\mathbf{E}\) that satisfies \(\nabla \times \mathbf{E} = \mathbf{J}\) and minimizes the energy \(\frac{1}{2}\int (\mathbf{E} \bullet \mathbf{E})\) is both {\bf unique} and is dual to a multi-loop: i.e. \(\nabla \bullet \mathbf{E} = 0\). 
+\begin{thm}\label{thm:low_energy_surface}
+Given a multi-loop \(\mathbf{J}\), the multi-surface \(\mathbf{E}\) that satisfies \(\nabla \times \mathbf{E} = \mathbf{J}\) and minimizes the energy \(\frac{1}{2}\int (\epsilon(\mathbf{E}) \bullet \mathbf{E})\) is both {\bf unique} and is dual to a multi-loop: i.e. \(\nabla \bullet \epsilon(\mathbf{E}) = 0\). 
 \end{thm}
 \textbf{Proof:}
 
@@ -459,9 +523,135 @@ Treat \(U\) as a ``scanning window" from theorem \ref{thm:scanning_points}. From
 
 It lastly needs to be demonstrated that the optimal choice of \(\mathbf{E}\) is unique. Let \(\mathbf{E}_1\) and \(\mathbf{E}_2\) denote two optimal choices of \(\mathbf{E}\). This means that \(\nabla \times \mathbf{E}_1 = \nabla \times \mathbf{E}_2 = \mathbf{J}\) and \(\nabla \bullet \epsilon(\mathbf{E}_1) = \nabla \bullet \epsilon(\mathbf{E}_2) = 0\). From the corollary of theorem \ref{thm:loop_bubble_duality}, \(\mathbf{E}_1 = \mathbf{E}_2\). \(\Box\) 
 
+\textbf{Corollary:}
+
+Given the multi-loops \(\mathbf{J}_1\) and \(\mathbf{J}_2\), if \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are the minimum energy multi-surfaces that satisfy \(\nabla \times \mathbf{E}_1 = \mathbf{J}_1\) and \(\nabla \times \mathbf{E}_2 = \mathbf{J}_2\), then \(\mathbf{E}_{1+2} = \mathbf{E}_1 + \mathbf{E}_2\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{\text{total}} = \mathbf{J}_1 + \mathbf{J}_2\). Moreover, given any real number \(c\), \(\mathbf{E}_{c1} = c \cdot \mathbf{E}_1\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{c1} = c \cdot \mathbf{J}_1\).
+
+\textbf{Proof:}
+
+Firstly, 
+\[\nabla \times \mathbf{E}_{1+2} = \nabla \times \mathbf{E}_1 + \nabla \times \mathbf{E}_2 = \mathbf{J}_1 + \mathbf{J}_2\]
+and
+\[\nabla \times \mathbf{E}_{c1} = c \cdot (\nabla \times \mathbf{E}_1) = c \cdot \mathbf{J}_1\]
+so \(\mathbf{E}_{1+2}\) and \(\mathbf{E}_{c1}\) satisfy their respective equations.
+
+From theorem \ref{thm:low_energy_surface}, \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are multi-loops, and \(\mathbf{E}_{1+2}\) and \(\mathbf{E}_{c1}\) must be multi-loops to be minimum energy multi-surfaces. 
+\[\nabla \bullet \mathbf{E}_{1+2} = \nabla \bullet (\mathbf{E}_1 + \mathbf{E}_2) = \nabla \bullet \mathbf{E}_1 + \nabla \bullet \mathbf{E}_2 = 0 + 0 = 0\]
+and
+\[\nabla \bullet \mathbf{E}_{c1} = \nabla \bullet (c \cdot \mathbf{E}_1) = c \cdot (\nabla \bullet \mathbf{E}_1) = c \cdot 0 = 0\]
+Therefore \(\mathbf{E}_{1,2}\) and \(\mathbf{E}_{c1}\) are multi-loops and are hence minimum energy multi-surfaces. \(\Box\)
+
+
+
+\subsection{The Helmholtz decomposition theorem}
+
+\begin{thm}\label{thm:exactly_one_solution}   
+Given an arbitrary balanced multi-point \(\rho\), and an arbitrary multi-loop \(\mathbf{J}\), then there exists a {\bf unique} multi-path \(\mathbf{D}\) with dual multi-surface \(\mathbf{E}\) such that \(\nabla \bullet \mathbf{D} = \rho\) and \(\nabla \times \mathbf{E} = \mathbf{J}\).
+\end{thm}
+\textbf{Proof:}
+
+From theorem \ref{thm:low_energy_path}, there exists a unique multi-path \(\mathbf{D}_0\) such that \(\nabla \bullet \mathbf{D}_0 = \rho\) and \(\nabla \times \epsilon^{-1}(\mathbf{D}_0) = 0\). 
+
+From theorem \ref{thm:low_energy_surface}, there exists a unique multi-surface \(\mathbf{E}_0\) such that \(\nabla \times \mathbf{E}_0 = \mathbf{J}\) and \(\nabla \bullet \epsilon(\mathbf{E}_0) = 0\). 
+
+Let multi-path \(\mathbf{D} = \mathbf{D}_0 + \epsilon(\mathbf{E}_0)\) and multi-surface \(\mathbf{E} = \epsilon^{-1}(\mathbf{D}_0) + \mathbf{E}_0\). It is clear that \(\mathbf{D}\) and \(\mathbf{E}\) are dual to each other. It is also easy to confirm that:
+
+\[\nabla \bullet \mathbf{D} = \nabla \bullet (\mathbf{D}_0 + \epsilon(\mathbf{E}_0)) = \nabla \bullet \mathbf{D}_0 + \nabla \bullet \epsilon(\mathbf{E}_0) = \rho + 0 = \rho\]      
+and 
+\[\nabla \times \mathbf{E} = \nabla \times (\epsilon^{-1}(\mathbf{D}_0) + \mathbf{E}_0) = \nabla \times \epsilon^{-1}(\mathbf{D}_0) + \nabla \times \mathbf{E}_0 = 0 + \mathbf{J} = \mathbf{J}\]
+
+From the corollary of theorem \ref{thm:loop_bubble_duality}, \(\mathbf{D}\) and \(\mathbf{E}\) are unique. \(\Box\)
+
+
+\begin{thm}\label{thm:helmholtz_decomposition_theorem} 
+Given an arbitrary multi-path \(\mathbf{J}\), then there exists a {\bf unique} multi-loop \(\mathbf{D}\) (\(\nabla \bullet \mathbf{D} = 0\)) and a unique multi-bubble \(\mathbf{E}\) (\(\nabla \times \mathbf{E} = 0\)) such that \(\mathbf{J} = \mathbf{D} + \epsilon(\mathbf{E})\). This is referred to as the {\bf Helmholtz decomposition theorem}, which states that any multi-path or multi-surface is the sum of a multi-loop and a multi-bubble.
+\end{thm}
+\textbf{Proof:}
+
+\(\nabla \bullet \mathbf{J}\) is a balanced multi-point. From theorem \ref{thm:low_energy_path}, let \(\mathbf{D}_{\text{bubble}}\) denote the unique multi-path such that \(\nabla \bullet \mathbf{D}_{\text{bubble}} = \nabla \bullet \mathbf{J}\) and \(\nabla \times \epsilon^{-1}(\mathbf{D}_{\text{bubble}}) = 0\).
+
+Let \(\mathbf{D} = \mathbf{J} - \mathbf{D}_{\text{bubble}}\), and let \(\mathbf{E} = \epsilon^{-1}(\mathbf{D}_{\text{bubble}})\). It is already known that \(\mathbf{E}\) is a multi-bubble. Since \(\nabla \bullet \mathbf{D} = \nabla \bullet \mathbf{J} - \nabla \bullet \mathbf{D}_{\text{bubble}} = \nabla \bullet \mathbf{J} - \nabla \bullet \mathbf{J} = 0\), \(\mathbf{D}\) is a multi-loop. 
+
+\(\mathbf{D}\) is a multi-loop and \(\mathbf{E}\) is a multi-bubble such that \(\mathbf{J} = \mathbf{D} + \epsilon(\mathbf{E})\). Since the choice of \(\mathbf{D}_{\text{bubble}}\) is unique, \(\mathbf{D}\) and \(\mathbf{E}\) are unique also. \(\Box\)
+
 
 
 \section{Inductance}
+
+\subsection{Balanced multi-point inductance}
+
+\textbf{Self inductance}
+
+Given a balanced multi-point \(\rho\), the ``self inductance" of \(\rho\), often denoted by \(L(\rho)\), is the \(2 \times\) the minimum possible energy of the multi-path whose endpoints are \(\rho\). If \(\mathbf{D}_{\text{min}}\) is the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{\text{min}} = \rho\), then 
+\[L(\rho) = \int (\mathbf{D}_{\text{min}} \bullet \mathbf{D}_{\text{min}})\]  
+
+If \(\mathbf{J}\) were an arbitrary multi-path whose endpoints are \(\rho\), \(\nabla \bullet \mathbf{J} = \rho\), then \(L(\rho)\) can also be interpreted as follows. Since \(\epsilon^{-1}(\mathbf{D}_{\text{min}})\) is a multi-bubble (see theorem \ref{thm:low_energy_path}), it then follows from theorem \ref{thm:different_paths_same_result} that 
+\[L(\rho) = \int (\mathbf{D}_{\text{min}} \bullet \epsilon^{-1}(\mathbf{D}_{\text{min}})) = \int (\mathbf{J} \bullet \epsilon^{-1}(\mathbf{D}_{\text{min}}))\]
+In other words, \(L(\rho)\) is the total number of surfaces from \(\epsilon^{-1}(\mathbf{D}_{\text{min}})\) that any path connecting the points from \(\rho\) will have to pass through.
+
+\vspace{5mm}
+
+\textbf{Mutual inductance}
+
+Given two balanced multi-points \(\rho_1\) and \(\rho_2\), the ``mutual inductance" between \(\rho_1\) and \(\rho_2\), often demoted by \(M(\rho_1, \rho_2)\), is defined as follows. 
+Let \(\mathbf{D}_{\text{min},1}\) be the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{\text{min},1} = \rho_1\).
+Let \(\mathbf{D}_{\text{min},2}\) be the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{\text{min},2} = \rho_2\). 
+The mutual inductance is 
+\[M(\rho_1, \rho_2) = \int (\mathbf{D}_{\text{min},1} \bullet \mathbf{D}_{\text{min},2})\]
+One immediate observation is that \(M(\rho_1, \rho_2) = M(\rho_2, \rho_1)\). It is also worth noting that \(L(\rho) = M(\rho,\rho)\).
+
+If \(\mathbf{J}_1\) and \(\mathbf{J}_2\) are arbitrary multi-paths whose endpoints are \(\rho_1\) and \(\rho_2\) respectively, \(\nabla \bullet \mathbf{J}_1 = \rho_1\) and \(\nabla \bullet \mathbf{J}_2 = \rho_2\), then \(M(\rho_1, \rho_2)\) can be interpreted as follows. 
+
+Since \(\epsilon^{-1}(\mathbf{D}_{\text{min},2})\) is a multi-bubble, it then follows from theorem \ref{thm:different_paths_same_result} that 
+\[M(\rho_1, \rho_2) = \int (\mathbf{D}_{\text{min},1} \bullet \epsilon^{-1}(\mathbf{D}_{\text{min},2})) = \int (\mathbf{J}_1 \bullet \epsilon^{-1}(\mathbf{D}_{\text{min},2}))\]
+In other words, \(M(\rho_1, \rho_2)\) is the total number of surfaces from \(\epsilon^{-1}(\mathbf{D}_{\text{min},2})\) that any path connecting the points from \(\rho_1\) will have to pass through.
+
+Similarly, since \(\epsilon^{-1}(\mathbf{D}_{\text{min},1})\) is a multi-bubble, it then follows from theorem \ref{thm:different_paths_same_result} that 
+\[M(\rho_1, \rho_2) = \int (\mathbf{D}_{\text{min},2} \bullet \epsilon^{-1}(\mathbf{D}_{\text{min},1})) = \int (\mathbf{J}_2 \bullet \epsilon^{-1}(\mathbf{D}_{\text{min},1}))\]
+In other words, \(M(\rho_1, \rho_2)\) is the total number of surfaces from \(\epsilon^{-1}(\mathbf{D}_{\text{min},1})\) that any path connecting the points from \(\rho_2\) will have to pass through.
+
+\vspace{5mm}
+
+\textbf{Properties of the inductance}
+
+\begin{thm}\label{thm:balanced_multi-point_inductance_properties}
+Let \(\rho_1\), \(\rho_2\), and \(\rho_3\) be arbitrary balanced multi-points. Let \(c\) be an arbitrary real number. It is then the case that:
+
+a)
+\[M(\rho_1 + \rho_2, \rho_3) = M(\rho_1, \rho_3) + M(\rho_2, \rho_3)\]
+
+b)
+\[M(c \cdot \rho_1, \rho_3) = c \cdot M(\rho_1, \rho_3)\]
+
+c)
+\[L(\rho_1 + \rho_2) = L(\rho_1) + 2M(\rho_1, \rho_2) + L(\rho_2)\]
+
+d)
+\[L(c \cdot \rho_1) = c^2 \cdot L(\rho_1)\]
+\end{thm}
+\textbf{Proof:}
+
+Let \(\mathbf{D}_1\), \(\mathbf{D}_2\), and \(\mathbf{D}_3\) be the minimum energy multi-paths that satisfy \(\nabla \bullet \mathbf{D}_1 = \rho_1\); \(\nabla \bullet \mathbf{D}_2 = \rho_2\); and \(\nabla \bullet \mathbf{D}_3 = \rho_3\) respectively. The following can then be computed:
+
+\begin{itemize}
+\item[a)]
+The minimum energy multi-path \(\mathbf{D}_{1+2}\) that satisfies \(\nabla \bullet \mathbf{D}_{1+2} = \rho_1 + \rho_2\) is \(\mathbf{D}_{1+2} = \mathbf{D}_1 + \mathbf{D}_2\)
+\begin{align*}
+M(\rho_1 + \rho_2, \rho_3) = & \int (\mathbf{D}_{1+2} \bullet \mathbf{D}_3) = \int ((\mathbf{D}_1 + \mathbf{D}_2) \bullet \mathbf{D}_3) = \int (\mathbf{D}_1 \bullet \mathbf{D}_3) + \int (\mathbf{D}_2 \bullet \mathbf{D}_3) \\
+= & M(\rho_1, \rho_3) + M(\rho_2, \rho_3)
+\end{align*} 
+%%%
+\item[b)]
+The minimum energy multi-path \(\mathbf{D}_{c1}\) that satisfies \(\nabla \bullet \mathbf{D}_{c1} = c \cdot \rho_1\) is \(\mathbf{D}_{c1} = c \cdot \mathbf{D}_1\)
+\begin{align*}
+M(c \cdot \rho_1, \rho_3) = & \int (\mathbf{D}_{c1} \bullet \mathbf{D}_3) = \int ((c \cdot \mathbf{D}_1) \bullet \mathbf{D}_3) = c\int (\mathbf{D}_1 \bullet \mathbf{D}_3) \\
+= & c \cdot M(\rho_1, \rho_3)
+\end{align*} 
+\end{itemize}   
+
+
+
+\subsection{Multi-loop inductance}
 
 
 

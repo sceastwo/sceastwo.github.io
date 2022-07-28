@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Shawn Eastwood
 -- 
 -- Create Date: 07/22/2022 11:41:10 AM
 -- Design Name: 
@@ -34,7 +34,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity debouncer is
     Generic ( the_max_count : integer := 999;
               counter_width : integer := 10);
-    Port ( clk : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC; -- 10ns period
            reset : in STD_LOGIC;
            D : in STD_LOGIC;
            Q : out STD_LOGIC);

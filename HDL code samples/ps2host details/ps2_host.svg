@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="160mm"
+   width="145mm"
    height="130mm"
-   viewBox="0 0 160 130"
+   viewBox="0 0 145 130"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="82.858508"
-     inkscape:cy="239.20223"
+     inkscape:cx="426.51405"
+     inkscape:cy="279.60833"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -132,25 +132,25 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="102.35342"
-       y="223.54538"
+       x="95.077377"
+       y="213.24551"
        id="text865"><tspan
          sodipodi:role="line"
          id="tspan863"
-         x="102.35342"
-         y="223.54538"
-         style="font-size:5.64444447px;stroke-width:0.26458332">ps2_clk</tspan></text>
+         x="95.077377"
+         y="213.24551"
+         style="font-size:5.64444447px;stroke-width:0.26458332">ps2_clk_in</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="97.899208"
-       y="243.3559"
+       x="90.245193"
+       y="223.32317"
        id="text865-5"><tspan
          sodipodi:role="line"
          id="tspan863-8"
-         x="97.899208"
-         y="243.3559"
-         style="font-size:5.64444447px;stroke-width:0.26458332">ps2_data</tspan></text>
+         x="90.245193"
+         y="223.32317"
+         style="font-size:5.64444447px;stroke-width:0.26458332">ps2_data_in</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -297,47 +297,34 @@
          inkscape:connector-curvature="0" />
     </g>
     <g
-       id="g911-6-6"
-       transform="rotate(-90,126.5,153.5)">
+       id="g914"
+       transform="translate(0,5)">
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path829-4-7"
-         d="m 58,152 v 30"
+         d="m 125,207 h 15"
          style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
-         id="path846-5-2"
-         d="m 55,170 h 6 l -3,6 z"
-         style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <path
-         sodipodi:nodetypes="cccc"
-         inkscape:connector-curvature="0"
          id="path846-5-2-2"
-         d="m 61,164 h -6 l 3,-6 z"
+         d="m 134,204 v 6 l -6,-3 z"
          style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
     <g
-       id="g911-6-6-4"
-       transform="rotate(-90,136.5,163.5)">
+       id="g939">
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path829-4-7-4"
-         d="m 58,152 v 30"
+         d="m 125,242 h 15"
          style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
          id="path846-5-2-6"
-         d="m 55,170 h 6 l -3,6 z"
-         style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <path
-         sodipodi:nodetypes="cccc"
-         inkscape:connector-curvature="0"
-         id="path846-5-2-2-0"
-         d="m 61,164 h -6 l 3,-6 z"
+         d="m 131,245 v -6 l 6,3 z"
          style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
     <text
@@ -373,5 +360,59 @@
          x="43.1637"
          y="289.51782"
          style="font-size:14.11111069px;stroke-width:0.26458332">ps2_host</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="91.010765"
+       y="243.67209"
+       id="text865-7"><tspan
+         sodipodi:role="line"
+         id="tspan863-3"
+         x="91.010765"
+         y="243.67209"
+         style="font-size:5.64444447px;stroke-width:0.26458332">ps2_clk_out</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="86.35614"
+       y="253.78296"
+       id="text865-5-8"><tspan
+         sodipodi:role="line"
+         id="tspan863-8-9"
+         x="86.35614"
+         y="253.78296"
+         style="font-size:5.64444447px;stroke-width:0.26458332">ps2_data_out</tspan></text>
+    <g
+       transform="translate(0,15)"
+       id="g914-3">
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path829-4-7-5"
+         d="m 125,207 h 15"
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path846-5-2-2-4"
+         d="m 134,204 v 6 l -6,-3 z"
+         style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(0,10)"
+       id="g939-1">
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path829-4-7-4-0"
+         d="m 125,242 h 15"
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path846-5-2-6-4"
+         d="m 131,245 v -6 l 6,3 z"
+         style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
   </g>
 </svg>

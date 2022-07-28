@@ -81,8 +81,10 @@ When a change is not detected, if the counter is \(0\), then the input writes th
 \begin{itemize}
 \item Input port \texttt{clk} a clock with a 10ns period
 \item Input port \texttt{reset} an asynchronous reset port.  
-\item Two-way port \texttt{ps2\_clk} is the ps2 clock connection. {\bf This port connects to a remote device.} 
-\item Two-way port \texttt{ps2\_data} is the ps2 data connection. {\bf This port connects to a remote device.} 
+\item Input port \texttt{ps2\_clk\_in} is the input ps2 clock connection. {\bf This port connects to a remote device.} 
+\item Input port \texttt{ps2\_data\_in} is the input ps2 data connection. {\bf This port connects to a remote device.} 
+\item Output port \texttt{ps2\_clk\_out} is the output ps2 clock connection. {\bf This port connects to a remote device.} 
+\item Output port \texttt{ps2\_data\_out} is the output ps2 data connection. {\bf This port connects to a remote device.} 
 \item Output \(8\)-bit port \texttt{received\_byte} returns bytes that the host receives from the ps2 connection. 
 \item Output port \texttt{received\_flag} is a flag that is normally \texttt{0}, but emits a {\bf 1 clock period} pulse on the clock cycle where \texttt{received\_byte} is returning the byte received from the ps2 connection. 
 \item Input \(8\)-bit port \texttt{send\_byte} is the byte that is to be sent over the ps2 connection. 
@@ -92,8 +94,8 @@ When a change is not detected, if the counter is \(0\), then the input writes th
 
 {\bf The internal signals are:}
 \begin{itemize}
-\item Signal \texttt{i\_ps2\_clk} is the \texttt{ps2\_clk} signal filtered through a debouncer to eliminate transient pulses less than 1\(\mu\)s in duration. 
-\item Signal \texttt{i\_ps2\_data} is the \texttt{ps2\_data} signal filtered through a debouncer to eliminate transient pulses less than 1\(\mu\)s in duration. 
+\item Signal \texttt{i\_ps2\_clk} is the input \texttt{ps2\_clk\_in} signal filtered through a debouncer to eliminate transient pulses less than 1\(\mu\)s in duration. 
+\item Signal \texttt{i\_ps2\_data} is the input \texttt{ps2\_data\_in} signal filtered through a debouncer to eliminate transient pulses less than 1\(\mu\)s in duration. 
 \item Signal \texttt{i\_ps2\_clk\_d1} is \texttt{i\_ps2\_clk} delayed by 1 clock cycle to detect falling edges in \texttt{i\_ps2\_clk}. 
 \item Signal \texttt{i\_ps2\_clk\_falling\_edge} is high when the current value of \texttt{i\_ps2\_clk} is 0, while the value on the previous clock cycle is 1. 
 \item Signal \texttt{i\_direction} has 3 states: \texttt{S\_DIR\_IDLE}, \texttt{S\_DIR\_RECEIVE}, \texttt{S\_DIR\_SEND}. These states denote the following: 
@@ -121,11 +123,10 @@ When a change is not detected, if the counter is \(0\), then the input writes th
 \item Signal \texttt{i\_data\_send\_state} has 9 states: \texttt{S\_SEND\_IDLE}, \texttt{S\_SEND\_INHIBIT}, \texttt{S\_SEND\_BITS}, \texttt{S\_SEND\_PARITY}, \texttt{S\_SEND\_STOP}, \texttt{S\_SEND\_PS2\_RELEASE}, \texttt{S\_SEND\_ACKNOWLEDGE}, \texttt{S\_SEND\_DONE}, \texttt{S\_SEND\_ERROR}. These states denote the following: 
 	\begin{itemize}
 	\item \texttt{S\_SEND\_IDLE} denotes the state where no byte is being currently sent. This is the state when \texttt{i\_direction} is not \texttt{S\_DIR\_SEND}. When \texttt{i\_direction} becomes \texttt{S\_DIR\_SEND}, the state transitions to \texttt{S\_SEND\_INHIBIT}, the ps2 clock is forced low, and a countdown counter (\texttt{i\_send\_inhibitor\_counter}) for the inhibit pulse is set to 150\(\mu\)s.
-	\item \texttt{S\_SEND\_INHIBIT} denotes the state where the ps2 clock is being inhibited by being forced to 0. This state lasts until the inhibitor counter, \texttt{i\_send\_inhibitor\_counter}, reaches 0 wherein the ps2 clock is released and the ps2 data port is taken control of and forced low. The next state is \texttt{S\_SEND\_BITS}.   
+	\item \texttt{S\_SEND\_INHIBIT} denotes the state where the ps2 clock is being inhibited by being forced to 0. This state lasts until the inhibitor counter, \texttt{i\_send\_inhibitor\_counter}, reaches 0 wherein the ps2 clock is released (set to 1) and the ps2 data port is taken control of and forced low. The next state is \texttt{S\_SEND\_BITS}.   
 	\item \texttt{S\_SEND\_BITS} denotes the state where a bit is assigned to the ps2 data port on each falling ps2 clock edge. After the 8 bits comes \texttt{S\_SEND\_PARITY}. 
 	\item \texttt{S\_SEND\_PARITY} denotes the state where the parity bit is sent on the falling ps2 clock edge. Next is \texttt{S\_SEND\_STOP}. 
-	\item \texttt{S\_SEND\_STOP} denotes the state where the stop bit, namely 1, is sent on the falling ps2 clock edge. Next is \texttt{S\_SEND\_PS2\_RELEASE}.  
-	\item \texttt{S\_SEND\_PS2\_RELEASE} denotes the state where the ps2 data port is released. This state lasts for 1 clock period before \texttt{S\_SEND\_ACKNOWLEDGE}.
+	\item \texttt{S\_SEND\_STOP} denotes the state where the stop bit, namely 1, is sent on the falling ps2 clock edge. Next is \texttt{S\_SEND\_ACKNOWLEDGE}.  
 	\item \texttt{S\_SEND\_ACKNOWLEDGE} denotes the state where the ps2 data port is to receive a 0 on the last falling ps2 clock edge. If this 0 is received, the next state is \texttt{S\_SEND\_DONE}, otherwise the next state is \texttt{S\_SEND\_ERROR}. 
 	\item \texttt{S\_SEND\_DONE} denotes a successful transmission of a byte to the remote device. {\bf This state lasts for exactly 1 clock cycle}, after which the next state is \texttt{S\_SEND\_IDLE}.   
 	\item \texttt{S\_SEND\_ERROR} denotes a failed transmission of a byte to the remote device. {\bf This state lasts for exactly 1 clock cycle.}, after which the next state is \texttt{S\_SEND\_IDLE}. The transmission is immediately re-attempted.
@@ -138,7 +139,7 @@ When a change is not detected, if the counter is \(0\), then the input writes th
 
 \vspace{2mm}
 
-{\bf Behavioral description:}
+%{\bf Behavioral description:}
 
 \vspace{5mm} 
 

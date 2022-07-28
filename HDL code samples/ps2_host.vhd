@@ -34,8 +34,10 @@ use IEEE.NUMERIC_STD.ALL;
 entity ps2_host is
     Port ( clk : in STD_LOGIC; -- 10ns period
            reset : in STD_LOGIC;
-           ps2_clk : in STD_LOGIC;
-           ps2_data : in STD_LOGIC;
+           ps2_clk_in : in STD_LOGIC;
+           ps2_data_in : in STD_LOGIC;
+           ps2_clk_out : out STD_LOGIC;
+           ps2_data_out : out STD_LOGIC;
            send_flag : in STD_LOGIC; -- 1 clk pulse will be applied when "send_byte" has the to be sent byte.  
            send_byte : in STD_LOGIC_VECTOR (7 downto 0);
            send_busy_flag : out STD_LOGIC; -- will return 1 until new data can be accepted.
@@ -74,13 +76,13 @@ architecture Behavioral of ps2_host is
     signal i_received_data_parity_bit : std_logic;
     
     signal i_receive_time_out_counter : unsigned(16 downto 0); -- abort receive due to inactivity.
-    constant c_receive_time_out_time : unsigned(16 downto 0) := to_unsigned(100000, 17);
+    constant c_receive_time_out_time : unsigned(16 downto 0) := to_unsigned(100000, 17); -- 100000
     
     
     
     signal i_send_busy_flag : std_logic;
     
-    type data_send_state is (S_SEND_IDLE, S_SEND_INHIBIT, S_SEND_BITS, S_SEND_PARITY, S_SEND_STOP, S_SEND_PS2_RELEASE, S_SEND_ACKNOWLEDGE, S_SEND_DONE, S_SEND_ERROR);
+    type data_send_state is (S_SEND_IDLE, S_SEND_INHIBIT, S_SEND_BITS, S_SEND_PARITY, S_SEND_STOP, S_SEND_ACKNOWLEDGE, S_SEND_DONE, S_SEND_ERROR);
     signal i_data_send_state : data_send_state;
     
     signal i_send_data_buffer : std_logic_vector(7 downto 0);
@@ -89,7 +91,7 @@ architecture Behavioral of ps2_host is
     signal i_send_data_parity_bit : std_logic;
     
     signal i_send_inhibitor_counter : unsigned(14 downto 0);
-    constant c_send_inhibition_time : unsigned(14 downto 0) := to_unsigned(15000, 15);
+    constant c_send_inhibition_time : unsigned(14 downto 0) := to_unsigned(15000, 15); -- 15000
     
 
 begin
@@ -97,23 +99,23 @@ begin
 
     ps2_clk_debouncer : debouncer 
         generic map(
-            the_max_count => 3, -- 98
+            the_max_count => 98, -- 98
             counter_width => 10)
         port map(
             clk => clk, 
             reset => reset, 
-            D => ps2_clk, 
+            D => ps2_clk_in, 
             Q => i_ps2_clk);
     
     
     ps2_data_debouncer : debouncer 
         generic map(
-            the_max_count => 3, -- 98 
+            the_max_count => 98, -- 98 
             counter_width => 10)
         port map(
             clk => clk, 
             reset => reset, 
-            D => ps2_data, 
+            D => ps2_data_in, 
             Q => i_ps2_data);
 
 
@@ -299,84 +301,77 @@ begin
     -- i_send_data_bit_index
     -- i_send_data_parity_bit 
     -- i_send_inhibitor_counter
---    process (clk, reset) 
---    begin 
---        if (reset = '1') then 
---            ps2_clk <= 'Z';
---            ps2_data <= 'Z';
---            i_data_send_state <= S_SEND_IDLE; 
---            i_send_data_bit_index <= "000"; 
---            i_send_data_parity_bit <= '0';
---            i_send_inhibitor_counter <= (others => '0');
---        elsif (rising_edge(clk)) then 
---            if (i_direction = S_DIR_SEND) then 
---                case i_data_send_state is
---                    when S_SEND_IDLE => 
---                        i_data_send_state <= S_SEND_INHIBIT;
---                        i_send_data_bit_index <= "000"; 
---                        i_send_data_parity_bit <= '0';
---                        i_send_inhibitor_counter <= c_send_inhibition_time;
---                        ps2_clk <= '0';
---                    when S_SEND_INHIBIT => 
---                        if (i_send_inhibitor_counter /= to_unsigned(0,15)) then 
---                            i_send_inhibitor_counter <= i_send_inhibitor_counter - 1; 
---                            ps2_clk <= '0';
---                        else 
---                            ps2_clk <= 'Z'; -- Release the ps2_clk 
---                            ps2_data <= '0';
---                            i_data_send_state <= S_SEND_BITS;
---                        end if;
---                    when S_SEND_BITS => 
---                        if (i_ps2_clk_falling_edge_flag = '1') then 
---                            ps2_data <= i_send_data_buffer(to_integer(i_send_data_bit_index)); 
---                            i_send_data_parity_bit <= i_send_data_parity_bit xor i_send_data_buffer(to_integer(i_send_data_bit_index)); 
---                            if (i_send_data_bit_index = "111") then 
---                                i_data_send_state <= S_SEND_PARITY;
---                            else 
---                                i_send_data_bit_index <= i_send_data_bit_index + 1;
---                            end if;
---                        end if;
---                    when S_SEND_PARITY => 
---                        if (i_ps2_clk_falling_edge_flag = '1') then 
---                            ps2_data <= not i_send_data_parity_bit; 
---                            i_data_send_state <= S_SEND_STOP;
---                        end if;
---                    when S_SEND_STOP => 
---                        if (i_ps2_clk_falling_edge_flag = '1') then 
---                            ps2_data <= '1';
---                            i_data_send_state <= S_SEND_PS2_RELEASE;
---                        end if;
---                    when S_SEND_PS2_RELEASE => 
---                        ps2_data <= 'Z'; -- Release ps2_data
---                        i_data_send_state <= S_SEND_ACKNOWLEDGE;
---                    when S_SEND_ACKNOWLEDGE => 
---                        if (i_ps2_clk_falling_edge_flag = '1') then 
---                            if (i_ps2_data = '0') then 
---                                i_data_send_state <= S_SEND_DONE;
---                            else 
---                                i_data_send_state <= S_SEND_ERROR;
---                            end if;
---                        end if;
---                    when S_SEND_DONE => 
---                        i_data_send_state <= S_SEND_IDLE;
---                    when S_SEND_ERROR => 
---                        i_data_send_state <= S_SEND_IDLE;
---                end case;
---            else 
---                ps2_clk <= 'Z';
---                ps2_data <= 'Z';
---                i_data_send_state <= S_SEND_IDLE; 
---                i_send_data_bit_index <= "000"; 
---                i_send_data_parity_bit <= '0';
---                i_send_inhibitor_counter <= (others => '0'); 
---            end if;
---        end if;
---    end process; 
-    i_data_send_state <= S_SEND_IDLE;
-    i_send_data_bit_index <= "000";
-    i_send_data_parity_bit <= '0';
-    i_send_inhibitor_counter <= (others => '0');
-   
+    -- ps2_clk_out 
+    -- ps2_data_out 
+    process (clk, reset) 
+    begin 
+        if (reset = '1') then 
+            ps2_clk_out <= '1';
+            ps2_data_out <= '1';
+            i_data_send_state <= S_SEND_IDLE; 
+            i_send_data_bit_index <= "000"; 
+            i_send_data_parity_bit <= '0';
+            i_send_inhibitor_counter <= (others => '0');
+        elsif (rising_edge(clk)) then 
+            if (i_direction = S_DIR_SEND) then 
+                case i_data_send_state is
+                    when S_SEND_IDLE => 
+                        i_data_send_state <= S_SEND_INHIBIT;
+                        i_send_data_bit_index <= "000"; 
+                        i_send_data_parity_bit <= '0';
+                        i_send_inhibitor_counter <= c_send_inhibition_time;
+                        ps2_clk_out <= '0';
+                    when S_SEND_INHIBIT => 
+                        if (i_send_inhibitor_counter /= to_unsigned(0,15)) then 
+                            i_send_inhibitor_counter <= i_send_inhibitor_counter - 1; 
+                        else 
+                            ps2_clk_out <= '1'; -- Release the ps2_clk 
+                            ps2_data_out <= '0';
+                            i_data_send_state <= S_SEND_BITS;
+                        end if;
+                    when S_SEND_BITS => 
+                        if (i_ps2_clk_falling_edge_flag = '1') then 
+                            ps2_data_out <= i_send_data_buffer(to_integer(i_send_data_bit_index)); 
+                            i_send_data_parity_bit <= i_send_data_parity_bit xor i_send_data_buffer(to_integer(i_send_data_bit_index)); 
+                            if (i_send_data_bit_index = "111") then 
+                                i_data_send_state <= S_SEND_PARITY;
+                            else 
+                                i_send_data_bit_index <= i_send_data_bit_index + 1;
+                            end if;
+                        end if;
+                    when S_SEND_PARITY => 
+                        if (i_ps2_clk_falling_edge_flag = '1') then 
+                            ps2_data_out <= not i_send_data_parity_bit; 
+                            i_data_send_state <= S_SEND_STOP;
+                        end if;
+                    when S_SEND_STOP => 
+                        if (i_ps2_clk_falling_edge_flag = '1') then 
+                            ps2_data_out <= '1';
+                            i_data_send_state <= S_SEND_ACKNOWLEDGE;
+                        end if;
+                    when S_SEND_ACKNOWLEDGE => 
+                        if (i_ps2_clk_falling_edge_flag = '1') then 
+                            if (i_ps2_data = '0') then 
+                                i_data_send_state <= S_SEND_DONE;
+                            else 
+                                i_data_send_state <= S_SEND_ERROR;
+                            end if;
+                        end if;
+                    when S_SEND_DONE => 
+                        i_data_send_state <= S_SEND_IDLE;
+                    when S_SEND_ERROR => 
+                        i_data_send_state <= S_SEND_IDLE;
+                end case;
+            else 
+                ps2_clk_out <= '1';
+                ps2_data_out <= '1';
+                i_data_send_state <= S_SEND_IDLE; 
+                i_send_data_bit_index <= "000"; 
+                i_send_data_parity_bit <= '0';
+                i_send_inhibitor_counter <= (others => '0'); 
+            end if;
+        end if;
+    end process; 
    
     
 

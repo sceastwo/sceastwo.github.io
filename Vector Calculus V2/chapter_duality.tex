@@ -312,6 +312,8 @@ In order for the relationship \(\epsilon(\mathbf{F}) \bullet \mathbf{G} = \mathb
 \epsilon_{1,3}(\mathbf{q}) = \epsilon_{3,1}(\mathbf{q}) \quad\quad\text{and}\quad\quad 
 \epsilon_{2,3}(\mathbf{q}) = \epsilon_{3,2}(\mathbf{q})\] 
 
+All of the coefficients have units of \(\text{m}^{-1}\).
+
 
 
 \section{Energy}
@@ -348,6 +350,11 @@ Assume that \(\mathbf{E}\) is a multi-bubble: \(\nabla \times \mathbf{E} = 0\). 
 \end{thm}
 \textbf{Proof:}
 
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
 Since \(\mathbf{E}\) is a multi-bubble, there must exist some multi-volume \(U\) whose inwards oriented surface is \(\mathbf{E}\). 
 
 The energy of both \(\mathbf{D}\) and \(\mathbf{E}\) is:
@@ -369,7 +376,11 @@ E = & \frac{1}{2} \int (\mathbf{D} \bullet (\nabla U))
 \end{align*}
 
 The energy is \(0\), and this only occurs if \(\mathbf{D} = 0\) and \(\mathbf{E} = 0\). {\bf Non-zero multi-bubbles can never be dual to a multi-loop and vice versa. \(\Box\)}
-
+} & \parbox{0.5\textwidth}{
+\includegraphics[width = 0.5\textwidth]{Duality/loop_bubble_duality}
+}
+\end{tabular}
+\end{center}
 
 A consequence of this fact is that if two path-surface pairs have the same end-points and counterclockwise boundaries, then they are equivalent: 
 
@@ -525,7 +536,7 @@ It lastly needs to be demonstrated that the optimal choice of \(\mathbf{E}\) is 
 
 \textbf{Corollary:}
 
-Given the multi-loops \(\mathbf{J}_1\) and \(\mathbf{J}_2\), if \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are the minimum energy multi-surfaces that satisfy \(\nabla \times \mathbf{E}_1 = \mathbf{J}_1\) and \(\nabla \times \mathbf{E}_2 = \mathbf{J}_2\), then \(\mathbf{E}_{1+2} = \mathbf{E}_1 + \mathbf{E}_2\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{\text{total}} = \mathbf{J}_1 + \mathbf{J}_2\). Moreover, given any real number \(c\), \(\mathbf{E}_{c1} = c \cdot \mathbf{E}_1\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{c1} = c \cdot \mathbf{J}_1\).
+Given the multi-loops \(\mathbf{J}_1\) and \(\mathbf{J}_2\), if \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are the minimum energy multi-surfaces that satisfy \(\nabla \times \mathbf{E}_1 = \mathbf{J}_1\) and \(\nabla \times \mathbf{E}_2 = \mathbf{J}_2\), then \(\mathbf{E}_{1+2} = \mathbf{E}_1 + \mathbf{E}_2\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{1+2} = \mathbf{J}_1 + \mathbf{J}_2\). Moreover, given any real number \(c\), \(\mathbf{E}_{c1} = c \cdot \mathbf{E}_1\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{c1} = c \cdot \mathbf{J}_1\).
 
 \textbf{Proof:}
 
@@ -585,7 +596,7 @@ Let \(\mathbf{D} = \mathbf{J} - \mathbf{D}_{\text{bubble}}\), and let \(\mathbf{
 Given a balanced multi-point \(\rho\), the ``self inductance" of \(\rho\), often denoted by \(L(\rho)\), is the \(2 \times\) the minimum possible energy of the multi-path whose endpoints are \(\rho\). If \(\mathbf{D}_{\text{min}}\) is the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{\text{min}} = \rho\), then 
 \[L(\rho) = \int (\mathbf{D}_{\text{min}} \bullet \mathbf{D}_{\text{min}})\]  
 
-If \(\mathbf{J}\) were an arbitrary multi-path whose endpoints are \(\rho\), \(\nabla \bullet \mathbf{J} = \rho\), then \(L(\rho)\) can also be interpreted as follows. Since \(\epsilon^{-1}(\mathbf{D}_{\text{min}})\) is a multi-bubble (see theorem \ref{thm:low_energy_path}), it then follows from theorem \ref{thm:different_paths_same_result} that 
+If \(\mathbf{J}\) were an arbitrary multi-path whose endpoints are \(\rho\), \(\nabla \bullet \mathbf{J} = \rho\), then \(L(\rho)\) can also be interpreted as follows. Since \(\epsilon^{-1}(\mathbf{D}_{\text{min}})\) is a multi-bubble (see theorem \ref{thm:low_energy_path}) and \(\mathbf{D}_{\text{min}}\) and \(\mathbf{J}\) have the same endpoints, it then follows from theorem \ref{thm:different_paths_same_result} that 
 \[L(\rho) = \int (\mathbf{D}_{\text{min}} \bullet \epsilon^{-1}(\mathbf{D}_{\text{min}})) = \int (\mathbf{J} \bullet \epsilon^{-1}(\mathbf{D}_{\text{min}}))\]
 In other words, \(L(\rho)\) is the total number of surfaces from \(\epsilon^{-1}(\mathbf{D}_{\text{min}})\) that any path connecting the points from \(\rho\) will have to pass through.
 
@@ -647,16 +658,261 @@ The minimum energy multi-path \(\mathbf{D}_{c1}\) that satisfies \(\nabla \bulle
 M(c \cdot \rho_1, \rho_3) = & \int (\mathbf{D}_{c1} \bullet \mathbf{D}_3) = \int ((c \cdot \mathbf{D}_1) \bullet \mathbf{D}_3) = c\int (\mathbf{D}_1 \bullet \mathbf{D}_3) \\
 = & c \cdot M(\rho_1, \rho_3)
 \end{align*} 
+%%%
+\item[c)]
+The minimum energy multi-path \(\mathbf{D}_{1+2}\) that satisfies \(\nabla \bullet \mathbf{D}_{1+2} = \rho_1 + \rho_2\) is \(\mathbf{D}_{1+2} = \mathbf{D}_1 + \mathbf{D}_2\)
+\begin{align*}
+L(\rho_1 + \rho_2) = & \int (\mathbf{D}_{1+2} \bullet \mathbf{D}_{1+2}) = \int ((\mathbf{D}_1 + \mathbf{D}_2) \bullet (\mathbf{D}_1 + \mathbf{D}_2)) \\
+= & \int ((\mathbf{D}_1 \bullet \mathbf{D}_1) + (\mathbf{D}_1 \bullet \mathbf{D}_2) + (\mathbf{D}_2 \bullet \mathbf{D}_1) + (\mathbf{D}_2 \bullet \mathbf{D}_2)) \\
+= & \int (\mathbf{D}_1 \bullet \mathbf{D}_1) + 2 \int (\mathbf{D}_1 \bullet \mathbf{D}_2) + \int (\mathbf{D}_2 \bullet \mathbf{D}_2) 
+= L(\rho_1) + 2M(\rho_1, \rho_2) + L(\rho_2)
+\end{align*}
+%%%
+\item[d)]
+The minimum energy multi-path \(\mathbf{D}_{c1}\) that satisfies \(\nabla \bullet \mathbf{D}_{c1} = c \cdot \rho_1\) is \(\mathbf{D}_{c1} = c \cdot \mathbf{D}_1\)
+\begin{align*}
+L(c \cdot \rho_1) = & \int (\mathbf{D}_{c1} \bullet \mathbf{D}_{c1}) = \int ((c \cdot \mathbf{D}_1) \bullet (c \cdot \mathbf{D}_1)) = c^2\int (\mathbf{D}_1 \bullet \mathbf{D}_1) \\
+= & c^2 \cdot L(\rho_1)
+\end{align*} 
 \end{itemize}   
 
 
 
 \subsection{Multi-loop inductance}
 
+{\bf Inductance involving closed loops is nearly an identical concept to inductance involving balanced multi-points.} 
+
+\vspace{5mm}
+
+\textbf{Self inductance}
+
+Given a multi-loop \(\mathbf{J}\), the ``self inductance" of \(\mathbf{J}\), often denoted by \(L(\mathbf{J})\), is the \(2 \times\) the minimum possible energy of the multi-surface whose boundary is \(\mathbf{J}\). If \(\mathbf{E}_{\text{min}}\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{\text{min}} = \mathbf{J}\), then 
+\[L(\mathbf{J}) = \int (\mathbf{E}_{\text{min}} \bullet \mathbf{E}_{\text{min}})\]  
+
+If \(\mathbf{F}\) were an arbitrary multi-surface whose boundary is \(\mathbf{J}\), \(\nabla \times \mathbf{F} = \mathbf{J}\), then \(L(\mathbf{J})\) can also be interpreted as follows. Since \(\epsilon(\mathbf{E}_{\text{min}})\) is a multi-loop (see theorem \ref{thm:low_energy_surface}) and \(\mathbf{E}_{\text{min}}\) and \(\mathbf{F}\) have the same boundary, it then follows from theorem \ref{thm:different_surfaces_same_result} that 
+\[L(\mathbf{J}) = \int (\epsilon(\mathbf{E}_{\text{min}}) \bullet \mathbf{E}_{\text{min}}) = \int (\epsilon(\mathbf{E}_{\text{min}}) \bullet \mathbf{F})\]
+In other words, \(L(\mathbf{J})\) is the total number of loops from \(\epsilon(\mathbf{E}_{\text{min}})\) that pass through \(\mathbf{F}\), therefore linking through \(\mathbf{J}\).
+
+\vspace{5mm}
+
+\textbf{Mutual inductance}
+
+Given two multi-loops \(\mathbf{J}_1\) and \(\mathbf{J}_2\), the ``mutual inductance" between \(\mathbf{J}_1\) and \(\mathbf{J}_2\), often demoted by \(M(\mathbf{J}_1, \mathbf{J}_2)\), is defined as follows. 
+Let \(\mathbf{E}_{\text{min},1}\) be the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{\text{min},1} = \mathbf{J}_1\).
+Let \(\mathbf{E}_{\text{min},2}\) be the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{\text{min},2} = \mathbf{J}_2\). 
+The mutual inductance is 
+\[M(\mathbf{J}_1, \mathbf{J}_2) = \int (\mathbf{E}_{\text{min},1} \bullet \mathbf{E}_{\text{min},2})\]
+One immediate observation is that \(M(\mathbf{J}_1, \mathbf{J}_2) = M(\mathbf{J}_2, \mathbf{J}_1)\). It is also worth noting that \(L(\mathbf{J}) = M(\mathbf{J},\mathbf{J})\).
+
+If \(\mathbf{F}_1\) and \(\mathbf{F}_2\) are arbitrary multi-surfaces whose boundaries are \(\mathbf{J}_1\) and \(\mathbf{J}_2\) respectively, \(\nabla \times \mathbf{F}_1 = \mathbf{J}_1\) and \(\nabla \times \mathbf{F}_2 = \mathbf{J}_2\), then \(M(\mathbf{J}_1, \mathbf{J}_2)\) can be interpreted as follows. 
+
+Since \(\epsilon(\mathbf{E}_{\text{min},2})\) is a multi-loop, it then follows from theorem \ref{thm:different_surfaces_same_result} that 
+\[M(\mathbf{J}_1, \mathbf{J}_2) = \int (\epsilon(\mathbf{E}_{\text{min},2}) \bullet \mathbf{E}_{\text{min},1}) = \int (\epsilon(\mathbf{E}_{\text{min},2}) \bullet \mathbf{F}_1)\]
+In other words, \(M(\mathbf{J}_1, \mathbf{J}_2)\) is the total number of loops from \(\epsilon(\mathbf{E}_{\text{min},2})\) that pass through \(\mathbf{F}_1\), therefore linking through \(\mathbf{J}_1\).
+
+Since \(\epsilon(\mathbf{E}_{\text{min},1})\) is a multi-loop, it then follows from theorem \ref{thm:different_surfaces_same_result} that 
+\[M(\mathbf{J}_1, \mathbf{J}_2) = \int (\epsilon(\mathbf{E}_{\text{min},1}) \bullet \mathbf{E}_{\text{min},2}) = \int (\epsilon(\mathbf{E}_{\text{min},1}) \bullet \mathbf{F}_2)\]
+In other words, \(M(\mathbf{J}_1, \mathbf{J}_2)\) is the total number of loops from \(\epsilon(\mathbf{E}_{\text{min},1})\) that pass through \(\mathbf{F}_2\), therefore linking through \(\mathbf{J}_2\).
+
+\vspace{5mm}
+
+\textbf{Properties of the inductance}
+
+\begin{thm}\label{thm:multi-loop_inductance_properties}
+Let \(\mathbf{J}_1\), \(\mathbf{J}_2\), and \(\mathbf{J}_3\) be arbitrary multi-loops. Let \(c\) be an arbitrary real number. It is then the case that:
+
+a)
+\[M(\mathbf{J}_1 + \mathbf{J}_2, \mathbf{J}_3) = M(\mathbf{J}_1, \mathbf{J}_3) + M(\mathbf{J}_2, \mathbf{J}_3)\]
+
+b)
+\[M(c \cdot \mathbf{J}_1, \mathbf{J}_3) = c \cdot M(\mathbf{J}_1, \mathbf{J}_3)\]
+
+c)
+\[L(\mathbf{J}_1 + \mathbf{J}_2) = L(\mathbf{J}_1) + 2M(\mathbf{J}_1, \mathbf{J}_2) + L(\mathbf{J}_2)\]
+
+d)
+\[L(c \cdot \mathbf{J}_1) = c^2 \cdot L(\mathbf{J}_1)\]
+\end{thm}
+\textbf{Proof:}
+
+Let \(\mathbf{E}_1\), \(\mathbf{E}_2\), and \(\mathbf{E}_3\) be the minimum energy multi-surfaces that satisfy \(\nabla \times \mathbf{E}_1 = \mathbf{J}_1\); \(\nabla \times \mathbf{E}_2 = \mathbf{J}_2\); and \(\nabla \times \mathbf{E}_3 = \mathbf{J}_3\) respectively. The following can then be computed:
+
+\begin{itemize}
+\item[a)]
+The minimum energy multi-surface \(\mathbf{E}_{1+2}\) that satisfies \(\nabla \times \mathbf{E}_{1+2} = \mathbf{J}_1 + \mathbf{J}_2\) is \(\mathbf{E}_{1+2} = \mathbf{E}_1 + \mathbf{E}_2\)
+\begin{align*}
+M(\mathbf{J}_1 + \mathbf{J}_2, \mathbf{J}_3) = & \int (\mathbf{E}_{1+2} \bullet \mathbf{E}_3) = \int ((\mathbf{E}_1 + \mathbf{E}_2) \bullet \mathbf{E}_3) = \int (\mathbf{E}_1 \bullet \mathbf{E}_3) + \int (\mathbf{E}_2 \bullet \mathbf{E}_3) \\
+= & M(\mathbf{J}_1, \mathbf{J}_3) + M(\mathbf{J}_2, \mathbf{J}_3)
+\end{align*} 
+%%%
+\item[b)]
+The minimum energy multi-surface \(\mathbf{E}_{c1}\) that satisfies \(\nabla \times \mathbf{E}_{c1} = c \cdot \mathbf{J}_1\) is \(\mathbf{E}_{c1} = c \cdot \mathbf{E}_1\)
+\begin{align*}
+M(c \cdot \mathbf{J}_1, \mathbf{J}_3) = & \int (\mathbf{E}_{c1} \bullet \mathbf{E}_3) = \int ((c \cdot \mathbf{E}_1) \bullet \mathbf{E}_3) = c\int (\mathbf{E}_1 \bullet \mathbf{E}_3) \\
+= & c \cdot M(\mathbf{J}_1, \mathbf{J}_3)
+\end{align*} 
+%%%
+\item[c)]
+The minimum energy multi-surface \(\mathbf{E}_{1+2}\) that satisfies \(\nabla \times \mathbf{E}_{1+2} = \mathbf{J}_1 + \mathbf{J}_2\) is \(\mathbf{E}_{1+2} = \mathbf{E}_1 + \mathbf{E}_2\)
+\begin{align*}
+L(\mathbf{J}_1 + \mathbf{J}_2) = & \int (\mathbf{E}_{1+2} \bullet \mathbf{E}_{1+2}) = \int ((\mathbf{E}_1 + \mathbf{E}_2) \bullet (\mathbf{E}_1 + \mathbf{E}_2)) \\
+= & \int ((\mathbf{E}_1 \bullet \mathbf{E}_1) + (\mathbf{E}_1 \bullet \mathbf{E}_2) + (\mathbf{E}_2 \bullet \mathbf{E}_1) + (\mathbf{E}_2 \bullet \mathbf{E}_2)) \\
+= & \int (\mathbf{E}_1 \bullet \mathbf{E}_1) + 2 \int (\mathbf{E}_1 \bullet \mathbf{E}_2) + \int (\mathbf{E}_2 \bullet \mathbf{E}_2) 
+= L(\mathbf{J}_1) + 2M(\mathbf{J}_1, \mathbf{J}_2) + L(\mathbf{J}_2)
+\end{align*}
+%%%
+\item[d)]
+The minimum energy multi-surface \(\mathbf{E}_{c1}\) that satisfies \(\nabla \times \mathbf{E}_{c1} = c \cdot \mathbf{J}_1\) is \(\mathbf{E}_{c1} = c \cdot \mathbf{E}_1\)
+\begin{align*}
+L(c \cdot \mathbf{J}_1) = & \int (\mathbf{E}_{c1} \bullet \mathbf{E}_{c1}) = \int ((c \cdot \mathbf{E}_1) \bullet (c \cdot \mathbf{E}_1)) = c^2\int (\mathbf{E}_1 \bullet \mathbf{E}_1) \\
+= & c^2 \cdot L(\mathbf{J}_1)
+\end{align*} 
+\end{itemize}   
+
+
+
+\section{Scalar $\epsilon$}
+
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+In many scenarios, the duality relationship \(\epsilon\) is simply the following: Let \(\mathbf{E}\) denote an arbitrary multi-surface. At an arbitrary position \(\mathbf{q}\), consider a cylinder that is parallel to the dual multi-path \(\mathbf{D} = \epsilon(\mathbf{E})\). Let \(\Delta A\) denote the area of this cylinder, and let \(\Delta l\) denote the length of this cylinder. Let \(w_{\text{total\_path\_weight}}\) denote the total path weight from \(\mathbf{D}\) that runs the length of the cylinder. Let \(w_{\text{total\_surface\_weight}}\) denote the total surface weight from \(\mathbf{E}\) that slices through the cylinder, perpendicular to the length. 
+
+Duality is quantified by a single number \(\epsilon\), such that the path weight per unit area is \(\epsilon\) times the surface weight per unit length: 
+\[\frac{w_{\text{total\_path\_weight}}}{\Delta A} = \epsilon \cdot \frac{w_{\text{total\_surface\_weight}}}{\Delta l}\]
+} & \parbox{0.5\textwidth}{
+\includegraphics[width = 0.5\textwidth]{Duality/scalar_epsilon}
+}
+\end{tabular}
+
+The number \(\epsilon\) has units of \(\text{m}^{-1}\).
+
+It should be noted that the number \(\epsilon\) can change from position to position. In the image below, a dual multi-path/multi-surface pair \(\mathbf{D} = \epsilon(\mathbf{E})\) is shown crossing between two regions where \(\epsilon\) is different. When the conditions that \(\mathbf{D}\) has no endpoints (\(\nabla \bullet \mathbf{D} = 0\)) and \(\mathbf{E}\) has no boundaries (\(\nabla \times \mathbf{E} = 0\)) are enforced, the following conditions must hold to ensure no break in the paths' and surfaces' continuity. 
+
+\begin{center}
+\includegraphics[width = 0.75\textwidth]{Duality/refraction}
+\end{center}
+
+The values of \(\epsilon\) in the two regions are denoted by \(\epsilon_{\text{small}}\) and \(\epsilon_{\text{large}}\).
+
+Consider a stretch of boundary with a length of \(\Delta L\), as depicted above. 
+
+Let \(\Delta t\) denote the depth of this segment of boundary, not shown in the 2D image. 
+
+Let \(\theta_{\text{small}}\) denote the angle that the paths make with the direction perpendicular to the boundary in the \(\epsilon_{\text{small}}\) region, and let \(\theta_{\text{large}}\) denote the angle that the paths make with the direction perpendicular to the boundary in the \(\epsilon_{\text{large}}\) region. These are also the angles that the surfaces make with the boundary in their respective regions.
+
+Let \(D_{\text{total}}\) denote the total path weight that crosses this segment. 
+
+Let \(E_{\text{total}}\) denote the total surface weight that crosses this segment. 
+
+In the region with the small \(\epsilon\), 
+\[\frac{D_{\text{total}}}{\Delta L\cos\theta_{\text{small}} \cdot \Delta t} = \epsilon_{\text{small}} \cdot \frac{E_{\text{total}}}{\Delta L\sin\theta_{\text{small}}}\] 
+
+In the region with the large \(\epsilon\), 
+\[\frac{D_{\text{total}}}{\Delta L\cos\theta_{\text{large}} \cdot \Delta t} = \epsilon_{\text{large}} \cdot \frac{E_{\text{total}}}{\Delta L\sin\theta_{\text{large}}}\] 
+
+These equations respectively give: 
+
+\[E_{\text{total}} = \tan\theta_{\text{small}} \cdot \frac{D_{\text{total}}}{\Delta t \cdot \epsilon_{\text{small}}} \quad\text{and}\quad E_{\text{total}} = \tan\theta_{\text{large}} \cdot \frac{D_{\text{total}}}{\Delta t \cdot \epsilon_{\text{large}}}\]
+
+so 
+
+\[\tan\theta_{\text{small}} \cdot \frac{D_{\text{total}}}{\Delta t \cdot \epsilon_{\text{small}}} = \tan\theta_{\text{large}} \cdot \frac{D_{\text{total}}}{\Delta t \cdot \epsilon_{\text{large}}} \iff \frac{\tan\theta_{\text{large}}}{\tan\theta_{\text{small}}} = \frac{\epsilon_{\text{large}}}{\epsilon_{\text{small}}}\]
+
+Therefore: 
+
+\[\frac{\tan\theta_{\text{large}}}{\tan\theta_{\text{small}}} = \frac{\epsilon_{\text{large}}}{\epsilon_{\text{small}}}\]
+
+From this equation, it can be observed that the angle that paths make to a direction perpendicular to the boundary increases when the paths pass from a region with low \(\epsilon\) to a region with high \(\epsilon\), and vice versa. 
+
+\begin{thm}\label{thm:path_refraction}
+Consider two regions 1 and 2 separated by a flat boundary. Inside region 1, the duality relationship is defined by the single number \(\epsilon_1\), and inside region 2, the duality relationship is defined by the single number \(\epsilon_2\). Let multi-path \(\mathbf{D}\) and multi-surface \(\mathbf{E}\) be dual to each other, and be continuous and unbroken along the boundary between regions 1 and 2: \(\nabla \bullet \mathbf{D} = 0\) and \(\nabla \times \mathbf{E} = 0\). Let \(\theta_1\) denote the angle that the paths from \(\mathbf{D}\) make with the direction that is perpendicular to the boundary between regions 1 and 2, inside of region 1. Similarly, let \(\theta_2\) denote the angle that the paths from \(\mathbf{D}\) make with the direction that is perpendicular to the boundary between regions 1 and 2, inside of region 2. It is then the case that these angles are related via the equation:
+
+\[\frac{\tan\theta_2}{\tan\theta_1} = \frac{\epsilon_2}{\epsilon_1}\]
+\end{thm}
+
 
 
 \section{Electrostatics and magnetostatics}
 
+Now the behavior of electric and magnetic fields {\bf when there are no changes with respect to time} will be quantified. When there are no changes with respect to time, the electromagnetic field consists of the following:
+
+\begin{itemize}
+\item A {\bf multi-point} \(\rho_e\) that describes the electric charges. 
+\item A {\bf multi-point} \(\rho_m\) that describes the ``magnetic charges".
+\item A {\bf multi-path} \(\mathbf{J}_e\) that describes the electric current. 
+\item A {\bf multi-path} \(\mathbf{J}_m\) that describes the ``magnetic current".
+\item A {\bf multi-path} \(\mathbf{D}\) that describes the electric field lines. 
+\item A {\bf multi-path} \(\mathbf{B}\) that describes the magnetic field lines.
+\item A {\bf multi-surface} \(\mathbf{E}\) that describes the electric field. 
+\item A {\bf multi-surface} \(\mathbf{H}\) that describes the magnetic field. 
+\end{itemize} 
+
+While ``magnetic charge" a.k.a. ``magnetic monopoles" are not known to exist, Maxwell's equations are more symmetric assuming their existence.  
+
+There are {\bf two} path-surface duality relationships. Multi-path \(\mathbf{D}\) and multi-surface \(\mathbf{E}\) are dual to each other, and multi-path \(\mathbf{B}\) and multi-surface \(\mathbf{H}\) are dual to each other. {\bf However, the duality relationships are different for \(\mathbf{D}\) and \(\mathbf{E}\) vs \(\mathbf{B}\) and \(\mathbf{H}\).}  
+
+The symbol \(\epsilon\) used in the previous discussions will describe the duality between \(\mathbf{D}\) and \(\mathbf{E}\):
+\[\mathbf{D} = \epsilon(\mathbf{E})\]
+
+Since the duality relationship between \(\mathbf{B}\) and \(\mathbf{H}\) differs from the relationship between \(\mathbf{D}\) and \(\mathbf{E}\), a different symbol \(\mu\) will describe the duality between \(\mathbf{B}\) and \(\mathbf{H}\):
+\[\mathbf{B} = \mu(\mathbf{H})\]
+
+The equations that describe unchanging electric and magnetic fields are:
+
+\begin{tabular}{ll}
+\parbox{0.3\textwidth}{\[\nabla \bullet \mathbf{D} = \rho_e\]} & \parbox{0.7\textwidth}{(Electric charges are the endpoints of the electric field lines.)} \\ 
+\parbox{0.3\textwidth}{\[\nabla \bullet \mathbf{B} = \rho_m\]} & \parbox{0.7\textwidth}{(Magnetic charges are the endpoints of the magnetic field lines.)} \\ 
+\parbox{0.3\textwidth}{\[\nabla \times \mathbf{E} = -\mathbf{J}_m\]} & \parbox{0.7\textwidth}{(The magnetic current is the clockwise boundary of the electric field surfaces.)} \\ 
+\parbox{0.3\textwidth}{\[\nabla \times \mathbf{H} = \mathbf{J}_e\]} & \parbox{0.7\textwidth}{(The electric current is the counterclockwise boundary of the magnetic field surfaces.)} \\ 
+\end{tabular}
+
+\vspace{5mm}
+
+What units are weights measured in for each of these multi-structures? 
+\begin{itemize}
+\item With regards to multi-point \(\rho_e\) and multi-path \(\mathbf{D}\), weight is measured using ``Coulombs" (C), which are units of electric charge. 
+\item With regards to multi-point \(\rho_m\) and multi-path \(\mathbf{B}\), weight is measured using ``Webers" (Wb), which are effectively units of magnetic charge. 
+\item With regards to the multi-path \(\mathbf{J}_m\) and the multi-surface \(\mathbf{E}\), weight is measured using ``Volts" (V), which are units of energy per unit electric charge, or alternately, units of magnetic current. 
+\item With regards to the multi-path \(\mathbf{J}_e\) and the multi-surface \(\mathbf{H}\), weight is measured using ``Amperes" (A), which are units of electric current, or alternately, units of energy per unit magnetic charge. 
+\end{itemize}
+
+With magnetic monopoles not known to exist, it is always the case that \(\rho_m = 0\) and \(\mathbf{J}_m = 0\). This means that \(\nabla \bullet \mathbf{B} = 0\) and \(\nabla \times \mathbf{E} = 0\), implying that \(\mathbf{B}\) is a multi-loop and \(\mathbf{E}\) is a multi-bubble. Because \(\mathbf{E}\) is a multi-bubble, there exists some multi-volume \(V\) such that the outwards oriented surface of \(V\) is \(\mathbf{E}\):
+\[\nabla V = -\mathbf{E}\]  
+Multi-volume \(V\) is referred to as the ``electric potential". Given an arbitrary position \(\mathbf{q}\), the net number of volumes from \(V\) that contain \(\mathbf{q}\), a.k.a. \(V(\mathbf{q})\), is the ``electric potential" at position \(\mathbf{q}\).
+
+The function \(\epsilon(\cdot)\) that converts the electric field \(\mathbf{E}\) to the electric field lines \(\mathbf{D}\) is referred to as the ``electric permittivity".
+
+The function \(\mu(\cdot)\) that converts the magnetic field \(\mathbf{H}\) to the magnetic field lines \(\mathbf{B}\) is referred to as the ``magnetic permeability".
+
+
+
+
+\subsection{Special scenarios}
+
+\textbf{Point charges}
+
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+The assumption that is being made from the equation \(\nabla \bullet \mathbf{D} = \rho_e\) is that \(\rho_e\) is a balanced multi-point, \(\int \rho_e = 0\). This means that the total charge in a system is \(0\). If the net charge in the system is nonzero, say \(\int \rho_e = Q_{\text{total}}\), then an amount of charge equal to \(-Q_{\text{total}}\) is distributed in a spherical shell at extremely far distances.   
+} & \parbox{0.5\textwidth}{
+\includegraphics[width = 0.5\textwidth]{Duality/charge_sphere_at_infinity}
+}
+\end{tabular}
+
+
+
+
+\subsection{Nonuniform permittivity and permeability} 
+
+Often, the permittivity and permeability are different at different positions.
+
+
+
+\subsection{Anisotropic mediums}
+
+
+
+\section{Finite element modeling}
 
 
 

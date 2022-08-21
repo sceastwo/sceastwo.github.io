@@ -3,7 +3,7 @@
 
 
 \usepackage{fullpage}
-\usepackage{nopageno}
+%\usepackage{nopageno}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
@@ -15,6 +15,7 @@
 \definecolor{dark_blue}{rgb}{0.0,0.0,0.5}
 \definecolor{blue}{rgb}{0.0,0.0,1.0}
 
+\newcommand{\cis}{\textnormal{cis}\,}
 \newcommand{\dr}[1]{\textcolor{dark_red}{#1}}
 \newcommand{\dg}[1]{\textcolor{dark_green}{#1}}
 \newcommand{\db}[1]{\textcolor{dark_blue}{#1}}
@@ -159,7 +160,7 @@ In contrast, the multiplication of the two numbers involves the computing of par
 
 \section*{The logarithm}
 
-To address the challenges of multiplication, the similarities of multiplication to addition can be used to assign to each number a ``multiplicative essence". {\bf The term ``multiplicative essence" is used only in this document, and is not recognized officially.} The multiplicative essence can be extracted through use of the {\bf logarithm}. Given an arbitrary {\bf positive} number \(x\), \(\log(x)\) is the ``multiplicative essence" of \(x\). When multiplying two positive real numbers \(x\) and \(y\), the multiplicative essence of the product is the {\bf sum} of the multiplicative essences of the factors, the sum of two numbers being much easier to compute. Using logarithms turns multiplication into addition:
+To address the challenges of multiplication, the similarities of multiplication to addition can be used to assign to each number a ``multiplicative essence". {\bf The term ``multiplicative essence" is used only in this document, and is not recognized officially.} The multiplicative essence can be extracted through use of the {\bf logarithm}. Given an arbitrary {\bf positive} number \(x\), \(\log(x)\) is the ``multiplicative essence" of \(x\). When multiplying two positive real numbers \(x\) and \(y\), the multiplicative essence of the product is the {\bf sum} of the multiplicative essences of the factors, the sum of two numbers being much easier to compute. {\bf Using logarithms turns multiplication into addition}:
 
 \begin{itemize}
 \item Multiplying two numbers can be performed by adding their logarithms. For any choice of positive numbers \(x\) and \(y\), 
@@ -234,10 +235,19 @@ To help further illustrate logarithm values, the base \(10\) logarithms for seve
 \hline
 \end{tabular}
 
+\vspace{5mm}
+
+What if a change of base is needed? If we have the logarithm of \(x\) in base \(b\), i.e. \(\log_b(x)\), and we need the logarithm of \(x\) in base \(c\), i.e. \(\log_c(x)\), then just like converting between units, the following is performed. Given the base \(b\) logarithm \(\log_b(x)\) and some arbitrary constant \(k\), then the expression \(\log_?(x) = k \cdot \log_b(x)\) also computes a valid logarithm, albeit one where the logarithm when \(x = b\) is no longer calibrated to \(1\). The expression \(\frac{1}{\log_b(c)} \log_b(x)\) is a valid logarithm that evaluates to \(1\) when \(x = c\). The expression \(\frac{1}{\log_b(c)} \log_b(x)\) is a logarithm where the logarithm of \(c\) is calibrated to \(1\). Therefore:
+\[\log_c(x) = \frac{\log_b(x)}{\log_b(c)}\]   
+In other words, \(\log_c(x)\) is the logarithm of \(x\), i.e. \(\log_b(x)\), measured in units of the logarithm of \(c\), i.e. \(\log_b(c)\).
+
+
 
 
 
 \section*{Before there were calculators...}
+
+\subsection*{Log tables}
 
 As noted in the previous sections, multiplying numbers by hand before the use of calculators was prohibitively difficult. Fortunately, if one is willing to allow some approximations, logarithms can be used to convert the difficult task of multiplication into the much simpler task of addition. Base \(10\) logarithms are used. Base \(10\) logarithms are referred to as ``common logarithms" and are the default for the ``\texttt{log}" key found on most calculators. Why are base \(10\) logarithms used to simplify multiplication and not some other base? The answer is that finding the base \(10\) logarithm of a number in {\bf scientific notation} is easy when paired with a ``log table".
 
@@ -254,24 +264,27 @@ https://commons.wikimedia.org/wiki/File:Tables\_of\_six-figure\_logarithms\_(IA\
 }
 \end{tabular} 
 \begin{itemize}
+%%%%%%%%%%%%%%%%%
 \item To use the log table to compute the logarithm of an arbitrary positive number \(x\), the number will be expressed in scientific notation: 
-\[x = +a \times 10^n\] where \(n\) is an integer and \(a \in [1, 10)\) is the ``mantissa". 
+\[x = +a \times 10^n\] where the exponent \(n\) is an integer and the coefficient \(a \in [1, 10)\) is the ``{\bf mantissa}". 
 The base \(10\) logarithm of \(x\) is 
 \begin{align*}
 \log_{10}(x) = \log_{10}(+a \times 10^n) = \log_{10}(a) + \log_{10}(10^n) = n + \log_{10}(a)
 \end{align*} 
-where \(\log_{10}(a)\) is computed from the log table. 
+where \(\log_{10}(a)\) is computed from the log table. \(\log_{10}(a)\) belongs to the interval \([0, 1)\), and is the fractional part of the logarithm. 
+%%%%%%%%%%%%%%%%%
 \item To use the log table to compute the antilogarithm of an arbitrary number \(y\), the number will be expressed in the form: 
 \[y = n + r\] where \(n\) is an integer and \(r \in [0, 1)\). 
 The base \(10\) antilogarithm is 
 \[10^y = 10^{n+r} = +10^r \times 10^n\]
-where \(10^r\) is computed from the log table.
+where \(10^r\) is computed from the log table. \(10^r\) belongs to the interval \([1, 10)\), and becomes the mantissa.
 \end{itemize}
 This is how log tables allow the quick calculations of base 10 logarithms and antilogarithms. 
 
 \vspace{5mm}
 
-\textbf{Example 1:}
+\begin{description}
+\item[Example 1:] ~
 
 Consider the process of multiplying the numbers \(x = 5.67128 \times 10^8\) and \(y = 1.04690 \times 10^3\). 
 
@@ -288,9 +301,8 @@ so
 Therefore
 \[(5.67128 \times 10^8)(1.04690 \times 10^3) \approx 5.93726 \times 10^{11}\]
 
-\vspace{5mm}
 
-\textbf{Example 2:}
+\item[Example 2:] ~
 
 As another example, let \(x = 2.45207 \times 10^2\) and \(y = 6.89641 \times 10^4\), and then compute the quotient \(x/y\). 
 
@@ -307,9 +319,8 @@ so
 Therefore
 \[\frac{2.45207 \times 10^2}{6.89641 \times 10^4} \approx 3.55558 \times 10^{-3}\]
 
-\vspace{5mm}
 
-\textbf{Example 3:}
+\item[Example 3:] ~
 
 As a last example, let \(x = 2.68194 \times 10^7\) and \(y = -4.57891\), and then compute \(x^y\). 
 
@@ -332,6 +343,44 @@ so the logarithm of \(x^y\) is:
 therefore:
 \[x^y \approx 10^{-35 + 0.98582} = 10^{0.98582} \times 10^{-35} \approx 9.67877 \times 10^{-35}\]
 \[(2.68194 \times 10^7)^{-4.57891} \approx 9.67877 \times 10^{-35}\]
+
+\end{description}
+
+
+
+\subsection*{Slide rules}
+
+As an alternative to using log tables to perform multiplication, there is the analog tool known as the ``slide rule". The slide rule consists of a pair of marked straight edges where length corresponds to the logarithms, and the markings correspond to the original numbers (the antilogarithm). One such slide is depicted below:
+
+\begin{center}
+\includegraphics[width = \textwidth]{slide_rule_picture.jpg}
+\end{center}    
+
+In its default state, the slide rule scales are aligned as depicted below. Many slide rules have scales that run from \(1\) to \(100\), so any pair of mantissas from the range \([1, 10)\) can be multiplied. The numbers \(x\) and \(y\) are marked to be used in examples.
+
+\begin{center}
+\includegraphics[scale = 0.5]{slide_rule}
+\end{center}    
+
+When two numbers \(x\) and \(y\) are to be multiplied, the lower scale is slid to the right until the \(1\) marking on the lower scale aligns with the \(x\) marking on the upper scale. The number on the upper scale that aligns with the \(y\) marking on the lower scale is the product \(xy\). 
+
+\begin{center}
+\includegraphics[scale = 0.5]{slide_rule_multiplication}
+\end{center}   
+
+When the quotient \(y/x\) is to be computed, the lower scale is slid to the right until the \(x\) marking on the lower scale aligns with the \(y\) marking on the upper scale. The number on the upper scale that aligns with the \(1\) marking on the lower scale is the quotient \(y/x\). 
+
+\begin{center}
+\includegraphics[scale = 0.5]{slide_rule_division}
+\end{center}   
+
+When the reciprocal \(1/x\) is to be computed, the lower scale is slid to the right until the \(x\) marking on the lower scale aligns with the \(100\) marking on the upper scale. The number on the upper scale that aligns with the \(1\) marking on the lower scale is the quotient \(100/x\). Shifting the decimal point 2 positions to the left yields the reciprocal \(1/x\). 
+
+\begin{center}
+\includegraphics[scale = 0.5]{slide_rule_reciprocal}
+\end{center} 
+
+
 
 
 
@@ -375,11 +424,34 @@ Therefore the product is:
 
 \vspace{5mm}
 
-\textbf{Example application}
 
-As an example application, consider a machine that is known, on average, to fail \(\lambda\) times over a single unit of time. \(\lambda\), preferably less than \(1\), is referred to as the failure rate. Given an arbitrary time \(t\), what is the probability of avoiding a failure over a time interval of \(t\)? 
 
-Let \(N\) be a very large natural number and divide the time interval of \(t\) into \(N\) tiny fragments of \(\Delta t = \frac{t}{N}\). The average number of failures in the tiny time interval \(\Delta t\) is \(\lambda\Delta t\). Since \(\Delta t\) is tiny, the probability of scenarios of \(2\) or more failures in the time interval of \(\Delta t\) is negligible compared to the probability of a single failure. The average number of failures \(\lambda\Delta t\) becomes the probability of any failure occurring in the time interval \(\Delta t\). The probability of no failure is \(1 - \lambda\Delta t\). The probability of no failure over \(N\) consecutive intervals of \(\Delta t\) is \((1 - \lambda\Delta t)^N\). \(N\) consecutive intervals of \(\Delta t\) is the desired time interval \(t\). The probability of no failure over a time interval of \(t\) is 
+\textbf{Example applications:}
+
+\begin{description}
+\item[The lottery:] ~ 
+
+If the lottery odds are \(1\) in \(N\) where \(N\) is a large number such as \(N = 10000000\), it is commonly assumed that buying \(N\) tickets will guarantee you a win. While the average number of wins from \(N\) tickets is indeed \(1\), at least \(1\) win is not guaranteed, contrary to naive expectations. What is the actual probability of winning from \(N\) tickets?
+
+After buying \(1\) ticket, the probability of losing is \(1 - \frac{1}{N}\). After buying \(N\) tickets, the probability of losing is cumulatively \(P = \left(1 - \frac{1}{N}\right)^N\) and this is nonzero. With the use of the natural logarithm, \(P\) can be approximated. Each factor \(1 - \frac{1}{N}\) is close to \(1\), so the natural logarithm can be used to multiply these factors. By definition of the natural logarithm, 
+\[\ln\left(1 - \frac{1}{N}\right) \approx -\frac{1}{N}\]
+so 
+\[\ln(P) = \ln\left(\left(1 - \frac{1}{N}\right)^N\right) = N\ln\left(1 - \frac{1}{N}\right) \approx N \cdot \frac{-1}{N} = -1\]
+With the natural logarithm of the probability of losing after \(N\) tickets being \(-1\), the probability of losing after \(N\) tickets is: 
+\[e^{-1} = \frac{1}{e} \approx 36.7879\%\]
+You only have a \(63.2121\%\) chance of winning after \(N\) tickets. 
+
+Buying \(N\) tickets costs more than the payout, and you are still not guaranteed a win. Don't play the lottery. 
+
+
+
+\item[Poisson processes:] ~
+ 
+Consider a machine that is known to fail periodically. After careful experimentation, it is determined that the ratio of the number of failures to the length of time is on average, \(\lambda\) failures per unit of time. \(\lambda\) is referred to as the failure rate. Given an arbitrary time \(t\), the product \(\lambda t\) is the average number of failures that will occur within a time interval of length \(t\). It should be noted that \(\lambda t\) is the {\bf average} number of failures amongst all time intervals of length \(t\), and that the actual number of failures {\bf may vary}. What however, is the probability of avoiding a failure over a time interval of \(t\)? 
+
+Let \(N\) be a very large natural number and divide the time interval of \(t\) into \(N\) tiny fragments of \(\Delta t = \frac{t}{N}\). The average number of failures in the tiny time interval \(\Delta t\) is \(\lambda\Delta t\). Since \(\Delta t\) is tiny and close to \(0\), the probability of scenarios of \(2\) or more failures in the time interval of \(\Delta t\) is negligible when compared to the probability of a single failure. The average number of failures \(\lambda\Delta t\) becomes the probability of {\bf any} failure occurring in the time interval \(\Delta t\). 
+
+The probability of no failure in a time interval of \(\Delta t\) is \(1 - \lambda\Delta t\). The probability of no failure over \(N\) consecutive intervals of \(\Delta t\) culminates to \((1 - \lambda\Delta t)^N\). \(N\) consecutive intervals of \(\Delta t\) is the desired time interval \(t\). The probability of no failure over a time interval of \(t\) is 
 \[P = (1 - \lambda\Delta t)^N\]  
 This is the product of \(N\) quantities that are close to \(1\). To multiply these quantities that are close to \(1\), the natural logarithm of each factor of \(1 - \lambda\Delta t\) will be computed and then summed. Since \(-\lambda\Delta t\) is close to \(0\),
 \[\ln(1 - \lambda\Delta t) \approx -\lambda \Delta t\]
@@ -388,12 +460,173 @@ The natural logarithm of the product is:
 With the natural logarithm of the probability of no failure being \(-\lambda \cdot t\), the probability of no failure over a time interval of \(t\) is:
 \[P = e^{-\lambda \cdot t}\] 
 
-As an example, if \(\lambda = 0.000001\) failures per second, the probability of there being no failure for an entire year, which is \(\sim 3.15576 \times 10^7\text{s}\), is
-\[P = e^{-0.000001 \times (3.15576 \times 10^7)} \approx 1.97110 \times 10^{-14}\]
-With such low odds, a failure is basically certain.
+As an example, if \(\lambda = 0.000001\) failures per second, then the average number of failures per year, which is \(t \approx 3.15576 \times 10^7\text{s}\), is:  
+\[\lambda t = 0.000001 \times (3.15576 \times 10^7) = 31.5576\]  
+The probability of there being no failure for an entire year is: 
+\[P = e^{-\lambda t} = e^{-31.5576} \approx 1.97110 \times 10^{-14}\]
+With such low odds, a failure is basically certain. 
+
+
+%\item[Air pressure:] ~
+\end{description}
+
+
+
+
+\section*{Logarithms and complex numbers}
+
+The concept of logarithms will now be extended to complex numbers. A basic familiarity with complex numbers and polar coordinates will be assumed.
+
+\subsection*{Review of complex numbers}
+
+As a review, complex numbers consist of the sum of 2 components: a real component, and an imaginary component: 
+\[z = x + i \cdot y\]
+Visualizing a complex number as a 2D point, the real component \(x\) is the x-coordinate, and the imaginary component \(y\) is the y-coordinate. 
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+The addition of two complex numbers is simply the sum of the components: 
+\begin{align*} 
+z_1 + z_2 
+= & (x_1 + i \cdot y_1) + (x_2 + i \cdot y_2)  
+= (x_1 + x_2) + i \cdot (y_1 + y_2)
+\end{align*} 
+
+Multiplying a complex number \(z = x + i \cdot y\) by a real number \(c\) is performed by adding \(c\) copies of \(z\), which results in \(c\) copies of \(x\) plus \(c\) copies of \(i \cdot y\):
+\[c \cdot z = c \cdot (x + i \cdot y) = cx + i \cdot cy\]
+} & \parbox{0.5\textwidth}{
+\includegraphics[scale = 0.7]{complex_number_addition}
+}
+\end{tabular}
+\end{center}
+
+The ``magnitude" \(|z|\) of a complex number \(z = x + i \cdot y\) is the distance of the point with Cartesian coordinates of \((x,y)\) from the origin: 
+\[|z| = \sqrt{x^2 + y^2}\]
+
+The multiplication of two complex numbers will be defined later.
+
+
+\subsection*{Complex numbers and polar coordinates}
+
+While complex numbers are often envisioned as the sum of a real and imaginary component, complex numbers can also be quantified using polar coordinates. A 2D point can be quantified using polar coordinates \(r\) and \(\theta\). 
+
+\begin{center}
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+The Cartesian coordinates associated with a point with polar coordinates \((r, \theta)\) is \((r\cos\theta, r\sin\theta)\). The complex number associated with this point is: 
+\[z = r \cos\theta + i \cdot r\sin\theta = r(\cos\theta + i \cdot \sin\theta)\]
+For simplicity, the expression \(\cos\theta + i \cdot \sin\theta\) is abbreviated using the notation \(\cis\theta\): 
+\[\cis\theta = \cos\theta + i \cdot \sin\theta\]
+so the complex number with polar coordinates \((r,\theta)\) is:
+\[z = r \cdot \cis\theta\]
+} & \parbox{0.5\textwidth}{
+\includegraphics[scale = 0.7]{complex_number}
+}
+\end{tabular}
+\end{center}
+
+
+Now what about the multiplication of two complex numbers \(z_1 = x_1 + i \cdot y_1\) and \(z_2 = x_2 + i \cdot y_2\)? The polar representations of \(z_1\) and \(z_2\) will be assumed to be \(z_1 = r_1 \cis\theta_1\) and \(z_2 = r_2\cis\theta_2\).  
+
+Using the distributive law, the product \(z_1 \cdot z_2\) is:
+\begin{align*}
+z_1 \cdot z_2 
+= & z_1 (x_2 + i \cdot y_2) 
+= z_1 x_2 + z_1 (i \cdot y_2)
+\end{align*}
+which is the sum of \(x_2\) copies of \(z_1\) followed by \(i \cdot y_2\) copies of \(z_1\). An \(i\) number of copies of \(z_1\) is a \(90^\circ\) counterclockwise rotation of \(z_1\). 
+
+\(z_2\) is the sum of \(x_2\) copies of \(1\) and \(y_2\) copies of \(i\). 
+
+Replacing each copy of \(1\) with \(z_1\) and each copy of \(i\) with \(i \cdot z_1\) has the effect of rotating \(z_2\) counter clockwise by \(\theta_1\) and increasing its length by a factor of \(r_1\), as depicted below. Therefore:
+\begin{align*}
+z_1 \cdot z_2 = & (r_1 r_2) \cis(\theta_1 + \theta_2)
+\end{align*}
+
+In summary, 
+\[(r_1 \cis\theta_1)(r_2\cis\theta_2) = (r_1 r_2) \cis(\theta_1 + \theta_2)\]
+
+\begin{center}
+\includegraphics[width = 0.7\textwidth]{complex_number_multiplication}
+\end{center}
+
+
+
+\subsection*{Defining the logarithm of complex numbers}
+
+It was previously observed that given \(z_1 = r_1 \cis\theta_1\) and \(z_2 = r_2\cis\theta_2\), then the product \(z_1 \cdot z_2\) is: 
+\[z_1 \cdot z_2 = (r_1 \cis\theta_1)(r_2\cis\theta_2) = (r_1 r_2) \cis(\theta_1 + \theta_2)\]
+To evaluate this product using only addition, the logarithms of \(r_1\) and \(r_2\) are to be added, and the angles \(\theta_1\) and \(\theta_2\) are to be simply added without any pre or post conversions. This gives the logarithm of a complex number \(z = r \cis\theta\) two pieces of information that have to be added separately: \(\log(r)\) and \(\theta\). The logarithm of \(z\) can be assigned a real component of \(\log(r)\) and an imaginary component of \(\theta\):
+
+\[\log(r \cdot \cis\theta) = \log(r) + i \cdot k\theta\]
+The coefficient \(k\) is determined by the unit of measurement for the angle \(\theta\). Angle \(\theta\) is measured in radians, but if degrees were the desired unit of measurement, then \(k = \frac{180^\circ}{\pi}\) to convert the radian measurement to degrees.
+
+The focus will now be on defining the natural logarithm \(\ln(z)\). With regards to the natural logarithm \(\ln(z)\), the property \(\ln(1 + \epsilon) \approx \epsilon\) is still desired for values of the complex number \(\epsilon\) that are ``close" to \(0\). Right now the base \(b\) of the logarithm used for \(r\), and the unit of angle used for \(\theta\) is unknown, so
+\[\ln(r \cdot \cis\theta) = \log_b(r) + i \cdot k\theta\]
+where the base \(b\) and radians-to-unknown-angle-units conversion factor \(k\) still have be determined. 
+
+Consider the complex number \(z = 1 + \epsilon = (1 + \epsilon_x) + i \cdot \epsilon_y\) where \(\epsilon = \epsilon_x + i \cdot \epsilon_y\) is close to \(0\). Approximations will be made that remain accurate even when the error is divided by, and therefore placed on the scale of, the length of \(\epsilon\), i.e. \(|\epsilon|\). 
+
+Let \(r_\epsilon\) and \(\theta_\epsilon\) denote the polar coordinates of \(1 + \epsilon\), so \(1 + \epsilon = r_\epsilon\cis\theta_\epsilon\). 
+
+In the image below, \(r_\epsilon\) is the radius of the red circular arc, and the approximation \(r_\epsilon \approx 1 + \epsilon_x\) can be observed. \(\theta_\epsilon\) is angle swept out by the red circular arc between the real line and \(1 + \epsilon\). The length of red circular arc swept out by \(\theta_\epsilon\) is \(r_\epsilon \cdot \theta_\epsilon\), using the formula for arc length, and this arc length is approximately \(\epsilon_y\) so the approximation \(r_\epsilon \cdot \theta_\epsilon \approx \epsilon_y\) can be observed.  
+
+The approximation \(r_\epsilon \cdot \theta_\epsilon \approx \epsilon_y\) yields \(\theta_\epsilon \approx \frac{\epsilon_y}{r_\epsilon}\). Even though \(r_\epsilon\) is ``close" to \(1\), the approximation \(\frac{1}{r_\epsilon} \approx 1\) cannot be used since the error relative to \(|\epsilon|\) does not shrink to \(0\). However, the approximation \(\frac{\epsilon_y}{r_\epsilon} \approx \epsilon_y\) can still be used since multiplication by \(\epsilon_y\) makes the error vastly smaller.
+
+Therefore:
+\[r_\epsilon \approx 1 + \epsilon_x \quad\quad\text{and}\quad\quad \theta_\epsilon \approx \epsilon_y\]
+
+\begin{center}
+\includegraphics[width = 0.7\textwidth]{complex_number_natural_logarithm}
+\end{center}
+
+The condition:
+
+\[\ln(1 + \epsilon) \approx \epsilon\] 
+
+becomes
+
+\[\ln(r_\epsilon \cis\theta_\epsilon) \approx \epsilon\] 
+
+which becomes
+
+\[\log_b(r_\epsilon) + i \cdot k\theta_\epsilon \approx \epsilon_x + i \cdot \epsilon_y\]
+
+Using the approximations \(r_\epsilon \approx 1 + \epsilon_x\) and \(\theta_\epsilon \approx \epsilon_y\) gives:
+
+\[\log_b(1 + \epsilon_x) + i \cdot k\epsilon_y \approx \epsilon_x + i \cdot \epsilon_y\]
+
+For the real components to match, \(\log_b(1 + \epsilon_x) \approx \epsilon_x\), which necessitates the base \(b\) to be \(e\). 
+
+For the imaginary components to match, \(k = 1\) so the angle in the logarithm is measured in radians. 
+
+Therefore:
+\[\ln(r \cis\theta) = \ln(r) + i \cdot \theta\]
+and the property
+\[\ln(1 + \epsilon) \approx \epsilon \quad\quad\textnormal{when \(\epsilon\) is close to \(0\)}\]
+still holds. 
+
+In reverse, the anti-natural logarithm of \(x + i \cdot y\), i.e. \(e^{x + i \cdot y}\), is:
+\[e^{x + i \cdot y} = e^x \cdot \cis\theta\]
+
+When \(x = 0\) and \(y = \pi\), the well known ``Euler's formula" is the result:
+\[e^{\pi \cdot i} = -1\]
+
+
+
+
+
+
 
 
 \end{document}
+
+
+
+
 
 
 

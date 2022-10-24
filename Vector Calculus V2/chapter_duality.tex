@@ -456,6 +456,15 @@ Treat \(\mathbf{F}\) as a ``scanning window" from theorem \ref{thm:scanning_path
 
 It lastly needs to be demonstrated that the optimal choice of \(\mathbf{D}\) is unique. Let \(\mathbf{D}_1\) and \(\mathbf{D}_2\) denote two optimal choices of \(\mathbf{D}\). This means that \(\nabla \bullet \mathbf{D}_1 = \nabla \bullet \mathbf{D}_2 = \rho\) and \(\nabla \times \epsilon^{-1}(\mathbf{D}_1) = \nabla \times \epsilon^{-1}(\mathbf{D}_2) = 0\). From the corollary of theorem \ref{thm:loop_bubble_duality}, \(\mathbf{D}_1 = \mathbf{D}_2\). \(\Box\) 
 
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+In the image to the right, the scanning window surface \(\mathbf{F}\) is chosen to intersect the counterclockwise boundary of \(\epsilon^{-1}(\mathbf{D})\) in the reverse direction. Let \(t > 0\). When \(t(\nabla \times \mathbf{F})\) is added to \(\mathbf{D}\), the paths that comprise \(\mathbf{D}\) spread out past the current boundary of \(\epsilon^{-1}(\mathbf{D})\). Keeping \(t\) small so that the contribution of the term \(\frac{t^2}{2}\int ((\nabla \times \mathbf{F}) \bullet (\nabla \times \mathbf{F}))\) remains small, it can be seen that the total intersection of \(t(\nabla \times \mathbf{F})\) with the current surface \(\epsilon^{-1}(\mathbf{D})\) is negative, i.e. \(\int (\epsilon^{-1}(\mathbf{D}) \bullet t(\nabla \times \mathbf{F})) < 0\), resulting in a net decrease in energy.
+} & \parbox{0.5\textwidth}{
+\includegraphics[width = 0.5\textwidth]{Duality/minimizing_path_energy}
+}
+\end{tabular}
+
+
 \textbf{Corollary:}
 
 Given the balanced multi-points \(\rho_1\) and \(\rho_2\), if \(\mathbf{D}_1\) and \(\mathbf{D}_2\) are the minimum energy multi-paths that satisfy \(\nabla \bullet \mathbf{D}_1 = \rho_1\) and \(\nabla \bullet \mathbf{D}_2 = \rho_2\), then \(\mathbf{D}_{1+2} = \mathbf{D}_1 + \mathbf{D}_2\) is the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{1+2} = \rho_1 + \rho_2\). Moreover, given any real number \(c\), \(\mathbf{D}_{c1} = c \cdot \mathbf{D}_1\) is the minimum energy multi-path that satisfies \(\nabla \bullet \mathbf{D}_{c1} = c \cdot \rho_1\).
@@ -468,7 +477,7 @@ and
 \[\nabla \bullet \mathbf{D}_{c1} = c \cdot (\nabla \bullet \mathbf{D}_1) = c \cdot \rho_1\]
 so \(\mathbf{D}_{1+2}\) and \(\mathbf{D}_{c1}\) satisfy their respective equations.
 
-From theorem \ref{thm:low_energy_path}, \(\mathbf{D}_1\) and \(\mathbf{D}_2\) are multi-bubbles, and \(\mathbf{D}_{1+2}\) and \(\mathbf{D}_{c1}\) must be multi-bubbles to be minimum energy multi-paths. 
+From theorem \ref{thm:low_energy_path}, \(\mathbf{D}_1\) and \(\mathbf{D}_2\) are multi-bubbles, and \(\mathbf{D}_{1+2}\) and \(\mathbf{D}_{c1}\) must also be multi-bubbles to be minimum energy multi-paths. 
 \[\nabla \times \mathbf{D}_{1+2} = \nabla \times (\mathbf{D}_1 + \mathbf{D}_2) = \nabla \times \mathbf{D}_1 + \nabla \times \mathbf{D}_2 = 0 + 0 = 0\]
 and 
 \[\nabla \times \mathbf{D}_{c1} = \nabla \times (c \cdot \mathbf{D}_1) = c \cdot (\nabla \times \mathbf{D}_1) = c \cdot 0 = 0\]
@@ -534,6 +543,14 @@ Treat \(U\) as a ``scanning window" from theorem \ref{thm:scanning_points}. From
 
 It lastly needs to be demonstrated that the optimal choice of \(\mathbf{E}\) is unique. Let \(\mathbf{E}_1\) and \(\mathbf{E}_2\) denote two optimal choices of \(\mathbf{E}\). This means that \(\nabla \times \mathbf{E}_1 = \nabla \times \mathbf{E}_2 = \mathbf{J}\) and \(\nabla \bullet \epsilon(\mathbf{E}_1) = \nabla \bullet \epsilon(\mathbf{E}_2) = 0\). From the corollary of theorem \ref{thm:loop_bubble_duality}, \(\mathbf{E}_1 = \mathbf{E}_2\). \(\Box\) 
 
+\begin{tabular}{cc}
+\parbox{0.5\textwidth}{
+In the image to the right, the scanning window volume \(U\) is chosen to contain a starting point of \(\epsilon(\mathbf{E})\). Let \(t > 0\). When \(t(\nabla U)\) is added to \(\mathbf{E}\), the surfaces that comprise \(\mathbf{E}\) spread out past the current endpoints of \(\epsilon(\mathbf{E})\). Keeping \(t\) small so that the contribution of the term \(\frac{t^2}{2}\int ((\nabla U) \bullet (\nabla U))\) remains small, it can be seen that the total intersection of \(t(\nabla U)\) with the current path \(\epsilon(\mathbf{E})\) is negative, i.e. \(\int (\epsilon(\mathbf{E}) \bullet t(\nabla U)) < 0\), resulting in a net decrease in energy.
+} & \parbox{0.5\textwidth}{
+\includegraphics[width = 0.5\textwidth]{Duality/minimizing_surface_energy}
+}
+\end{tabular}
+
 \textbf{Corollary:}
 
 Given the multi-loops \(\mathbf{J}_1\) and \(\mathbf{J}_2\), if \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are the minimum energy multi-surfaces that satisfy \(\nabla \times \mathbf{E}_1 = \mathbf{J}_1\) and \(\nabla \times \mathbf{E}_2 = \mathbf{J}_2\), then \(\mathbf{E}_{1+2} = \mathbf{E}_1 + \mathbf{E}_2\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{1+2} = \mathbf{J}_1 + \mathbf{J}_2\). Moreover, given any real number \(c\), \(\mathbf{E}_{c1} = c \cdot \mathbf{E}_1\) is the minimum energy multi-surface that satisfies \(\nabla \times \mathbf{E}_{c1} = c \cdot \mathbf{J}_1\).
@@ -546,7 +563,7 @@ and
 \[\nabla \times \mathbf{E}_{c1} = c \cdot (\nabla \times \mathbf{E}_1) = c \cdot \mathbf{J}_1\]
 so \(\mathbf{E}_{1+2}\) and \(\mathbf{E}_{c1}\) satisfy their respective equations.
 
-From theorem \ref{thm:low_energy_surface}, \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are multi-loops, and \(\mathbf{E}_{1+2}\) and \(\mathbf{E}_{c1}\) must be multi-loops to be minimum energy multi-surfaces. 
+From theorem \ref{thm:low_energy_surface}, \(\mathbf{E}_1\) and \(\mathbf{E}_2\) are multi-loops, and \(\mathbf{E}_{1+2}\) and \(\mathbf{E}_{c1}\) must also be multi-loops to be minimum energy multi-surfaces. 
 \[\nabla \bullet \mathbf{E}_{1+2} = \nabla \bullet (\mathbf{E}_1 + \mathbf{E}_2) = \nabla \bullet \mathbf{E}_1 + \nabla \bullet \mathbf{E}_2 = 0 + 0 = 0\]
 and
 \[\nabla \bullet \mathbf{E}_{c1} = \nabla \bullet (c \cdot \mathbf{E}_1) = c \cdot (\nabla \bullet \mathbf{E}_1) = c \cdot 0 = 0\]
@@ -771,7 +788,7 @@ L(c \cdot \mathbf{J}_1) = & \int (\mathbf{E}_{c1} \bullet \mathbf{E}_{c1}) = \in
 
 
 
-\section{Scalar $\epsilon$}
+\section{Scalar $\epsilon$}\label{sec:scalar_epsilon}
 
 \begin{tabular}{cc}
 \parbox{0.5\textwidth}{
@@ -880,9 +897,9 @@ With magnetic monopoles not known to exist, it is always the case that \(\rho_m 
 \[\nabla V = -\mathbf{E}\]  
 Multi-volume \(V\) is referred to as the ``electric potential". Given an arbitrary position \(\mathbf{q}\), the net number of volumes from \(V\) that contain \(\mathbf{q}\), a.k.a. \(V(\mathbf{q})\), is the ``electric potential" at position \(\mathbf{q}\).
 
-The function \(\epsilon(\cdot)\) that converts the electric field \(\mathbf{E}\) to the electric field lines \(\mathbf{D}\) is referred to as the ``electric permittivity".
+The function \(\epsilon(\cdot)\) that converts the electric field multi-surface \(\mathbf{E}\) to the electric field lines \(\mathbf{D}\) is referred to as the ``electric permittivity". In many cases, \(\epsilon\) is simply a scalar as discussed in section \ref{sec:scalar_epsilon}.
 
-The function \(\mu(\cdot)\) that converts the magnetic field \(\mathbf{H}\) to the magnetic field lines \(\mathbf{B}\) is referred to as the ``magnetic permeability".
+The function \(\mu(\cdot)\) that converts the magnetic field multi-surface \(\mathbf{H}\) to the magnetic field lines \(\mathbf{B}\) is referred to as the ``magnetic permeability". In many cases, \(\mu\) is simply a scalar as discussed in section \ref{sec:scalar_epsilon}.
 
 
 

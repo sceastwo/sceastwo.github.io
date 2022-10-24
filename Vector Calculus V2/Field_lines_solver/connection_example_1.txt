@@ -1,0 +1,82 @@
+Inwards fluxes:
+-x = 4
++x = -4 
+-y = 2 
++y = -2 
+-z = -3 
++z = 3 
+
+Links:
+(-x,-y) = 0
+(-x,+y) = 2 
+
+Inwards fluxes:
+-x = 2
++x = -4 
+-y = 2 
++y = 0 
+-z = -3 
++z = 3 
+
+Links:
+(-x,-z) = 2 
+
+Inwards fluxes:
+-x = 0
++x = -4 
+-y = 2 
++y = 0 
+-z = -1 
++z = 3 
+
+Links:
+(-x,+z) = 0
+(+x,-y) = -2
+
+Inwards fluxes:
+-x = 0
++x = -2 
+-y = 0 
++y = 0 
+-z = -1 
++z = 3 
+
+Links:
+(+x,+y) = 0
+(+x,-z) = 0 
+(+x,+z) = -2 
+
+Inwards fluxes:
+-x = 0
++x = 0 
+-y = 0 
++y = 0 
+-z = -1 
++z = 1 
+
+Links:
+(-y,-z) = 0 
+(-y,+z) = 0 
+(+y,-z) = 0 
+(+y,+z) = 0
+(-x,+x) = 0 
+(-y,+y) = 0
+(-z,+z) = -1
+
+Inwards fluxes:
+-x = 0
++x = 0 
+-y = 0 
++y = 0 
+-z = 0 
++z = 0 
+
+Links:
+(-x,0) = 0 
+(+x,0) = 0 
+(-y,0) = 0 
+(+y,0) = 0 
+(-z,0) = 0 
+(+z,0) = 0  
+
+

@@ -114,7 +114,7 @@ In the example below, the intersection between a multi-point and a multi-volume 
 
 \begin{tabular}{cc}
 \parbox{0.5\textwidth}{
-If a point \(P\) with a weight of \(1\) lies on the edge of a volume with a weight of \(1\), then the intersection point \(P\) has a weight of \(0.5\).
+If a point \(P\) with a weight of \(1\) lies on the edge of a volume with a weight of \(1\), then the intersection point \(P\) has a weight that lies between \(0\) and \(1\) inclusive.
 } & \parbox{0.5\textwidth}{
 \includegraphics[width = 0.5\textwidth]{Intersections/Point-volume_intersections/point_volume_intersection_boundary_case}
 }
@@ -192,17 +192,36 @@ The total intersection of \(\mathbf{J}\) with \(\mathbf{F}\) consists of all of 
 \end{tabular}
 \end{center}
 
-If a path \(C\) fails to fully pass through a surface \(\sigma\), then the weight of the intersection point is halved. {\bf Paths that are embedded inside of surfaces do contribute any intersection points unless they enter or leave the surface.} It may be argued that all points along an embedded path should be counted as intersection points, but the counter argument is to ask what polarity these points should have.
+{\bf An intersection point may only occur when a path leaves or enters a surface. When a path is embedded in a surface, no intersections are being generated despite the path existing inside the surface.}
 
-If path \(C\) enters the back of \(\sigma\) and then continues inside of \(\sigma\), then the point where \(C\) first touches \(\sigma\) has a weight of \(+0.5\). If path \(C\) enters the front of \(\sigma\) and then continues inside of \(\sigma\), then the point where \(C\) first touches \(\sigma\) has a weight of \(-0.5\). 
+When a path enters or leaves a surface, the only points that are part of the intersection are the points at which the path actually enters or leaves the surface. Both the path and surface will be assumed to have a weight of \(1\). These intersection points need not have a weight of \(+1\) or \(-1\), but can instead be a fractional value to reflect ``partial passage" of the path through the surface. 
 
-If \(C\) is inside of \(\sigma\) and then exits the front of \(\sigma\), then the exit point has a weight of \(+0.5\). If \(C\) is inside of \(\sigma\) and then exits the back of \(\sigma\), then the exit point has a weight of \(-0.5\). 
+Entering a surface from the front, or leaving a surface from the back can yield weights ranging from \(-1\) to \(0\) (inclusive). Entering a surface from the back, or leaving a surface from the front can yield weights ranging from \(0\) to \(+1\) (inclusive). 
+
+If the path were to enter a surface from the back and exit the surface from the front after snaking around inside of the surface, then the sum of the weights of both intersection points must total to \(+1\) to reflect a completed passage through the surface.
+
+If the path were to enter a surface from the front and exit the surface from the back after snaking around inside of the surface, then the sum of the weights of both intersection points must total to \(-1\) to reflect a completed reverse passage through the surface.
+
+If the path were to enter and leave a surface from the same side after snaking around inside of the surface, then the sum of the weights of both intersection points must total to \(0\) to reflect no passage through the surface.
+
+The images below depict examples of paths entering a surface and either completing passage through the surface, or leaving the surface via the same side that they entered. 
+
+%If a path \(C\) fails to fully pass through a surface \(\sigma\), then the weight of the intersection point is halved. {\bf Paths that are embedded inside of surfaces do contribute any intersection points unless they enter or leave the surface.} It may be argued that all points along an embedded path should be counted as intersection points, but the counter argument is to ask what polarity these points should have.
+%
+%If path \(C\) enters the back of \(\sigma\) and then continues inside of \(\sigma\), then the point where \(C\) first touches \(\sigma\) has a weight of \(+0.5\). If path \(C\) enters the front of \(\sigma\) and then continues inside of \(\sigma\), then the point where \(C\) first touches \(\sigma\) has a weight of \(-0.5\). 
+%
+%If \(C\) is inside of \(\sigma\) and then exits the front of \(\sigma\), then the exit point has a weight of \(+0.5\). If \(C\) is inside of \(\sigma\) and then exits the back of \(\sigma\), then the exit point has a weight of \(-0.5\). 
+%
+%\begin{center}
+%\includegraphics[width = 0.75\textwidth]{Intersections/Path-surface_intersections/path_surface_intersection_boundary_case}
+%\end{center}
+%
+%Moreover, if the path \(C\) clips the boundary of \(\sigma\), then the weight of the intersection point is also halved.
 
 \begin{center}
-\includegraphics[width = 0.75\textwidth]{Intersections/Path-surface_intersections/path_surface_intersection_boundary_case}
+\includegraphics[width = \textwidth]{Intersections/Path-surface_intersections/path_surface_intersection_generalized_boundary_case}
 \end{center}
 
-Moreover, if the path \(C\) clips the boundary of \(\sigma\), then the weight of the intersection point is also halved.
 
 
 
@@ -261,7 +280,7 @@ In the example below, the multi-volume \(U\) consists of three volumes. Two of t
 
 \begin{tabular}{cc}
 \parbox{0.5\textwidth}{
-If a path \(C\) is on the surface of volume \(\Omega\), then the intersection is \(C\) with a weight of \(+0.5\) as depicted on the right.
+If a path \(C\) with a weight of \(1\) is on the surface of a volume \(\Omega\) with a weight of \(1\), then the intersection is \(C\) with a weight that lies between \(0\) and \(1\) inclusive.
 } & \parbox{0.5\textwidth}{
 \includegraphics[width = 0.5\textwidth]{Intersections/Path-volume_intersections/path_volume_intersection_boundary_case}
 }
@@ -358,19 +377,33 @@ The total intersection of \(\mathbf{F}_1\) with \(\mathbf{F}_2\) consists of all
 \end{tabular}
 \end{center}
 
-If one surface fails to fully pass through the other surface, then the weight of the intersection path is halved. Surfaces that are embedded inside of other surfaces do contribute any intersection paths unless they enter or leave the other surface. 
+Similar to path-surface intersections, {\bf an intersection path may only occur when one surface leaves or enters the other surface. When one surface is embedded in the other surface, no intersections are being generated despite the surface existing inside the other surface.}
 
-Below are examples of surfaces intersecting each other but not fully passing through. Note the bottom example where both surfaces are truncated, so the intersection weight is further halved to \(0.25\).
+When a surface enters or leaves another surface, the only points that are part of the intersection are the paths at which the surface actually enters or leaves the other surface. Both surfaces will be assumed to have a weight of \(1\). These intersection paths need not have a weight of \(1\), but can instead be a fractional value between \(0\) and \(1\) to reflect ``partial passage" of one surface through the other surface. 
+
+If one surface were to enter the other surface and then leave through the opposite side, then the weights of the intersection paths must sum to \(1\) and have ``parallel" orientations to reflect the complete passage of one surface through the other surface.
+
+If one surface were to enter the other surface and then leave through the same side, then the weights of the intersection paths must be equivalent and have ``opposite" orientations to reflect no passage of one surface through the other surface.
+
+The images below depict examples of one surface (the second surface) entering another surface (the first surface) and either completing passage through the surface, or leaving the surface via the same side that it entered. 
+
+%If one surface fails to fully pass through the other surface, then the weight of the intersection path is halved. Surfaces that are embedded inside of other surfaces do contribute any intersection paths unless they enter or leave the other surface. 
+%
+%Below are examples of surfaces intersecting each other but not fully passing through. Note the bottom example where both surfaces are truncated, so the intersection weight is further halved to \(0.25\).
+%
+%\begin{center}
+%\includegraphics[width = 0.75\textwidth]{Intersections/Surface-surface_intersections/surface_surface_intersection_boundary_case}
+%\end{center}
 
 \begin{center}
-\includegraphics[width = 0.75\textwidth]{Intersections/Surface-surface_intersections/surface_surface_intersection_boundary_case}
+\includegraphics[width = \textwidth]{Intersections/Surface-surface_intersections/surface_surface_intersection_generalized_boundary_case}
 \end{center}
 
-Two surfaces that are coincident do not slice through each other and therefore do not intersect. If \(\mathbf{F}_1\) and \(\mathbf{F}_2\) are the same flat surface as depicted below on the left, then these surfaces {\bf do not intersect:} \(\mathbf{F}_1 \times \mathbf{F}_2 = 0\). On the right, the curves where surface \(\mathbf{F}_2\) peels away from \(\mathbf{F}_1\) are intersection curves with weights of \(0.5\).
-
-\begin{center}
-\includegraphics[width = 0.75\textwidth]{Intersections/Surface-surface_intersections/coincident_surfaces}
-\end{center}
+%Two surfaces that are coincident do not slice through each other and therefore do not intersect. If \(\mathbf{F}_1\) and \(\mathbf{F}_2\) are the same flat surface as depicted below on the left, then these surfaces {\bf do not intersect:} \(\mathbf{F}_1 \times \mathbf{F}_2 = 0\). On the right, the curves where surface \(\mathbf{F}_2\) peels away from \(\mathbf{F}_1\) are intersection curves with weights of \(0.5\).
+%
+%\begin{center}
+%\includegraphics[width = 0.75\textwidth]{Intersections/Surface-surface_intersections/coincident_surfaces}
+%\end{center}
 
 \begin{tabular}{cc}
 \parbox{0.6\textwidth}{
@@ -421,6 +454,7 @@ It was previously noted that a path only ``intersects" a surface when it decisiv
 \begin{thm}
 \[\mathbf{F} \bullet (\mathbf{F} \times \mathbf{G}) = 0 \quad\quad\quad\text{and}\quad\quad\quad \mathbf{G} \bullet (\mathbf{F} \times \mathbf{G}) = 0\]  
 \end{thm}
+
 
 
 
@@ -477,7 +511,7 @@ In the example below, the multi-volume \(U\) consists of three volumes. Two of t
 
 \begin{tabular}{cc}
 \parbox{0.5\textwidth}{
-If a surface \(\sigma\) is on the surface of volume \(\Omega\), then the intersection is \(\sigma\) with a weight of \(+0.5\) as depicted on the right.
+If a surface \(\sigma\) with a weight of \(1\) is on the surface of a volume \(\Omega\) with a weight of \(1\), then the intersection is \(\sigma\) with a weight that lies between \(0\) and \(1\) inclusive.
 } & \parbox{0.5\textwidth}{
 \includegraphics[width = 0.5\textwidth]{Intersections/Surface-volume_intersections/surface_volume_intersection_boundary_case}
 }

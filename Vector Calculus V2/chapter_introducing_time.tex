@@ -37,11 +37,54 @@ This section will detail the manner in which the previously introduced multi-str
 
 \includegraphics[width = 0.5\textwidth]{Time/infinitely_fast_point}
 
+\begin{center}
+\includegraphics[width = \textwidth]{Time/world_line_interpretations}
+\end{center}
+
+
 
 
 
 \section{New intersections}  
 
+Two new intersections will be introduced. These intersections will result in multi-events. 
+
+
+
+\subsection{Point-surface intersections}
+
+Given a point \(P\) with a weight of \(+1\) and an oriented surface \(\sigma\) with a weight of \(1\), then the event at which the point \(P\) passes through the surface \(\sigma\) is the intersection \(P \odot \sigma\). If \(P\) passes through \(\sigma\) in the preferred direction, then the intersection event \(P \odot \sigma\) has a weight of \(+1\). If the point \(P\) passes through the surface \(\sigma\) in the opposite direction, then the event has a weight of \(-1\). This is illustrated below:   
+
+\begin{center}
+\includegraphics[width = \textwidth]{Time/point_surface_intersections}
+\end{center}
+
+With regards to notation, given a multi-point \(\rho\) and a multi-surface \(\mathbf{F}\), then the intersection will be denoted by either: 
+
+\[\rho \odot \mathbf{F} \quad\quad\text{or}\quad\quad \mathbf{F} \odot \rho\]
+
+Just as with path-surface intersections, a complete transit must occur for an intersection event to occur. Points that remain embedded in a surface not entering or leaving do not trigger any intersection events. As a consequence of this, given a multi-path \(\mathbf{J}\) and a multi-surface \(\mathbf{F}\), then the intersection multi-point \(\mathbf{J} \bullet \mathbf{F}\) remains embedded within the surface \(\mathbf{F}\), and no intersection events between \(\mathbf{J} \bullet \mathbf{F}\) and \(\mathbf{F}\) actually occur: 
+
+\begin{thm}
+Given multi-path \(\mathbf{J}\) and multi-surface \(\mathbf{F}\), it is the case that: 
+\[(\mathbf{J} \bullet \mathbf{F}) \odot \mathbf{F} = 0\]
+\end{thm}
+
+
+
+\subsection{Path-path intersections}
+
+Given two oriented paths \(C_1\) and \(C_2\) both with weights of \(1\), then the event at with \(C_1\) cuts through \(C_2\) is the intersection \(C_1 \otimes C_2\). Whether the intersection event has a weight of \(+1\) or \(-1\) is determined as follows: Orient your view such that \(C_1\) runs from left to right and \(C_2\) runs from bottom to top. If \(C_1\) is initially behind \(C_2\) and finishes in front of \(C_2\), then the intersection event has a weight of \(+1\). If \(C_1\) is initially in front of \(C_2\) and finishes behind \(C_2\), then the intersection event has a weight of \(-1\). This is illustrated below:    
+
+\begin{center}
+\includegraphics[width = \textwidth]{Time/path_path_intersections}
+\end{center}
+
+With regards to notation, given multi-paths \(\mathbf{J}_1\) and \(\mathbf{J}_2\), then the intersection will be denoted by: 
+
+\[\mathbf{J}_1 \otimes \mathbf{J}_2\]  
+
+Unlike surface-surface intersections where the ordering of the surfaces matters: \(\mathbf{F}_1 \times \mathbf{F}_2 = -(\mathbf{F}_2 \times \mathbf{F}_1)\), and that surfaces cannot intersect themselves: \(\mathbf{F} \times \mathbf{F} = 0\), the opposite is true with path-path intersections. The ordering of the paths {\bf does not} matter, and paths can in fact intersect themselves:
 
 \begin{thm}
 Given any multi-paths \(\mathbf{J}_1\) and \(\mathbf{J}_2\), it is the case that:
@@ -49,11 +92,9 @@ Given any multi-paths \(\mathbf{J}_1\) and \(\mathbf{J}_2\), it is the case that
 \end{thm}
 
 
-\begin{thm}
-Given multi-path \(\mathbf{J}\) and multi-surface \(\mathbf{F}\), it is the case that: 
-\[(\mathbf{J} \bullet \mathbf{F}) \odot \mathbf{F} = 0\]
-\end{thm}
 
+
+\subsection{Summary of intersections}
 
 A summary of the notations used for various intersections is given below:
 
@@ -107,12 +148,12 @@ volume \(U_1 \cdot U_2\) \\
 
 
 
-\section*{Event totals}
+\section{Event totals}
 
 
 
 
-\section*{Creation/destruction events} 
+\section{Creation/destruction events} 
 
 
 
@@ -158,10 +199,49 @@ inwards-oriented &
 
 
 
-\subsection*{Balanced multi-points redefined}
+\subsection{Balanced multi-points redefined}
 
 
-\section*{Event totals}
+Originally, the definition of a ``balanced" multi-point is a multi-point where the total point weight is \(0\). Now, a balanced multi-point is a multi-point where there are no creation or destruction events, and the world line is closed. 
+
+A multi-point \(\rho\) is ``balanced" if and only if \(\nabla \odot \rho = 0\). 
+
+
+
+
+
+\section{Quantification}
+
+\includegraphics[width = 0.75\textwidth]{Time/quantifying_multi-structures_with_time}
+
+\begin{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% event-volume
+\item 
+Multi-event: \(\xi = \left[\begin{array}{c} \hline \rho_\leftrightarrow \end{array}\right]\) and multi-volume \(U = \left[\begin{array}{c} U_\square \\ \hline \end{array} \right]\)
+
+\[\text{Multi-event:} \;\; \xi \cdot U = \left[\begin{array}{c} \hline \rho_\leftrightarrow \end{array}\right] \cdot \left[\begin{array}{c} U_\square \\ \hline \end{array} \right] = \left[\begin{array}{c} \hline \rho_\leftrightarrow \cdot U_\square \end{array}\right]\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% point-surface
+\item 
+Multi-point: \(\rho = \left[\begin{array}{c} \rho_\square \\ \hline \mathbf{J}_\leftrightarrow \end{array}\right]\) and multi-surface \(\mathbf{F} = \left[\begin{array}{c} \mathbf{F}_\square \\ \hline U_\leftrightarrow \end{array}\right]\)
+
+\[\text{Multi-event:} \;\; \rho \odot \mathbf{F} = \left[\begin{array}{c} \rho_\square \\ \hline \mathbf{J}_\leftrightarrow \end{array}\right] \odot \left[\begin{array}{c} \mathbf{F}_\square \\ \hline U_\leftrightarrow \end{array}\right] = \left[\begin{array}{c} \hline \rho_\square \cdot U_\leftrightarrow + \mathbf{J}_\leftrightarrow \bullet \mathbf{F}_\square \end{array}\right]\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% point-volume
+\item 
+Multi-point: \(\rho = \left[\begin{array}{c} \rho_\square \\ \hline \mathbf{J}_\leftrightarrow \end{array}\right]\) and multi-volume \(U = \left[\begin{array}{c} U_\square \\ \hline \end{array}\right]\)
+
+\[\text{Multi-point:} \;\; \rho \cdot U = \left[\begin{array}{c} \rho_\square \\ \hline \mathbf{J}_\leftrightarrow \end{array}\right] \cdot \left[\begin{array}{c} U_\square \\ \hline \end{array}\right] = \left[\begin{array}{c} \rho_\square \cdot U_\square \\ \hline \mathbf{J}_\leftrightarrow \cdot U_\square \end{array}\right]\] 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% path-path 
+\item 
+Multi-paths: \(\mathbf{J} = \left[\begin{array}{c} \mathbf{J}_\square \\ \hline \mathbf{F}_\leftrightarrow \end{array}\right]\) and \(\mathbf{K} = \left[\begin{array}{c} \mathbf{K}_\square \\ \hline \mathbf{G}_\leftrightarrow \end{array}\right]\) 
+
+\[\text{Multi-event:} \;\; \mathbf{J} \otimes \mathbf{K} = \left[\begin{array}{c} \mathbf{J}_\square \\ \hline \mathbf{F}_\leftrightarrow \end{array}\right] \otimes \left[\begin{array}{c} \mathbf{K}_\square \\ \hline \mathbf{G}_\leftrightarrow \end{array}\right] = \left[\begin{array}{c} \hline \mathbf{J}_\square \bullet \mathbf{G}_\leftrightarrow + \mathbf{F}_\leftrightarrow \bullet \mathbf{K}_\square \end{array}\right]\]
+\end{itemize}
+
+
+
+
+
+
 
 
 
